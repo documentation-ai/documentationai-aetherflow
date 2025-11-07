@@ -1,7 +1,38 @@
 {
   "name": "AetherFlow Documentation",
   "initialRoute": "introduction",
-  "primaryColor": "#3B82F6",
+  "logo-dark": "https://aetherflow.com/logo-dark.svg",
+  "logo-light": "https://aetherflow.com/logo-light.svg",
+  "colors": {
+    "light": {
+      "brand": "#3B82F6",
+      "heading": "#1a1a1a",
+      "text": "#374151"
+    },
+    "dark": {
+      "brand": "#60A5FA",
+      "heading": "#f2f2f2",
+      "text": "#c1c1c1"
+    }
+  },
+  "navbar": {
+    "actions": {
+      "primary": {
+        "title": "Get Started",
+        "link": "https://aetherflow.com/signup"
+      },
+      "links": [
+        {
+          "title": "Login",
+          "link": "https://aetherflow.com/login"
+        },
+        {
+          "title": "Pricing",
+          "link": "https://aetherflow.com/pricing"
+        }
+      ]
+    }
+  },
   "navigation": {
     "tabs": [
       {
@@ -21,22 +52,79 @@
                 "title": "Getting Started",
                 "path": "getting-started",
                 "icon": "play"
+              },
+              {
+                "title": "Use Cases & Examples",
+                "path": "use-cases",
+                "icon": "lightbulb"
+              },
+              {
+                "title": "Migration Guide",
+                "path": "migration-guide",
+                "icon": "arrow-right"
               }
             ]
           },
           {
-            "group": "Features",
+            "group": "Core Features",
             "icon": "zap",
             "pages": [
+              {
+                "title": "Workflows",
+                "path": "workflows",
+                "icon": "git-branch"
+              },
               {
                 "title": "Integrations",
                 "path": "integrations",
                 "icon": "plug"
               },
               {
-                "title": "Workflows",
-                "path": "workflows",
-                "icon": "git-branch"
+                "title": "Advanced Features",
+                "path": "advanced-features",
+                "icon": "settings"
+              },
+              {
+                "title": "Best Practices",
+                "path": "best-practices",
+                "icon": "check-circle"
+              },
+              {
+                "title": "Performance Optimization",
+                "path": "performance-optimization",
+                "icon": "zap"
+              }
+            ]
+          },
+          {
+            "group": "Monitoring & Analytics",
+            "icon": "bar-chart",
+            "pages": [
+              {
+                "title": "Analytics & Monitoring",
+                "path": "analytics-monitoring",
+                "icon": "activity"
+              },
+              {
+                "title": "Troubleshooting Guide",
+                "path": "troubleshooting",
+                "icon": "alert-circle"
+              }
+            ]
+          },
+          {
+            "group": "Team & Enterprise",
+            "icon": "users",
+            "pages": [
+              {
+                "title": "Team Collaboration",
+                "path": "team-collaboration",
+                "icon": "user-plus"
+              },
+              {
+                "title": "Enterprise Features",
+                "path": "enterprise-features",
+                "icon": "building"
               }
             ]
           }
@@ -47,9 +135,63 @@
         "icon": "code",
         "groups": [
           {
+            "group": "REST API",
+            "icon": "server",
+            "pages": [
+              {
+                "title": "API Authentication & Security",
+                "path": "api-authentication",
+                "icon": "key"
+              },
+              {
+                "title": "SDK Documentation",
+                "path": "sdk-documentation",
+                "icon": "code"
+              },
+              {
+                "title": "Webhooks",
+                "path": "webhooks",
+                "icon": "webhook"
+              }
+            ]
+          },
+          {
             "group": "Endpoints",
             "openapi": "openapi.yaml",
             "icon": "terminal"
+          }
+        ]
+      },
+      {
+        "tab": "Pricing & Plans",
+        "icon": "credit-card",
+        "pages": [
+          {
+            "title": "Pricing & Plans",
+            "path": "pricing-plans",
+            "icon": "dollar-sign"
+          }
+        ]
+      },
+      {
+        "tab": "Security & Compliance",
+        "icon": "shield",
+        "pages": [
+          {
+            "title": "Data Privacy & Compliance",
+            "path": "data-privacy-compliance",
+            "icon": "lock"
+          }
+        ]
+      },
+      {
+        "tab": "Help & Support",
+        "icon": "help-circle",
+        "pages": [
+          {
+            "title": "FAQ",
+            "path": "faq",
+            "icon": "question"
           }
         ]
       },
@@ -65,5 +207,9 @@
         ]
       }
     ]
+  },
+  "seo": {
+    "robots:index": true,
+    "robots:follow": true
   }
 }

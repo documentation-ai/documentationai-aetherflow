@@ -1,0 +1,516 @@
+---
+title: SDK Documentation
+description: Integrate AetherFlow programmatically using our SDKs for JavaScript, Python, and REST APIs
+---
+
+## SDK Overview
+
+Programmatically interact with AetherFlow using our official SDKs and REST APIs.
+
+<Callout kind="info">
+  SDKs are available for JavaScript, Python, and Go. REST API access available for all languages.
+</Callout>
+
+## Installation
+
+Get started with AetherFlow SDKs in your preferred language.
+
+<Tabs>
+  <Tab title="JavaScript/Node.js" icon="javascript">
+    ```bash
+    npm install @aetherflow/sdk
+    # or
+    yarn add @aetherflow/sdk
+    ```
+  </Tab>
+
+  <Tab title="Python" icon="python">
+    ```bash
+    pip install aetherflow-sdk
+    # or
+    poetry add aetherflow-sdk
+    ```
+  </Tab>
+
+  <Tab title="Go" icon="go">
+    ```bash
+    go get github.com/aetherflow/aetherflow-go-sdk
+    ```
+  </Tab>
+</Tabs>
+
+## Authentication
+
+Securely authenticate with AetherFlow using API keys or JWT tokens.
+
+<Expandable title="API Key Setup">
+```javascript
+import { AetherFlow } from '@aetherflow/sdk';
+
+const client = new AetherFlow({
+  apiKey: 'your_api_key_here'
+});
+```
+
+```python
+from aetherflow import AetherFlow
+
+client = AetherFlow(api_key='your_api_key_here')
+```
+
+```go
+package main
+
+import (
+    "github.com/aetherflow/aetherflow-go-sdk"
+)
+
+func main() {
+    client := aetherflow.NewClient(&aetherflow.Config{
+        APIKey: "your_api_key_here",
+    })
+}
+```
+</Expandable>
+
+<Expandable title="JWT Token Setup">
+```javascript
+const client = new AetherFlow({
+  jwtToken: 'your_jwt_token_here'
+});
+```
+
+```python
+client = AetherFlow(jwt_token='your_jwt_token_here')
+```
+
+```go
+client := aetherflow.NewClient(&aetherflow.Config{
+    JWTToken: "your_jwt_token_here",
+})
+```
+</Expandable>
+
+## Workflows API
+
+Create, manage, and execute workflows programmatically.
+
+### Creating Workflows
+
+<CodeGroup tabs="JavaScript,Python,Go">
+```javascript
+const workflow = await client.workflows.create({
+  name: 'Email Processor',
+  prompt: 'When I receive an email, summarize it and post to Slack',
+  integrations: ['gmail', 'slack']
+});
+
+console.log(`Created workflow: ${workflow.id}`);
+```
+
+```python
+workflow = client.workflows.create(
+    name='Email Processor',
+    prompt='When I receive an email, summarize it and post to Slack',
+    integrations=['gmail', 'slack']
+)
+
+print(f"Created workflow: {workflow.id}")
+```
+
+```go
+workflow, err := client.Workflows.Create(context.Background(), &aetherflow.WorkflowRequest{
+    Name: "Email Processor",
+    Prompt: "When I receive an email, summarize it and post to Slack",
+    Integrations: []string{"gmail", "slack"},
+})
+
+if err != nil {
+    log.Fatal(err)
+}
+
+fmt.Printf("Created workflow: %s\n", workflow.ID)
+```
+</CodeGroup>
+
+### Listing Workflows
+
+<CodeGroup tabs="JavaScript,Python,Go">
+```javascript
+const workflows = await client.workflows.list({
+  limit: 10,
+  status: 'active'
+});
+
+workflows.forEach(wf => {
+  console.log(`${wf.name}: ${wf.status}`);
+});
+```
+
+```python
+workflows = client.workflows.list(limit=10, status='active')
+
+for wf in workflows:
+    print(f"{wf.name}: {wf.status}")
+```
+
+```go
+workflows, err := client.Workflows.List(context.Background(), &aetherflow.ListOptions{
+    Limit:  10,
+    Status: "active",
+})
+
+if err != nil {
+    log.Fatal(err)
+}
+
+for _, wf := range workflows {
+    fmt.Printf("%s: %s\n", wf.Name, wf.Status)
+}
+```
+</CodeGroup>
+
+### Executing Workflows
+
+<CodeGroup tabs="JavaScript,Python,Go">
+```javascript
+const execution = await client.workflows.execute(workflowId, {
+  customData: {
+    email_subject: 'Important Update',
+    priority: 'high'
+  }
+});
+
+console.log(`Execution started: ${execution.id}`);
+```
+
+```python
+execution = client.workflows.execute(
+    workflow_id,
+    custom_data={
+        'email_subject': 'Important Update',
+        'priority': 'high'
+    }
+)
+
+print(f"Execution started: {execution.id}")
+```
+
+```go
+execution, err := client.Workflows.Execute(context.Background(), workflowID, &aetherflow.ExecuteOptions{
+    CustomData: map[string]interface{}{
+        "email_subject": "Important Update",
+        "priority": "high",
+    },
+})
+
+if err != nil {
+    log.Fatal(err)
+}
+
+fmt.Printf("Execution started: %s\n", execution.ID)
+```
+</CodeGroup>
+
+## Analytics API
+
+Retrieve performance metrics and analytics data.
+
+<Expandable title="Getting Workflow Metrics">
+```javascript
+const metrics = await client.analytics.getWorkflowMetrics(workflowId, {
+  timeframe: 'last_30_days',
+  metrics: ['success_rate', 'avg_runtime', 'execution_count']
+});
+
+console.log(`Success Rate: ${metrics.success_rate}%`);
+```
+
+```python
+metrics = client.analytics.get_workflow_metrics(
+    workflow_id,
+    timeframe='last_30_days',
+    metrics=['success_rate', 'avg_runtime', 'execution_count']
+)
+
+print(f"Success Rate: {metrics.success_rate}%")
+```
+</Expandable>
+
+## Integrations API
+
+Manage connected applications and services.
+
+### Listing Integrations
+
+<CodeGroup tabs="JavaScript,Python">
+```javascript
+const integrations = await client.integrations.list();
+
+integrations.forEach(integration => {
+  console.log(`${integration.name}: ${integration.status}`);
+});
+```
+
+```python
+integrations = client.integrations.list()
+
+for integration in integrations:
+    print(f"{integration.name}: {integration.status}")
+```
+</CodeGroup>
+
+### Testing Integration
+
+<CodeGroup tabs="JavaScript,Python">
+```javascript
+const testResult = await client.integrations.test(integrationId);
+
+if (testResult.success) {
+  console.log('Integration is working correctly');
+} else {
+  console.log(`Integration error: ${testResult.error}`);
+}
+```
+
+```python
+test_result = client.integrations.test(integration_id)
+
+if test_result.success:
+    print('Integration is working correctly')
+else:
+    print(f'Integration error: {test_result.error}')
+```
+</CodeGroup>
+
+## Error Handling
+
+Robust error handling patterns for reliable SDK usage.
+
+<Expandable title="Error Handling Examples">
+```javascript
+try {
+  const workflow = await client.workflows.create(workflowData);
+} catch (error) {
+  if (error.code === 'VALIDATION_ERROR') {
+    console.log('Invalid workflow configuration');
+  } else if (error.code === 'RATE_LIMITED') {
+    console.log('Rate limit exceeded, retrying...');
+    // Implement retry logic
+  } else {
+    console.log(`Unexpected error: ${error.message}`);
+  }
+}
+```
+
+```python
+try:
+    workflow = client.workflows.create(workflow_data)
+except ValidationError as e:
+    print('Invalid workflow configuration')
+except RateLimitError as e:
+    print('Rate limit exceeded, retrying...')
+    # Implement retry logic
+except Exception as e:
+    print(f'Unexpected error: {str(e)}')
+```
+</Expandable>
+
+## Advanced Features
+
+Utilize advanced SDK capabilities for complex automation scenarios.
+
+### Webhook Management
+
+<CodeGroup tabs="JavaScript,Python">
+```javascript
+// Create a webhook endpoint
+const webhook = await client.webhooks.create({
+  url: 'https://myapp.com/webhook',
+  events: ['workflow.completed', 'workflow.failed'],
+  secret: 'webhook_secret'
+});
+
+// List webhooks
+const webhooks = await client.webhooks.list();
+```
+
+```python
+# Create a webhook endpoint
+webhook = client.webhooks.create(
+    url='https://myapp.com/webhook',
+    events=['workflow.completed', 'workflow.failed'],
+    secret='webhook_secret'
+)
+
+# List webhooks
+webhooks = client.webhooks.list()
+```
+</CodeGroup>
+
+### Batch Operations
+
+<Expandable title="Batch Workflow Creation">
+```javascript
+const workflowConfigs = [
+  { name: 'Email Processor', prompt: 'Process incoming emails' },
+  { name: 'Lead Router', prompt: 'Route sales leads' },
+  { name: 'Report Generator', prompt: 'Generate daily reports' }
+];
+
+const results = await client.workflows.createBatch(workflowConfigs);
+
+results.forEach((result, index) => {
+  if (result.success) {
+    console.log(`Created: ${result.workflow.name}`);
+  } else {
+    console.log(`Failed to create ${workflowConfigs[index].name}: ${result.error}`);
+  }
+});
+```
+
+```python
+workflow_configs = [
+    {'name': 'Email Processor', 'prompt': 'Process incoming emails'},
+    {'name': 'Lead Router', 'prompt': 'Route sales leads'},
+    {'name': 'Report Generator', 'prompt': 'Generate daily reports'}
+]
+
+results = client.workflows.create_batch(workflow_configs)
+
+for i, result in enumerate(results):
+    if result.success:
+        print(f"Created: {result.workflow.name}")
+    else:
+        print(f"Failed to create {workflow_configs[i]['name']}: {result.error}")
+```
+</Expandable>
+
+## SDK Reference
+
+Complete API reference for all SDK methods and parameters.
+
+### Workflows
+
+| Method | Parameters | Description |
+|--------|------------|-------------|
+| `create(config)` | name, prompt, integrations | Create a new workflow |
+| `list(options)` | limit, status, search | List workflows with filtering |
+| `get(id)` | workflow_id | Get workflow details |
+| `update(id, config)` | workflow_id, updates | Update workflow configuration |
+| `delete(id)` | workflow_id | Delete a workflow |
+| `execute(id, options)` | workflow_id, data | Execute a workflow |
+
+### Analytics
+
+| Method | Parameters | Description |
+|--------|------------|-------------|
+| `getWorkflowMetrics(id, options)` | workflow_id, timeframe, metrics | Get workflow performance metrics |
+| `getSystemMetrics(options)` | timeframe, metrics | Get system-wide analytics |
+| `exportData(options)` | format, date_range | Export analytics data |
+
+### Integrations
+
+| Method | Parameters | Description |
+|--------|------------|-------------|
+| `list()` | - | List all integrations |
+| `get(id)` | integration_id | Get integration details |
+| `test(id)` | integration_id | Test integration connectivity |
+| `configure(id, config)` | integration_id, config | Update integration settings |
+
+## Rate Limiting
+
+Understand and handle API rate limits effectively.
+
+<Expandable title="Rate Limit Handling">
+```javascript
+class RateLimitedClient {
+  async executeWithRetry(operation, maxRetries = 3) {
+    for (let attempt = 1; attempt <= maxRetries; attempt++) {
+      try {
+        return await operation();
+      } catch (error) {
+        if (error.code === 'RATE_LIMITED' && attempt < maxRetries) {
+          const delay = Math.pow(2, attempt) * 1000; // Exponential backoff
+          await new Promise(resolve => setTimeout(resolve, delay));
+          continue;
+        }
+        throw error;
+      }
+    }
+  }
+}
+
+// Usage
+const client = new RateLimitedClient();
+const result = await client.executeWithRetry(
+  () => sdk.workflows.create(workflowConfig)
+);
+```
+
+```python
+import time
+import asyncio
+
+class RateLimitedClient:
+    async def execute_with_retry(self, operation, max_retries=3):
+        for attempt in range(1, max_retries + 1):
+            try:
+                return await operation()
+            except RateLimitError as e:
+                if attempt < max_retries:
+                    delay = 2 ** attempt  # Exponential backoff
+                    await asyncio.sleep(delay)
+                    continue
+                raise e
+
+# Usage
+client = RateLimitedClient()
+result = await client.execute_with_retry(
+    lambda: sdk.workflows.create(workflow_config)
+)
+```
+</Expandable>
+
+## Best Practices
+
+Optimize your SDK usage for performance and reliability.
+
+<Columns cols={3}>
+  <Card title="Connection Management" icon="server">
+    Reuse client instances and implement connection pooling.
+  </Card>
+  <Card title="Error Handling" icon="alert-triangle">
+    Implement comprehensive error handling and retry logic.
+  </Card>
+  <Card title="Rate Limiting" icon="clock">
+    Respect API limits and implement exponential backoff.
+  </Card>
+  <Card title="Logging" icon="file-text">
+    Log API calls for debugging and monitoring.
+  </Card>
+  <Card title="Testing" icon="flask">
+    Write unit tests for your SDK integrations.
+  </Card>
+  <Card title="Versioning" icon="tag">
+    Pin SDK versions and plan upgrades carefully.
+  </Card>
+</Columns>
+
+## SDK Updates and Changelog
+
+Stay current with the latest SDK features and improvements.
+
+<Expandable title="Version Compatibility">
+- **SDK v2.x**: Compatible with AetherFlow API v2
+- **SDK v1.x**: Compatible with AetherFlow API v1 (deprecated)
+- **Migration Guide**: Available for upgrading from v1 to v2
+</Expandable>
+
+<Expandable title="Recent Updates">
+- **v2.1.0**: Added batch operations and improved error handling
+- **v2.0.0**: Major rewrite with async/await support and new analytics APIs
+- **v1.5.0**: Added webhook management and custom integrations
+</Expandable>
+
+The AetherFlow SDKs provide powerful programmatic access to all platform features, enabling seamless integration into your applications.

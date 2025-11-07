@@ -1,0 +1,302 @@
+---
+title: Frequently Asked Questions
+description: Answers to common questions about AetherFlow features, pricing, and usage
+---
+
+## Getting Started
+
+Common questions for new users getting started with AetherFlow.
+
+<Expandable title="What is AetherFlow?">
+AetherFlow is an AI-powered workflow automation platform that allows you to create automations using natural language. Instead of writing complex code or using drag-and-drop interfaces, you simply describe what you want to automate in plain English, and our AI engine handles the rest.
+
+For example, you can say "When I receive an email from a customer, summarize it and post the summary to our Slack channel" and AetherFlow will create and execute that workflow automatically.
+</Expandable>
+
+<Expandable title="How do I sign up for AetherFlow?">
+Visit [aetherflow.com](https://aetherflow.com) and click the "Sign Up" button. You can create an account using your email address or sign up with Google, Microsoft, or other OAuth providers. There's a 14-day free trial available with no credit card required to get started.
+</Expandable>
+
+<Expandable title="What integrations does AetherFlow support?">
+AetherFlow supports over 50 popular business applications, including:
+
+**Communication**: Slack, Microsoft Teams, Gmail, Outlook
+**Productivity**: Notion, Google Workspace, Trello, Asana
+**CRM**: Salesforce, HubSpot, Zendesk, Intercom
+**Development**: GitHub, Jira, Linear
+**And many more...**
+
+If you don't see your favorite app, you can use webhooks or custom API integrations to connect virtually any service.
+</Expandable>
+
+<Expandable title="Is AetherFlow secure?">
+Yes, security is our top priority. AetherFlow uses bank-level encryption (AES-256) for data at rest and TLS 1.3 for data in transit. We are SOC 2 Type II compliant, GDPR compliant, and offer enterprise-grade security features including SSO, audit logging, and customer-managed encryption keys.
+</Expandable>
+
+## Pricing and Plans
+
+Questions about AetherFlow's pricing structure and plans.
+
+<Expandable title="How much does AetherFlow cost?">
+AetherFlow offers three main plans:
+
+- **Free**: 5 workflows, 1,000 executions/month, 3 integrations
+- **Pro**: $29/user/month (annual) or $39 (monthly), unlimited workflows, 50,000 executions/month, 25+ integrations
+- **Enterprise**: Custom pricing for large organizations with advanced features
+
+All plans include a 14-day free trial. Enterprise plans start at $99/user/month with custom terms available.
+</Expandable>
+
+<Expandable title="Can I change plans later?">
+Yes, you can upgrade or downgrade your plan at any time. Upgrades take effect immediately, while downgrades take effect at the start of your next billing cycle. Your data and workflows are preserved during plan changes.
+</Expandable>
+
+<Expandable title="What counts as a workflow execution?">
+An execution is counted each time a workflow runs. For example:
+- If your workflow triggers on new emails and processes 10 emails, that's 10 executions
+- Scheduled workflows that run daily count as 1 execution per day
+- Manual workflow runs also count toward your monthly limit
+
+The Free plan gives you 1,000 executions/month, Pro gives 50,000, and Enterprise has unlimited executions.
+</Expandable>
+
+<Expandable title="Do you offer discounts for non-profits or educational institutions?">
+Yes! We offer 50% discounts for verified non-profit organizations and accredited educational institutions. Contact our sales team at sales@aetherflow.com with documentation to apply.
+</Expandable>
+
+## Workflows and Automation
+
+Technical questions about creating and managing workflows.
+
+<Expandable title="How do I create my first workflow?">
+1. Log into your AetherFlow dashboard
+2. Click "Create Workflow" or "New Workflow"
+3. Write a clear, specific description in plain English (e.g., "When I get a new lead in HubSpot, create a task in Asana and send a notification to Slack")
+4. AetherFlow's AI will generate the workflow steps
+5. Review and test the workflow
+6. Activate it to start automating
+
+Check out our [Getting Started guide](/getting-started) for detailed instructions.
+</Expandable>
+
+<Expandable title="Can workflows run automatically?">
+Yes! Workflows can be triggered in several ways:
+- **Event-based**: When something happens (new email, form submission, etc.)
+- **Schedule-based**: At specific times or intervals (daily at 9 AM, every Monday, etc.)
+- **Manual**: When you click a button to run them
+- **API/Webhook**: Triggered by external systems or API calls
+
+Most workflows are designed to run automatically once set up.
+</Expandable>
+
+<Expandable title="How reliable are AetherFlow workflows?">
+AetherFlow is designed for reliability with:
+- 99.5% uptime SLA (99.9% for Enterprise)
+- Automatic retry logic for failed steps
+- Error handling and fallback options
+- Real-time monitoring and alerting
+- Comprehensive logging for troubleshooting
+
+However, reliability also depends on the integrations you use - if a connected service is down, it may affect your workflow execution.
+</Expandable>
+
+<Expandable title="Can I edit workflows after creating them?">
+Yes, you can modify workflows at any time:
+- Edit the natural language prompt to change behavior
+- Add or remove steps manually
+- Modify integration settings
+- Update triggers and schedules
+- Enable/disable workflows
+
+Changes take effect immediately for new executions.
+</Expandable>
+
+## Integrations and APIs
+
+Questions about connecting AetherFlow with other services.
+
+<Expandable title="How do I connect integrations?">
+1. Go to the "Integrations" section in your dashboard
+2. Search for the app you want to connect
+3. Click "Connect" and follow the OAuth authorization flow
+4. Grant the necessary permissions
+5. Test the connection
+
+Most integrations take less than 2 minutes to set up. Check our [Integrations guide](/integrations) for detailed instructions for each service.
+</Expandable>
+
+<Expandable title="Can I use AetherFlow with my custom API?">
+Absolutely! You can connect to any REST API using:
+- **Webhooks**: Send data to your API endpoints
+- **HTTP Requests**: Make API calls from your workflows
+- **Custom Integrations**: Define custom connectors for proprietary systems
+- **Zapier/Webhook relays**: Use intermediary services for complex APIs
+
+For Enterprise customers, we can build custom connectors for your specific APIs.
+</Expandable>
+
+<Expandable title="What if my favorite app isn't supported?">
+If an app isn't in our integration directory, you have several options:
+1. **Webhooks**: Many apps support webhooks for real-time data
+2. **API Integration**: Connect directly to REST APIs
+3. **Custom Development**: Enterprise customers can request custom connectors
+4. **Community Requests**: Let us know what you'd like to see added
+
+We're constantly adding new integrations based on user requests.
+</Expandable>
+
+## Troubleshooting
+
+Common issues and how to resolve them.
+
+<Expandable title="My workflow isn't triggering. What should I check?">
+1. **Status**: Make sure the workflow is enabled (not paused)
+2. **Triggers**: Verify your trigger conditions are correct
+3. **Permissions**: Ensure AetherFlow has access to the triggering service
+4. **Integration Health**: Check if the connected services are operational
+5. **Logs**: Review the workflow execution logs for error messages
+
+You can test workflows manually to isolate issues.
+</Expandable>
+
+<Expandable title="Why did my workflow fail?">
+Common reasons for workflow failures:
+- **Integration Issues**: Connected service API limits or outages
+- **Data Format Problems**: Unexpected data structure from integrations
+- **Permission Changes**: Revoked access to connected accounts
+- **Rate Limiting**: Too many API calls in a short period
+- **Prompt Ambiguity**: Unclear natural language instructions
+
+Check the workflow logs for specific error messages and our [Troubleshooting guide](/troubleshooting) for solutions.
+</Expandable>
+
+<Expandable title="How do I monitor workflow performance?">
+Use the Analytics dashboard to monitor:
+- **Execution Success Rate**: Percentage of successful runs
+- **Average Runtime**: How long workflows take to complete
+- **Error Frequency**: Common failure points
+- **Resource Usage**: API calls and processing time
+
+Set up alerts for performance issues and review the analytics regularly to optimize your workflows.
+</Expandable>
+
+## Account and Billing
+
+Questions about account management and billing.
+
+<Expandable title="How do I reset my password?">
+Click "Forgot Password" on the login page, enter your email address, and follow the instructions sent to your email. If you don't receive the email, check your spam folder or contact support.
+</Expandable>
+
+<Expandable title="Can I export my data?">
+Yes, you can export your workflows and data at any time:
+- **Workflow Export**: Download workflow definitions as JSON
+- **Data Export**: Export execution logs and analytics data
+- **Account Export**: Request a complete data export for GDPR compliance
+
+Go to Settings > Data & Privacy > Export Data to initiate exports.
+</Expandable>
+
+<Expandable title="How do I cancel my subscription?">
+You can cancel your subscription in Settings > Billing > Cancel Subscription. Your account remains active until the end of your current billing period. You can reactivate at any time during this period.
+
+For Enterprise customers, contact your account manager for cancellation procedures.
+</Expandable>
+
+<Expandable title="What payment methods do you accept?">
+We accept:
+- Credit/debit cards (Visa, MasterCard, American Express)
+- ACH bank transfers (US businesses)
+- Wire transfers (Enterprise customers)
+- Purchase orders (Enterprise customers)
+
+All payments are processed securely through PCI DSS compliant providers.
+</Expandable>
+
+## Enterprise and Advanced Features
+
+Questions for larger organizations and advanced users.
+
+<Expandable title="Do you offer SSO (Single Sign-On)?">
+Yes, Enterprise plans include SSO integration with:
+- SAML 2.0 providers (Okta, Azure AD, Active Directory, etc.)
+- OAuth 2.0 providers (Google, Microsoft, etc.)
+- Custom identity providers
+
+SSO ensures secure, centralized user management and compliance with enterprise security policies.
+</Expandable>
+
+<Expandable title="Can multiple people collaborate on workflows?">
+Yes! Pro and Enterprise plans include team collaboration features:
+- **Shared Workspaces**: Work together in shared environments
+- **Real-time Editing**: Multiple users can edit workflows simultaneously
+- **Role-based Permissions**: Control who can view, edit, or manage workflows
+- **Version History**: Track changes and revert when needed
+- **Comments**: Add feedback and suggestions directly on workflows
+</Expandable>
+
+<Expandable title="Is AetherFlow HIPAA compliant?">
+HIPAA compliance is available as an add-on for Enterprise customers. This includes:
+- BAA (Business Associate Agreement)
+- Enhanced security controls
+- Audit logging for PHI data
+- Data residency options
+- HIPAA-specific training and support
+
+Contact sales for HIPAA-compliant pricing and implementation details.
+</Expandable>
+
+<Expandable title="Can AetherFlow scale to handle high volumes?">
+Absolutely! AetherFlow is designed for scale:
+- **Enterprise Plans**: Unlimited executions with dedicated infrastructure
+- **High Availability**: 99.9% uptime with automatic failover
+- **Performance Optimization**: Parallel processing and intelligent caching
+- **Load Balancing**: Distribute work across multiple execution environments
+
+We handle millions of workflow executions daily for our largest customers.
+</Expandable>
+
+## Support and Resources
+
+How to get help and access resources.
+
+<Expandable title="What support options are available?">
+- **Free Plan**: Community forum and documentation
+- **Pro Plan**: Email support with 24-hour response time
+- **Enterprise**: Priority phone support with dedicated account manager
+- **All Plans**: 24/7 documentation access and status page
+
+Enterprise customers also get on-site training and architecture reviews.
+</Expandable>
+
+<Expandable title="How do I contact support?">
+- **General Support**: support@aetherflow.com
+- **Technical Issues**: Include workflow ID and error messages
+- **Billing Questions**: billing@aetherflow.com
+- **Sales Inquiries**: sales@aetherflow.com
+- **Security Reports**: security@aetherflow.com
+
+For urgent Enterprise issues, use the phone number provided in your account.
+</Expandable>
+
+<Expandable title="Where can I learn more?">
+- **Documentation**: Comprehensive guides at docs.aetherflow.com
+- **Blog**: Latest features and best practices at blog.aetherflow.com
+- **Community**: User discussions and peer support
+- **Webinars**: Free training sessions and product updates
+- **YouTube Channel**: Video tutorials and demos
+
+Join our community forum to connect with other AetherFlow users and experts.
+</Expandable>
+
+<Expandable title="Do you offer training?">
+Yes! We provide various training options:
+- **Self-paced Courses**: Free online tutorials and documentation
+- **Live Webinars**: Weekly sessions on features and best practices
+- **On-site Training**: Custom sessions for Enterprise customers
+- **Certification Programs**: Validate your AetherFlow expertise
+
+Enterprise customers receive dedicated training and enablement support.
+</Expandable>
+
+Can't find what you're looking for? Contact our support team - we're here to help!
