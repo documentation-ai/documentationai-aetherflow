@@ -1,8 +1,7 @@
 {
   "name": "AetherFlow Documentation",
   "initialRoute": "introduction",
-  "logo-dark": "https://aetherflow.com/logo-dark.svg",
-  "logo-light": "https://aetherflow.com/logo-light.svg",
+ 
   "colors": {
     "light": {
       "brand": "#3B82F6",
