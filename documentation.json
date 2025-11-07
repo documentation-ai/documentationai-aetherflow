@@ -209,7 +209,7 @@
     ]
   },
   "seo": {
-    "robots:index": true,
-    "robots:follow": true
+    "robots:index": false,
+    "robots:follow": false
   }
 }
