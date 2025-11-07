@@ -1,21 +1,23 @@
 ---
 title: Introduction
-
-description: Overview of AetherFlow and its core capabilities for AI-powered workflow automation
+description: >-
+  Overview of AetherFlow and its core capabilities for AI-powered workflow
+  automation
 ---
-
 ## Getting Started
 
-AetherFlow empowers teams to automate workflows using natural language, connecting tools like Slack and Notion without writing code. You design intelligent automations by describing tasks in plain English, and the AI engine handles execution, integration, and decision-making. This approach saves time on repetitive processes while providing insights into performance.
+AetherFlow empowers teams to automate workflows using natural language, connecting tools like Slack and Notion without writing code. You design intelligent automations by describing tasks in plain English, and the AI engine handles execution, integration, and decision-making.&#x20;
 
-<Columns cols={3}>
-  <Card title="AI Workflow Builder" icon="zap">
+<Columns uid="5a380a1d-6a4b-40a5-bf80-b0291f146451" cols="3">
+  <Card title="AI Workflow Builder" icon="zap" horizontal="false">
     Describe your automation needs, and AetherFlow generates the workflow. Use prompts like "Summarize daily emails and post to Slack."
   </Card>
-  <Card title="Smart Integrations" icon="plug">
+
+  <Card title="Smart Integrations" icon="plug" horizontal="false">
     Connect over 50 apps including Google Workspace and Notion. Setup takes minutes with secure OAuth authentication.
   </Card>
-  <Card title="Analytics Dashboard" icon="bar-chart-3">
+
+  <Card title="Analytics Dashboard" icon="bar-chart-3" horizontal="false">
     Track workflow runs, success rates, and bottlenecks. Optimize automations based on real data and AI suggestions.
   </Card>
 </Columns>
@@ -24,29 +26,32 @@ AetherFlow empowers teams to automate workflows using natural language, connecti
 
 You gain efficiency by automating routine tasks, allowing focus on high-value work. AetherFlow's context-aware AI adapts to changes, ensuring reliable outcomes. Teams collaborate seamlessly as workflows trigger notifications and updates across tools.
 
-<Callout kind="info">
+<Callout uid="5daab3af-f39c-4214-bc61-ee3e9f06881a" kind="info" collapsed="false">
   Start small with a single workflow, then scale to complex multi-step processes.
 </Callout>
 
 ## Quick Setup Steps
 
-<Steps>
-  <Step title="Sign Up" icon="user-plus">
-    Create your account at aetherflow.com. Verify your email to access the dashboard.
+<Steps uid="58418e48-f2a9-46a7-b02f-71258fd99550">
+  <Step title="Sign Up" icon="user-plus" title-type="p">
+    Create your account at aetherflow\.com. Verify your email to access the dashboard.
   </Step>
-  <Step title="Connect Tools" icon="link">
+
+  <Step title="Connect Tools" icon="link" title-type="p">
     Navigate to Integrations and authorize your first app, such as Slack.
   </Step>
-  <Step title="Build Workflow" icon="play">
+
+  <Step title="Build Workflow" icon="play" title-type="p">
     Use the builder to describe your automation in natural language.
   </Step>
 </Steps>
 
 For multi-platform setup, refer to the tabs below.
 
-<Tabs>
+<Tabs uid="7d824a72-4bad-4d2f-af58-e6fa8a450b94">
   <Tab title="Web" icon="globe">
     Access the dashboard via browser. No downloads required.
+
     ```javascript
     // Example API call to create workflow
     const response = await fetch('https://api.aetherflow.com/workflows', {
@@ -56,6 +61,7 @@ For multi-platform setup, refer to the tabs below.
     });
     ```
   </Tab>
+
   <Tab title="Mobile" icon="phone">
     Use the app for on-the-go monitoring. Push notifications alert you to workflow events.
   </Tab>
@@ -63,11 +69,12 @@ For multi-platform setup, refer to the tabs below.
 
 ## Common Use Cases
 
-<ExpandableGroup>
+<ExpandableGroup uid="60c3b2aa-7569-44da-8c71-fa22c61e8692">
   <Expandable title="Customer Support Automation" default-open="true">
     Route tickets based on keywords and notify teams via Slack. AetherFlow analyzes content to prioritize urgent issues.
   </Expandable>
-  <Expandable title="Content Syncing">
+
+  <Expandable title="Content Syncing" default-open="false">
     Pull updates from Notion and sync to Google Docs. Maintain consistency across platforms effortlessly.
   </Expandable>
 </ExpandableGroup>
