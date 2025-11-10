@@ -79,6 +79,11 @@
                 "icon": "plug"
               },
               {
+                "title": "Slack Integration",
+                "path": "slack-integration",
+                "icon": "message-circle"
+              },
+              {
                 "title": "Advanced Features",
                 "path": "advanced-features",
                 "icon": "settings"

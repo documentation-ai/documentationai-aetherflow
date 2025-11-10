@@ -1,0 +1,255 @@
+---
+title: Slack Integration
+
+description: Connect AetherFlow with Slack to automate notifications, team updates, and workflow communications
+---
+
+## Overview
+
+The Slack integration enables seamless communication between AetherFlow workflows and your Slack workspaces. Send automated notifications, post updates, create channels, and trigger workflows from Slack events. This integration supports both incoming and outgoing messages, webhooks, and real-time event handling.
+
+<Columns cols={2}>
+  <Card title="Key Features" icon="zap">
+    - Automated notifications from workflows
+    - Channel and direct message posting
+    - Slack event triggers
+    - Real-time message processing
+    - Custom bot configurations
+  </Card>
+  <Card title="Use Cases" icon="target">
+    - Workflow completion alerts
+    - Team status updates
+    - Incident notifications
+    - Daily summary reports
+    - Approval requests
+  </Card>
+</Columns>
+
+## Setting Up Slack Integration
+
+Navigate to the Integrations dashboard in AetherFlow and select Slack from the available options. You'll need Slack workspace admin permissions to complete the setup.
+
+<Steps>
+  <Step title="Create Slack App" icon="settings">
+    Go to [Slack API](https://api.slack.com/apps) and create a new app for your workspace. Choose "From scratch" and provide a name and workspace.
+  </Step>
+  <Step title="Configure Permissions" icon="key">
+    Add the following OAuth scopes in the "OAuth & Permissions" section:
+    - `channels:read` - Access public channels
+    - `channels:write` - Post messages to channels
+    - `chat:write` - Send messages
+    - `chat:write.public` - Post to public channels
+    - `files:write` - Upload files
+    - `users:read` - Access user information
+  </Step>
+  <Step title="Install to Workspace" icon="download">
+    Install the app to your workspace and copy the Bot User OAuth Token.
+  </Step>
+  <Step title="Connect in AetherFlow" icon="link">
+    Paste the token in AetherFlow's integration setup and authorize the connection.
+    ```bash
+    # Alternative: CLI setup
+    aetherflow integrations connect slack --token xoxb-your-bot-token
+    ```
+  </Step>
+</Steps>
+
+## Configuration Options
+
+### Bot Configuration
+
+Customize your Slack bot's appearance and behavior:
+
+<Tabs>
+  <Tab title="Basic Settings" icon="settings">
+    Set the bot name, icon, and default channel for notifications.
+    <CodeGroup tabs="JSON,Environment">
+      ```json
+      {
+        "bot_name": "AetherFlow Bot",
+        "icon_emoji": ":robot_face:",
+        "default_channel": "#general"
+      }
+      ```
+      ```bash
+      export SLACK_BOT_NAME="AetherFlow Bot"
+      export SLACK_ICON_EMOJI=":robot_face:"
+      export SLACK_DEFAULT_CHANNEL="#general"
+      ```
+    </CodeGroup>
+  </Tab>
+  <Tab title="Advanced Settings" icon="cog">
+    Configure message formatting, retry logic, and rate limiting.
+    <Expandable title="Rate Limiting">
+      Slack allows 1 message per second per channel. AetherFlow handles this automatically with queuing.
+    </Expandable>
+  </Tab>
+</Tabs>
+
+### Channel Management
+
+Manage which channels your bot can access and post to:
+
+| Permission Level | Description | Use Case |
+|------------------|-------------|----------|
+| Public Channels | Post to any public channel | Team announcements |
+| Private Channels | Require invitation to private channels | Sensitive updates |
+| Direct Messages | Send DMs to users | Personal notifications |
+
+## Using Slack in Workflows
+
+### Basic Message Posting
+
+Reference Slack in your workflow prompts naturally:
+
+```
+When a new customer signs up, post a welcome message to #customer-success channel in Slack.
+```
+
+### Advanced Automation Examples
+
+<CodeGroup tabs="JavaScript,Python">
+  ```javascript
+  // Post formatted message with attachments
+  const message = {
+    channel: '#alerts',
+    text: '🚨 System Alert',
+    blocks: [
+      {
+        type: 'section',
+        text: {
+          type: 'mrkdwn',
+          text: '*Alert:* Database connection issues detected'
+        }
+      },
+      {
+        type: 'actions',
+        elements: [
+          {
+            type: 'button',
+            text: { type: 'plain_text', text: 'Investigate' },
+            action_id: 'investigate_alert'
+          }
+        ]
+      }
+    ]
+  };
+
+  await slack.postMessage(message);
+  ```
+
+  ```python
+  # Send file with workflow results
+  from aetherflow import SlackClient
+
+  slack = SlackClient()
+  slack.upload_file(
+      channels=['#reports'],
+      filename='weekly_summary.pdf',
+      file=open('summary.pdf', 'rb'),
+      title='Weekly Performance Summary',
+      initial_comment='Here\'s this week\'s summary report 📊'
+  )
+  ```
+</CodeGroup>
+
+### Event Triggers
+
+Set up workflows that respond to Slack events:
+
+- **Message Events**: Trigger on specific keywords or patterns
+- **Channel Events**: React to new channels or member joins
+- **Reaction Events**: Process emoji reactions
+- **Mention Events**: Respond when the bot is mentioned
+
+Example trigger prompt:
+```
+When someone mentions @AetherFlow in Slack with "urgent", create a high-priority ticket and notify the on-call engineer.
+```
+
+## Webhook Integration
+
+For real-time Slack events, configure webhooks:
+
+<Steps>
+  <Step title="Enable Events" icon="webhook">
+    In your Slack app settings, go to "Event Subscriptions" and enable events.
+  </Step>
+  <Step title="Subscribe to Events" icon="bell">
+    Add bot event subscriptions like `message.channels`, `reaction_added`.
+  </Step>
+  <Step title="Set Request URL" icon="link">
+    Use your AetherFlow webhook URL: `https://api.aetherflow.com/webhooks/slack`
+  </Step>
+</Steps>
+
+## Monitoring and Analytics
+
+Track your Slack integration performance:
+
+<Columns cols={3}>
+  <Card title="Message Metrics" icon="message-square">
+    Messages sent, delivery rates, response times
+  </Card>
+  <Card title="Channel Activity" icon="activity">
+    Active channels, engagement rates
+  </Card>
+  <Card title="Error Tracking" icon="alert-triangle">
+    Failed deliveries, permission issues
+  </Card>
+</Columns>
+
+## Troubleshooting
+
+### Common Issues
+
+<ExpandableGroup>
+  <Expandable title="Authentication Failed">
+    Verify your bot token is correct and has the required scopes. Reinstall the app if needed.
+  </Expandable>
+  <Expandable title="Messages Not Posting">
+    Check channel permissions and ensure the bot is invited to private channels.
+  </Expandable>
+  <Expandable title="Rate Limiting">
+    Implement message queuing in your workflow. Slack allows 1 message/second per channel.
+  </Expandable>
+  <Expandable title="Webhook Events Not Received">
+    Confirm the request URL is correct and events are properly subscribed in Slack.
+  </Expandable>
+</ExpandableGroup>
+
+### Debug Commands
+
+```bash
+# Test connection
+aetherflow integrations test slack
+
+# View logs
+aetherflow logs --integration slack --last 24h
+
+# Reset integration
+aetherflow integrations reset slack
+```
+
+## Security Considerations
+
+<Callout kind="alert">
+  Store Slack tokens securely and rotate them regularly. Use the minimum required permissions for your use case.
+</Callout>
+
+- **Token Management**: AetherFlow encrypts all integration tokens
+- **Scope Limitation**: Only request necessary OAuth scopes
+- **Audit Logging**: All Slack interactions are logged for compliance
+- **Access Control**: Integration access follows your workspace permissions
+
+## Best Practices
+
+1. **Channel Organization**: Use dedicated channels for different types of notifications
+2. **Message Formatting**: Use Slack's Block Kit for rich, interactive messages
+3. **Error Handling**: Implement fallback channels for critical notifications
+4. **Testing**: Always test integrations in a development workspace first
+5. **Monitoring**: Set up alerts for integration failures
+
+<Callout kind="success">
+  The Slack integration transforms AetherFlow into your team's communication hub, ensuring everyone stays informed about automated processes.
+</Callout>
