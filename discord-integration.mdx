@@ -1,0 +1,255 @@
+---
+title: Discord Integration
+
+description: Connect AetherFlow with Discord to automate notifications, server updates, and workflow communications
+---
+
+## Overview
+
+The Discord integration enables seamless communication between AetherFlow workflows and your Discord servers. Send automated notifications, post updates, create channels, and trigger workflows from Discord events. This integration supports both incoming and outgoing messages, webhooks, and real-time event handling.
+
+<Columns cols={2}>
+  <Card title="Key Features" icon="zap">
+    - Automated notifications from workflows
+    - Channel and direct message posting
+    - Discord event triggers
+    - Real-time message processing
+    - Custom bot configurations
+  </Card>
+  <Card title="Use Cases" icon="target">
+    - Workflow completion alerts
+    - Server status updates
+    - Incident notifications
+    - Daily summary reports
+    - Approval requests
+  </Card>
+</Columns>
+
+## Setting Up Discord Integration
+
+Navigate to the Integrations dashboard in AetherFlow and select Discord from the available options. You'll need Discord server admin permissions to complete the setup.
+
+<Steps>
+  <Step title="Create Discord Application" icon="settings">
+    Go to [Discord Developer Portal](https://discord.com/developers/applications) and create a new application. Provide a name and accept the terms.
+  </Step>
+  <Step title="Configure Bot Settings" icon="key">
+    Navigate to the "Bot" section and click "Add Bot". Enable the following permissions:
+    - `Send Messages` - Post messages to channels
+    - `Read Messages/View Channels` - Access channel content
+    - `Embed Links` - Send rich embeds
+    - `Attach Files` - Upload files
+    - `Read Message History` - Access message history
+    - `Manage Webhooks` - Create and manage webhooks
+  </Step>
+  <Step title="Get Bot Token" icon="download">
+    Copy the bot token from the Bot section. Enable required Gateway Intents if using events.
+  </Step>
+  <Step title="Connect in AetherFlow" icon="link">
+    Paste the token in AetherFlow's integration setup and authorize the connection.
+    ```bash
+    # Alternative: CLI setup
+    aetherflow integrations connect discord --token your-bot-token
+    ```
+  </Step>
+</Steps>
+
+## Configuration Options
+
+### Bot Configuration
+
+Customize your Discord bot's appearance and behavior:
+
+<Columns cols={2}>
+  <Card title="Basic Settings" icon="settings">
+    Set the bot name, avatar, and default channel for notifications.
+    <CodeGroup tabs="JSON,Environment">
+      ```json
+      {
+        "bot_name": "AetherFlow Bot",
+        "avatar_url": "https://example.com/bot-avatar.png",
+        "default_channel_id": "123456789012345678"
+      }
+      ```
+      ```bash
+      export DISCORD_BOT_NAME="AetherFlow Bot"
+      export DISCORD_AVATAR_URL="https://example.com/bot-avatar.png"
+      export DISCORD_DEFAULT_CHANNEL_ID="123456789012345678"
+      ```
+    </CodeGroup>
+  </Card>
+  <Card title="Advanced Settings" icon="cog">
+    Configure message formatting, retry logic, and rate limiting.
+    <Expandable title="Rate Limiting">
+      Discord allows 5 messages per 5 seconds per channel. AetherFlow handles this automatically with queuing.
+    </Expandable>
+  </Card>
+</Columns>
+
+### Channel Management
+
+Manage which channels your bot can access and post to:
+
+| Permission Level | Description | Use Case |
+|------------------|-------------|----------|
+| Text Channels | Post to any text channel | Server announcements |
+| Thread Channels | Create and post to threads | Organized discussions |
+| Direct Messages | Send DMs to users | Personal notifications |
+
+## Using Discord in Workflows
+
+### Basic Message Posting
+
+Reference Discord in your workflow prompts naturally:
+
+```
+When a new customer signs up, post a welcome message to #customer-success channel in Discord.
+```
+
+### Advanced Automation Examples
+
+<CodeGroup tabs="JavaScript,Python">
+  ```javascript
+  // Post formatted message with embeds
+  const message = {
+    channelId: '123456789012345678',
+    content: '🚨 System Alert',
+    embeds: [
+      {
+        title: 'Alert: Database Connection Issues',
+        description: 'Database connection issues detected',
+        color: 0xFF0000,
+        fields: [
+          {
+            name: 'Severity',
+            value: 'High',
+            inline: true
+          },
+          {
+            name: 'Status',
+            value: 'Investigating',
+            inline: true
+          }
+        ],
+        timestamp: new Date()
+      }
+    ]
+  };
+
+  await discord.sendMessage(message);
+  ```
+
+  ```python
+  # Send file with workflow results
+  from aetherflow import DiscordClient
+
+  discord = DiscordClient()
+  discord.upload_file(
+      channel_id='123456789012345678',
+      filename='weekly_summary.pdf',
+      file=open('summary.pdf', 'rb'),
+      content='Here\'s this week\'s summary report 📊'
+  )
+  ```
+</CodeGroup>
+
+### Event Triggers
+
+Set up workflows that respond to Discord events:
+
+- **Message Events**: Trigger on specific keywords or patterns
+- **Server Events**: React to new members or role changes
+- **Reaction Events**: Process emoji reactions
+- **Mention Events**: Respond when the bot is mentioned
+
+Example trigger prompt:
+```
+When someone mentions @AetherFlow in Discord with "urgent", create a high-priority ticket and notify the on-call engineer.
+```
+
+## Webhook Integration
+
+For real-time Discord events, configure webhooks:
+
+<Steps>
+  <Step title="Enable Gateway Intents" icon="webhook">
+    In your Discord application settings, go to "Bot" and enable required Gateway Intents like "Server Members" and "Message Content".
+  </Step>
+  <Step title="Subscribe to Events" icon="bell">
+    Configure which events to listen for: message creates, reactions, member updates.
+  </Step>
+  <Step title="Set Webhook URL" icon="link">
+    Use your AetherFlow webhook URL: `https://api.aetherflow.com/webhooks/discord`
+  </Step>
+</Steps>
+
+## Monitoring and Analytics
+
+Track your Discord integration performance:
+
+<Columns cols={3}>
+  <Card title="Message Metrics" icon="message-square">
+    Messages sent, delivery rates, response times
+  </Card>
+  <Card title="Channel Activity" icon="activity">
+    Active channels, engagement rates
+  </Card>
+  <Card title="Error Tracking" icon="alert-triangle">
+    Failed deliveries, permission issues
+  </Card>
+</Columns>
+
+## Troubleshooting
+
+### Common Issues
+
+<ExpandableGroup>
+  <Expandable title="Authentication Failed">
+    Verify your bot token is correct and has the required permissions. Regenerate the token if needed.
+  </Expandable>
+  <Expandable title="Messages Not Posting">
+    Check channel permissions and ensure the bot has access to the target channel.
+  </Expandable>
+  <Expandable title="Rate Limiting">
+    Implement message queuing in your workflow. Discord allows 5 messages per 5 seconds per channel.
+  </Expandable>
+  <Expandable title="Webhook Events Not Received">
+    Confirm Gateway Intents are enabled and the bot has proper permissions in your Discord server.
+  </Expandable>
+</ExpandableGroup>
+
+### Debug Commands
+
+```bash
+# Test connection
+aetherflow integrations test discord
+
+# View logs
+aetherflow logs --integration discord --last 24h
+
+# Reset integration
+aetherflow integrations reset discord
+```
+
+## Security Considerations
+
+<Callout kind="alert">
+  Store Discord tokens securely and rotate them regularly. Use the minimum required permissions for your use case.
+</Callout>
+
+- **Token Management**: AetherFlow encrypts all integration tokens
+- **Permission Limitation**: Only grant necessary bot permissions
+- **Audit Logging**: All Discord interactions are logged for compliance
+- **Access Control**: Integration access follows your workspace permissions
+
+## Best Practices
+
+1. **Channel Organization**: Use dedicated channels for different types of notifications
+2. **Message Formatting**: Use Discord embeds for rich, interactive messages
+3. **Error Handling**: Implement fallback channels for critical notifications
+4. **Testing**: Always test integrations in a development server first
+5. **Monitoring**: Set up alerts for integration failures
+
+<Callout kind="success">
+  The Discord integration transforms AetherFlow into your server's communication hub, ensuring everyone stays informed about automated processes.
+</Callout>

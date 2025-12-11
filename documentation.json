@@ -89,6 +89,11 @@
                         "icon": "message-circle"
                       },
                       {
+                        "title": "Discord Integration",
+                        "path": "discord-integration",
+                        "icon": "message-circle"
+                      },
+                      {
                         "title": "Advanced Features",
                         "path": "advanced-features",
                         "icon": "settings"
