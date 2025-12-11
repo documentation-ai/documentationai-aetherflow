@@ -9,6 +9,8 @@ servers:
 paths:
   /workflows:
     get:
+      tags:
+        - Workflows
       summary: List all workflows
       operationId: listWorkflows
       parameters:
@@ -38,6 +40,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
     post:
+      tags:
+        - Workflows
       summary: Create a workflow
       operationId: createWorkflow
       responses:
@@ -51,6 +55,8 @@ paths:
                 $ref: '#/components/schemas/Error'
   /workflows/{workflowId}:
     get:
+      tags:
+        - Workflows
       summary: Retrieve a specific workflow
       operationId: getWorkflowById
       parameters:
@@ -75,6 +81,8 @@ paths:
                 $ref: '#/components/schemas/Error'
   /integrations:
     get:
+      tags:
+        - Integrations
       summary: List connected integrations
       operationId: listIntegrations
       parameters:
@@ -98,6 +106,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
     post:
+      tags:
+        - Integrations
       summary: Add a new integration
       operationId: createIntegration
       responses:
