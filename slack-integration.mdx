@@ -60,8 +60,8 @@ Navigate to the Integrations dashboard in AetherFlow and select Slack from the a
 
 Customize your Slack bot's appearance and behavior:
 
-<Tabs>
-  <Tab title="Basic Settings" icon="settings">
+<Columns cols={2}>
+  <Card title="Basic Settings" icon="settings">
     Set the bot name, icon, and default channel for notifications.
     <CodeGroup tabs="JSON,Environment">
       ```json
@@ -77,8 +77,8 @@ Customize your Slack bot's appearance and behavior:
       export SLACK_DEFAULT_CHANNEL="#general"
       ```
     </CodeGroup>
-  </Tab>
-  <Tab title="Advanced Settings" icon="cog">
+  </Card>
+  <Card title="Advanced Settings" icon="cog">
     Configure message formatting, retry logic, and rate limiting.
     <Expandable title="Rate Limiting">
       Slack allows 1 message per second per channel. AetherFlow handles this automatically with queuing.
