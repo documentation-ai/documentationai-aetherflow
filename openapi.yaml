@@ -44,6 +44,8 @@ paths:
         - Workflows
       summary: Create a workflow
       operationId: createWorkflow
+      security:
+        - bearerAuth: []
       responses:
         '201':
           description: Workflow created successfully
@@ -120,6 +122,11 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
 components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
   schemas:
     Workflow:
       required:
