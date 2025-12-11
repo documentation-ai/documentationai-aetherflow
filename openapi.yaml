@@ -298,7 +298,7 @@ paths:
                 $ref: '#/components/schemas/Error'
     put:
       tags:
-        - Workflows
+        - Work
       summary: Update a workflow
       description: Update an existing workflow's configuration, steps, or settings.
       operationId: updateWorkflow
