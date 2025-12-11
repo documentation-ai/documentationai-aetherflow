@@ -218,7 +218,7 @@ paths:
           schema:
             type: string
             pattern: '^wf_[a-zA-Z0-9]{8,}$'
-          example: "wf_12345678"
+            example: "wf_12345678"
         - name: include_steps
           in: query
           description: Include detailed step configuration in the response
