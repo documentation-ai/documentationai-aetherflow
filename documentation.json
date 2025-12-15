@@ -32,196 +32,187 @@
     }
   },
   "navigation": {
-    "versions": [
+    "tabs": [
       {
-        "version": "v1.0",
-        "tabs": [
+        "tab": "Guides",
+        "icon": "book-open",
+        "groups": [
           {
-            "tab": "Guides",
-            "icon": "book-open",
-            "groups": [
-              {
-                "group": "Getting Started",
-                "icon": "rocket",
-                "pages": [
-                  {
-                    "title": "Introduction",
-                    "path": "introduction",
-                    "icon": "home"
-                  },
-                  {
-                    "title": "Getting Started",
-                    "path": "getting-started",
-                    "icon": "play"
-                  },
-                  {
-                    "title": "Use Cases & Examples",
-                    "path": "use-cases",
-                    "icon": "lightbulb"
-                  },
-                  {
-                    "title": "Migration Guide",
-                    "path": "migration-guide",
-                    "icon": "arrow-right"
-                  }
-                ]
-              },
-              {
-                "group": "Core Features",
-                "icon": "zap",
-                "pages": [
-                  {
-                    "title": "Workflows",
-                    "path": "workflows",
-                    "icon": "git-branch"
-                  },
-                  {
-                    "title": "Integrations",
-                    "path": "integrations",
-                    "icon": "plug"
-                  },
-                  {
-                    "title": "Slack Integration",
-                    "path": "slack-integration",
-                    "icon": "message-circle"
-                  },
-                  {
-                    "title": "Discord Integration",
-                    "path": "discord-integration",
-                    "icon": "message-circle"
-                  },
-                  {
-                    "title": "Advanced Features",
-                    "path": "advanced-features",
-                    "icon": "settings"
-                  },
-                  {
-                    "title": "Best Practices",
-                    "path": "best-practices",
-                    "icon": "check-circle"
-                  },
-                  {
-                    "title": "Performance Optimization",
-                    "path": "performance-optimization",
-                    "icon": "zap"
-                  }
-                ]
-              },
-              {
-                "group": "Monitoring & Analytics",
-                "icon": "bar-chart",
-                "pages": [
-                  {
-                    "title": "Analytics & Monitoring",
-                    "path": "analytics-monitoring",
-                    "icon": "activity"
-                  },
-                  {
-                    "title": "Troubleshooting Guide",
-                    "path": "troubleshooting",
-                    "icon": "alert-circle"
-                  }
-                ]
-              },
-              {
-                "group": "Team & Enterprise",
-                "icon": "users",
-                "pages": [
-                  {
-                    "title": "Team Collaboration",
-                    "path": "team-collaboration",
-                    "icon": "user-plus"
-                  },
-                  {
-                    "title": "Enterprise Features",
-                    "path": "enterprise-features",
-                    "icon": "building"
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            "tab": "API Reference",
-            "icon": "code",
-            "groups": [
-              {
-                "group": "REST API",
-                "icon": "server",
-                "pages": [
-                  {
-                    "title": "API Authentication & Security",
-                    "path": "api-authentication",
-                    "icon": "key"
-                  },
-                  {
-                    "title": "SDK Documentation",
-                    "path": "sdk-documentation",
-                    "icon": "code"
-                  },
-                  {
-                    "title": "Webhooks",
-                    "path": "webhooks",
-                    "icon": "webhook"
-                  }
-                ]
-              },
-              {
-                "group": "Endpoints",
-                "openapi": "openapi.yaml",
-                "icon": "terminal"
-              }
-            ]
-          },
-          {
-            "tab": "Pricing & Plans",
-            "icon": "credit-card",
+            "group": "Getting Started",
+            "icon": "rocket",
             "pages": [
               {
-                "title": "Pricing & Plans",
-                "path": "pricing-plans",
-                "icon": "dollar-sign"
+                "title": "Introduction",
+                "path": "introduction",
+                "icon": "home"
+              },
+              {
+                "title": "Getting Started",
+                "path": "getting-started",
+                "icon": "play"
+              },
+              {
+                "title": "Use Cases & Examples",
+                "path": "use-cases",
+                "icon": "lightbulb"
+              },
+              {
+                "title": "Migration Guide",
+                "path": "migration-guide",
+                "icon": "arrow-right"
               }
             ]
           },
           {
-            "tab": "Security & Compliance",
-            "icon": "shield",
+            "group": "Core Features",
+            "icon": "zap",
             "pages": [
               {
-                "title": "Data Privacy & Compliance",
-                "path": "data-privacy-compliance",
-                "icon": "lock"
+                "title": "Workflows",
+                "path": "workflows",
+                "icon": "git-branch"
+              },
+              {
+                "title": "Integrations",
+                "path": "integrations",
+                "icon": "plug"
+              },
+              {
+                "title": "Slack Integration",
+                "path": "slack-integration",
+                "icon": "message-circle"
+              },
+              {
+                "title": "Discord Integration",
+                "path": "discord-integration",
+                "icon": "message-circle"
+              },
+              {
+                "title": "Advanced Features",
+                "path": "advanced-features",
+                "icon": "settings"
+              },
+              {
+                "title": "Best Practices",
+                "path": "best-practices",
+                "icon": "check-circle"
+              },
+              {
+                "title": "Performance Optimization",
+                "path": "performance-optimization",
+                "icon": "zap"
               }
             ]
           },
           {
-            "tab": "Help & Support",
-            "icon": "help-circle",
+            "group": "Monitoring & Analytics",
+            "icon": "bar-chart",
             "pages": [
               {
-                "title": "FAQ",
-                "path": "faq",
-                "icon": "question"
+                "title": "Analytics & Monitoring",
+                "path": "analytics-monitoring",
+                "icon": "activity"
+              },
+              {
+                "title": "Troubleshooting Guide",
+                "path": "troubleshooting",
+                "icon": "alert-circle"
               }
             ]
           },
           {
-            "tab": "Changelog",
-            "icon": "clock",
+            "group": "Team & Enterprise",
+            "icon": "users",
             "pages": [
               {
-                "title": "Release History",
-                "path": "changelog",
-                "icon": "history"
+                "title": "Team Collaboration",
+                "path": "team-collaboration",
+                "icon": "user-plus"
+              },
+              {
+                "title": "Enterprise Features",
+                "path": "enterprise-features",
+                "icon": "building"
               }
             ]
           }
         ]
       },
       {
-        "version": "v2.0",
-        "pages": []
+        "tab": "API Reference",
+        "icon": "code",
+        "groups": [
+          {
+            "group": "REST API",
+            "icon": "server",
+            "pages": [
+              {
+                "title": "API Authentication & Security",
+                "path": "api-authentication",
+                "icon": "key"
+              },
+              {
+                "title": "SDK Documentation",
+                "path": "sdk-documentation",
+                "icon": "code"
+              },
+              {
+                "title": "Webhooks",
+                "path": "webhooks",
+                "icon": "webhook"
+              }
+            ]
+          },
+          {
+            "group": "Endpoints",
+            "openapi": "openapi.yaml",
+            "icon": "terminal"
+          }
+        ]
+      },
+      {
+        "tab": "Pricing & Plans",
+        "icon": "credit-card",
+        "pages": [
+          {
+            "title": "Pricing & Plans",
+            "path": "pricing-plans",
+            "icon": "dollar-sign"
+          }
+        ]
+      },
+      {
+        "tab": "Security & Compliance",
+        "icon": "shield",
+        "pages": [
+          {
+            "title": "Data Privacy & Compliance",
+            "path": "data-privacy-compliance",
+            "icon": "lock"
+          }
+        ]
+      },
+      {
+        "tab": "Help & Support",
+        "icon": "help-circle",
+        "pages": [
+          {
+            "title": "FAQ",
+            "path": "faq",
+            "icon": "question"
+          }
+        ]
+      },
+      {
+        "tab": "Changelog",
+        "icon": "clock",
+        "pages": [
+          {
+            "title": "Release History",
+            "path": "changelog",
+            "icon": "history"
+          }
+        ]
       }
     ]
   },
