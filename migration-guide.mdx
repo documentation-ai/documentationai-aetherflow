@@ -2,12 +2,11 @@
 title: Migration Guide
 description: Seamlessly migrate from other automation platforms to AetherFlow
 ---
-
 ## Migration Overview
 
-Transition smoothly from other automation tools to AetherFlow with our comprehensive migration tools and support.
+Transition smoothly from other automation tools to AetherFlow with our comprehensive migration tools and support. &#x20;
 
-<Callout kind="info">
+<Callout kind="info" collapsed="false">
   Our migration specialists can help you move complex automation setups with minimal downtime.
 </Callout>
 
@@ -16,16 +15,19 @@ Transition smoothly from other automation tools to AetherFlow with our comprehen
 Evaluate your current automation setup before migrating.
 
 <Steps>
-  <Step title="Inventory Workflows" icon="list">
+  <Step title="Inventory Workflows" icon="list" title-type="p">
     Document all existing workflows, triggers, and integrations.
   </Step>
-  <Step title="Assess Complexity" icon="bar-chart">
+
+  <Step title="Assess Complexity" icon="bar-chart" title-type="p">
     Evaluate workflow complexity, dependencies, and custom logic.
   </Step>
-  <Step title="Identify Dependencies" icon="link">
+
+  <Step title="Identify Dependencies" icon="link" title-type="p">
     Map out integrations, data sources, and external dependencies.
   </Step>
-  <Step title="Plan Timeline" icon="calendar">
+
+  <Step title="Plan Timeline" icon="calendar" title-type="p">
     Create a realistic migration schedule with milestones.
   </Step>
 </Steps>
@@ -34,17 +36,20 @@ Evaluate your current automation setup before migrating.
 
 Migrate from popular automation and integration platforms.
 
-<Columns cols={3}>
-  <Card title="Zapier" icon="zap">
+<Columns cols="3">
+  <Card title="Zapier" icon="zap" horizontal="false">
     Direct import of Zaps with automatic workflow recreation.
   </Card>
-  <Card title="Microsoft Power Automate" icon="microsoft">
+
+  <Card title="Microsoft Power Automate" icon="microsoft" horizontal="false">
     Convert Flows using our Power Automate migration tool.
   </Card>
-  <Card title="IFTTT" icon="ifttt">
+
+  <Card title="IFTTT" icon="ifttt" horizontal="false">
     Migrate Applets with simplified workflow conversion.
   </Card>
-  <Card title="Custom Platforms" icon="code">
+
+  <Card title="Custom Platforms" icon="code" horizontal="false">
     API-based migration for proprietary automation systems.
   </Card>
 </Columns>
@@ -56,25 +61,37 @@ Step-by-step guide to migrate from Zapier to AetherFlow.
 <Tabs>
   <Tab title="Export from Zapier" icon="download">
     1. Log into your Zapier account
+
     2. Go to Settings > Personal > Export Your Data
+
     3. Request data export (may take 24-48 hours)
+
     4. Download the JSON export file when ready
   </Tab>
 
   <Tab title="Import to AetherFlow" icon="upload">
     1. Create your AetherFlow account
+
     2. Navigate to Settings > Import/Export
+
     3. Select "Import from Zapier"
+
     4. Upload your exported JSON file
+
     5. Review and map integrations
+
     6. Test imported workflows
   </Tab>
 
   <Tab title="Post-Migration Tasks" icon="check-circle">
     - Verify all integrations are connected
+
     - Test workflows with sample data
+
     - Update webhook URLs if necessary
+
     - Monitor execution logs for issues
+
     - Optimize prompts for AetherFlow's AI
   </Tab>
 </Tabs>
@@ -83,40 +100,50 @@ Step-by-step guide to migrate from Zapier to AetherFlow.
 
 Convert Microsoft Flows to AetherFlow workflows.
 
-<Expandable title="Migration Process">
-1. **Export Flows**: Use Power Automate's export feature to download flow definitions
-2. **Analyze Structure**: Review flow logic, conditions, and actions
-3. **Recreate in AetherFlow**: Use natural language to describe flow logic
-4. **Map Integrations**: Connect equivalent AetherFlow integrations
-5. **Test Thoroughly**: Validate functionality with comprehensive testing
+<Expandable title="Migration Process" default-open="false">
+  1. **Export Flows**: Use Power Automate's export feature to download flow definitions
+
+  2. **Analyze Structure**: Review flow logic, conditions, and actions
+
+  3. **Recreate in AetherFlow**: Use natural language to describe flow logic
+
+  4. **Map Integrations**: Connect equivalent AetherFlow integrations
+
+  5. **Test Thoroughly**: Validate functionality with comprehensive testing
 </Expandable>
 
-<Expandable title="Common Challenges">
-- Complex conditional logic may need rephrasing
-- Custom connectors require manual recreation
-- Approval workflows need redesign for AetherFlow's model
-- Power Automate-specific actions may not have direct equivalents
+<Expandable title="Common Challenges" default-open="false">
+  - Complex conditional logic may need rephrasing
+
+  - Custom connectors require manual recreation
+
+  - Approval workflows need redesign for AetherFlow's model
+
+  - Power Automate-specific actions may not have direct equivalents
 </Expandable>
 
 ## IFTTT Migration
 
 Migrate simple automation Applets to AetherFlow.
 
-<Callout kind="tip">
+<Callout kind="tip" collapsed="false">
   IFTTT migrations are typically straightforward due to the simple trigger-action model.
 </Callout>
 
 <Steps>
-  <Step title="Review Applets" icon="eye">
+  <Step title="Review Applets" icon="eye" title-type="p">
     Document your active Applets and their purposes.
   </Step>
-  <Step title="Recreate Logic" icon="refresh-cw">
+
+  <Step title="Recreate Logic" icon="refresh-cw" title-type="p">
     Describe Applet logic using natural language prompts.
   </Step>
-  <Step title="Connect Services" icon="plug">
+
+  <Step title="Connect Services" icon="plug" title-type="p">
     Set up equivalent integrations in AetherFlow.
   </Step>
-  <Step title="Test Functionality" icon="play">
+
+  <Step title="Test Functionality" icon="play" title-type="p">
     Verify workflows work as expected.
   </Step>
 </Steps>
@@ -126,13 +153,15 @@ Migrate simple automation Applets to AetherFlow.
 Migrate from proprietary or custom automation systems.
 
 <ExpandableGroup>
-  <Expandable title="API-Based Migration">
+  <Expandable title="API-Based Migration" default-open="false">
     Use AetherFlow's APIs to programmatically recreate workflows.
   </Expandable>
-  <Expandable title="Data Export/Import">
+
+  <Expandable title="Data Export/Import" default-open="false">
     Export workflow definitions and import using our bulk import tools.
   </Expandable>
-  <Expandable title="Hybrid Approach">
+
+  <Expandable title="Hybrid Approach" default-open="false">
     Run old and new systems in parallel during transition.
   </Expandable>
 </ExpandableGroup>
@@ -141,28 +170,31 @@ Migrate from proprietary or custom automation systems.
 
 Understand how your current integrations translate to AetherFlow.
 
-| Current Platform | AetherFlow Equivalent | Notes |
-|------------------|----------------------|-------|
-| Zapier Apps | Native Integrations | Most apps supported natively |
-| Power Automate Connectors | Native + Custom | Some connectors need custom setup |
-| IFTTT Services | Native Integrations | All major services supported |
-| Custom APIs | Webhooks/Custom Integration | Flexible webhook system available |
+| Current Platform          | AetherFlow Equivalent       | Notes                             |
+| ------------------------- | --------------------------- | --------------------------------- |
+| Zapier Apps               | Native Integrations         | Most apps supported natively      |
+| Power Automate Connectors | Native + Custom             | Some connectors need custom setup |
+| IFTTT Services            | Native Integrations         | All major services supported      |
+| Custom APIs               | Webhooks/Custom Integration | Flexible webhook system available |
 
 ## Data Migration
 
 Move historical data and workflow execution history.
 
-<Columns cols={2}>
-  <Card title="Historical Logs" icon="file-text">
+<Columns cols="2">
+  <Card title="Historical Logs" icon="file-text" horizontal="false">
     Migrate execution history for compliance and auditing.
   </Card>
-  <Card title="Configuration Data" icon="settings">
+
+  <Card title="Configuration Data" icon="settings" horizontal="false">
     Transfer workflow settings, schedules, and preferences.
   </Card>
-  <Card title="User Permissions" icon="users">
+
+  <Card title="User Permissions" icon="users" horizontal="false">
     Migrate team roles and access controls.
   </Card>
-  <Card title="Custom Assets" icon="package">
+
+  <Card title="Custom Assets" icon="package" horizontal="false">
     Move custom scripts, templates, and branding.
   </Card>
 </Columns>
@@ -172,16 +204,19 @@ Move historical data and workflow execution history.
 Ensure migrated workflows work correctly in the new environment.
 
 <Steps>
-  <Step title="Unit Testing" icon="flask">
+  <Step title="Unit Testing" icon="flask" title-type="p">
     Test individual workflow components and integrations.
   </Step>
-  <Step title="Integration Testing" icon="link">
+
+  <Step title="Integration Testing" icon="link" title-type="p">
     Verify end-to-end workflow functionality.
   </Step>
-  <Step title="Load Testing" icon="activity">
+
+  <Step title="Load Testing" icon="activity" title-type="p">
     Test performance under expected load conditions.
   </Step>
-  <Step title="User Acceptance Testing" icon="user-check">
+
+  <Step title="User Acceptance Testing" icon="user-check" title-type="p">
     Validate workflows meet business requirements.
   </Step>
 </Steps>
@@ -190,11 +225,14 @@ Ensure migrated workflows work correctly in the new environment.
 
 Prepare contingency plans in case migration issues arise.
 
-<Expandable title="Rollback Strategy">
-- **Parallel Running**: Keep old system active during testing phase
-- **Gradual Cutover**: Migrate workflows in phases rather than all at once
-- **Data Backup**: Maintain backups of all critical data
-- **Quick Revert**: Ability to switch back within hours if needed
+<Expandable title="Rollback Strategy" default-open="false">
+  - **Parallel Running**: Keep old system active during testing phase
+
+  - **Gradual Cutover**: Migrate workflows in phases rather than all at once
+
+  - **Data Backup**: Maintain backups of all critical data
+
+  - **Quick Revert**: Ability to switch back within hours if needed
 </Expandable>
 
 ## Performance Optimization
@@ -205,9 +243,11 @@ Optimize migrated workflows for AetherFlow's architecture.
   <Tab title="Prompt Optimization" icon="edit-3">
     Refine natural language prompts for better AI interpretation.
   </Tab>
+
   <Tab title="Integration Efficiency" icon="zap">
     Use AetherFlow's batch processing and caching features.
   </Tab>
+
   <Tab title="Error Handling" icon="alert-triangle">
     Implement comprehensive error handling and retry logic.
   </Tab>
@@ -218,16 +258,23 @@ Optimize migrated workflows for AetherFlow's architecture.
 Prepare your team for the new platform.
 
 <ExpandableGroup>
-  <Expandable title="Training Resources">
+  <Expandable title="Training Resources" default-open="false">
     - Interactive onboarding tutorials
+
     - Video walkthroughs of key features
+
     - Hands-on workshops and exercises
+
     - Documentation and best practices guides
   </Expandable>
-  <Expandable title="Support Options">
+
+  <Expandable title="Support Options" default-open="false">
     - Dedicated migration support team
+
     - 24/7 technical assistance during transition
+
     - Slack community for peer support
+
     - Office hours with product experts
   </Expandable>
 </ExpandableGroup>
@@ -236,46 +283,56 @@ Prepare your team for the new platform.
 
 Typical migration schedules for different complexity levels.
 
-| Complexity | Duration | Team Size | Key Milestones |
-|------------|----------|-----------|----------------|
-| **Simple** | 1-2 weeks | 1-2 people | Assessment, migration, testing |
-| **Medium** | 4-6 weeks | 2-5 people | Planning, phased migration, training |
-| **Complex** | 8-12 weeks | 5+ people | Full assessment, custom development, extensive testing |
+| Complexity  | Duration   | Team Size  | Key Milestones                                         |
+| ----------- | ---------- | ---------- | ------------------------------------------------------ |
+| **Simple**  | 1-2 weeks  | 1-2 people | Assessment, migration, testing                         |
+| **Medium**  | 4-6 weeks  | 2-5 people | Planning, phased migration, training                   |
+| **Complex** | 8-12 weeks | 5+ people  | Full assessment, custom development, extensive testing |
 
 ## Cost Considerations
 
 Understand the financial aspects of migration.
 
-<Expandable title="Migration Costs">
-- **Assessment**: $2,500 (workflow analysis and planning)
-- **Data Migration**: $1,000-$5,000 (depending on data volume)
-- **Custom Development**: $150/hour (for complex integrations)
-- **Training**: $500/person (hands-on workshops)
-- **Support**: Included in migration package
+<Expandable title="Migration Costs" default-open="false">
+  - **Assessment**: $2,500 (workflow analysis and planning)
+
+  - **Data Migration**: $1,000-$5,000 (depending on data volume)
+
+  - **Custom Development**: $150/hour (for complex integrations)
+
+  - **Training**: $500/person (hands-on workshops)
+
+  - **Support**: Included in migration package
 </Expandable>
 
-<Expandable title="ROI Timeline">
-- **Immediate**: Cost savings from streamlined workflows
-- **1-3 months**: Improved efficiency and reduced manual work
-- **3-6 months**: Full automation benefits realized
-- **6+ months**: Advanced features and optimization gains
+<Expandable title="ROI Timeline" default-open="false">
+  - **Immediate**: Cost savings from streamlined workflows
+
+  - **1-3 months**: Improved efficiency and reduced manual work
+
+  - **3-6 months**: Full automation benefits realized
+
+  - **6+ months**: Advanced features and optimization gains
 </Expandable>
 
 ## Success Metrics
 
 Measure the success of your migration project.
 
-<Columns cols={4}>
-  <Card title="Workflow Uptime" icon="activity">
+<Columns cols="4">
+  <Card title="Workflow Uptime" icon="activity" horizontal="false">
     Percentage of time workflows are operational.
   </Card>
-  <Card title="Migration Accuracy" icon="target">
+
+  <Card title="Migration Accuracy" icon="target" horizontal="false">
     How closely migrated workflows match original functionality.
   </Card>
-  <Card title="Team Adoption" icon="users">
+
+  <Card title="Team Adoption" icon="users" horizontal="false">
     Percentage of team using new platform effectively.
   </Card>
-  <Card title="Cost Savings" icon="dollar-sign">
+
+  <Card title="Cost Savings" icon="dollar-sign" horizontal="false">
     Reduction in operational costs post-migration.
   </Card>
 </Columns>
@@ -284,18 +341,20 @@ Measure the success of your migration project.
 
 Ongoing assistance after migration completion.
 
-<Callout kind="success">
+<Callout kind="success" collapsed="false">
   Our migration support continues for 30 days post-launch to ensure smooth operation.
 </Callout>
 
 <ExpandableGroup>
-  <Expandable title="Technical Support">
+  <Expandable title="Technical Support" default-open="false">
     24/7 access to migration engineers for technical issues.
   </Expandable>
-  <Expandable title="Optimization Consulting">
+
+  <Expandable title="Optimization Consulting" default-open="false">
     Regular reviews to optimize workflows and improve performance.
   </Expandable>
-  <Expandable title="Training Refreshers">
+
+  <Expandable title="Training Refreshers" default-open="false">
     Additional training sessions as needed for new team members.
   </Expandable>
 </ExpandableGroup>
@@ -305,16 +364,19 @@ Ongoing assistance after migration completion.
 Begin your migration journey today.
 
 <Steps>
-  <Step title="Contact Sales" icon="phone">
+  <Step title="Contact Sales" icon="phone" title-type="p">
     Reach out to discuss your migration needs and get a custom quote.
   </Step>
-  <Step title="Schedule Assessment" icon="calendar">
+
+  <Step title="Schedule Assessment" icon="calendar" title-type="p">
     Book a discovery call to evaluate your current setup.
   </Step>
-  <Step title="Plan Migration" icon="map">
+
+  <Step title="Plan Migration" icon="map" title-type="p">
     Work with our team to create a detailed migration roadmap.
   </Step>
-  <Step title="Execute Migration" icon="play">
+
+  <Step title="Execute Migration" icon="play" title-type="p">
     Begin the migration process with full support from our team.
   </Step>
 </Steps>
