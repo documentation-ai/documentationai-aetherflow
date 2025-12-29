@@ -27,7 +27,7 @@ servers:
   - url: https://staging-api.aetherflow.com/v1
     description: Staging API server
 paths:
-  /workflows:
+  /workflows-new:
     get:
       tags:
         - Workflows
