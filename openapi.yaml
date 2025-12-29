@@ -27,7 +27,7 @@ servers:
   - url: https://staging-api.aetherflow.com/v1
     description: Staging API server
 paths:
-  /workflows-new:
+  /workflows:
     get:
       tags:
         - Workflows
@@ -39,7 +39,7 @@ paths:
       parameters:
         - name: limit
           in: query
-          description: minimum number of workflows to return (1-100, default 20)
+          description: Maximum number of workflows to return (1-100, default 20)
           required: false
           schema:
             type: integer
