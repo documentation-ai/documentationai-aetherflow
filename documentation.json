@@ -31,7 +31,7 @@
       ]
     }
   },
-  "layout-theme": "atlas",
+  "template": "atlas",
   "navigation": {
     "tabs": [
       {
