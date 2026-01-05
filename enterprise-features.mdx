@@ -1,13 +1,14 @@
 ---
 title: Enterprise Features
-description: Advanced capabilities for large organizations with complex automation requirements
+description: >-
+  Advanced capabilities for large organizations with complex automation
+  requirements
 ---
-
 ## Enterprise Overview
 
 Advanced features designed for enterprise-scale automation and compliance requirements.
 
-<Callout kind="info">
+<Callout kind="info" collapsed="false">
   Enterprise features provide the security, scalability, and control needed for mission-critical workflows.
 </Callout>
 
@@ -15,14 +16,16 @@ Advanced features designed for enterprise-scale automation and compliance requir
 
 Enterprise-grade security controls for sensitive data and critical operations.
 
-<Columns cols={3}>
-  <Card title="Single Sign-On" icon="key">
+<Columns cols="3">
+  <Card title="Single Sign-On" icon="key" horizontal="false">
     SAML and OAuth SSO integration with enterprise identity providers.
   </Card>
-  <Card title="Audit Logging" icon="file-text">
+
+  <Card title="Audit Logging" icon="file-text" horizontal="false">
     Comprehensive audit trails for all user actions and system events.
   </Card>
-  <Card title="Data Encryption" icon="lock">
+
+  <Card title="Data Encryption" icon="lock" horizontal="false">
     Advanced encryption options including customer-managed keys.
   </Card>
 </Columns>
@@ -30,24 +33,33 @@ Enterprise-grade security controls for sensitive data and critical operations.
 ### Identity and Access Management
 
 <ExpandableGroup>
-  <Expandable title="SSO Integration">
+  <Expandable title="SSO Integration" default-open="false">
     - SAML 2.0 and OAuth 2.0 support
+
     - Integration with Active Directory, Okta, Azure AD, and other providers
+
     - Just-in-time user provisioning
+
     - Automatic group and role mapping
   </Expandable>
 
-  <Expandable title="Advanced RBAC">
+  <Expandable title="Advanced RBAC" default-open="false">
     - Granular permissions down to individual workflow actions
+
     - Custom role creation and management
+
     - Permission inheritance and delegation
+
     - Time-based access controls
   </Expandable>
 
-  <Expandable title="Multi-Factor Authentication">
+  <Expandable title="Multi-Factor Authentication" default-open="false">
     - Mandatory MFA for all enterprise accounts
+
     - Support for hardware security keys (FIDO2/WebAuthn)
+
     - Biometric authentication options
+
     - Risk-based authentication policies
   </Expandable>
 </ExpandableGroup>
@@ -56,19 +68,26 @@ Enterprise-grade security controls for sensitive data and critical operations.
 
 Features that help meet regulatory requirements and internal governance standards.
 
-<Expandable title="Compliance Frameworks">
-- **SOC 2 Type II**: Security, availability, and confidentiality controls
-- **GDPR**: Data protection and privacy compliance
-- **HIPAA**: Healthcare data protection (add-on)
-- **PCI DSS**: Payment card industry compliance (add-on)
-- **FedRAMP**: Federal government compliance (add-on)
+<Expandable title="Compliance Frameworks" default-open="false">
+  - **SOC 2 Type II**: Security, availability, and confidentiality controls
+
+  - **GDPR**: Data protection and privacy compliance
+
+  - **HIPAA**: Healthcare data protection (add-on)
+
+  - **PCI DSS**: Payment card industry compliance (add-on)
+
+  - **FedRAMP**: Federal government compliance (add-on)
 </Expandable>
 
-<Expandable title="Governance Controls">
-- **Data Classification**: Automatic classification and labeling of sensitive data
-- **Data Loss Prevention**: Policies to prevent unauthorized data exfiltration
-- **Retention Policies**: Customizable data retention and deletion schedules
-- **Access Reviews**: Automated access certification and review workflows
+<Expandable title="Governance Controls" default-open="false">
+  - **Data Classification**: Automatic classification and labeling of sensitive data
+
+  - **Data Loss Prevention**: Policies to prevent unauthorized data exfiltration
+
+  - **Retention Policies**: Customizable data retention and deletion schedules
+
+  - **Access Reviews**: Automated access certification and review workflows
 </Expandable>
 
 ## High Availability and Disaster Recovery
@@ -76,25 +95,31 @@ Features that help meet regulatory requirements and internal governance standard
 Enterprise-grade reliability and business continuity features.
 
 <Steps>
-  <Step title="Multi-Region Deployment" icon="globe">
+  <Step title="Multi-Region Deployment" icon="globe" title-type="p">
     Deploy across multiple geographic regions for redundancy and compliance.
   </Step>
-  <Step title="Automatic Failover" icon="refresh-cw">
+
+  <Step title="Automatic Failover" icon="refresh-cw" title-type="p">
     Seamless failover between regions during outages with zero data loss.
   </Step>
-  <Step title="Backup and Recovery" icon="database">
+
+  <Step title="Backup and Recovery" icon="database" title-type="p">
     Continuous backups with point-in-time recovery capabilities.
   </Step>
-  <Step title="Service Level Agreements" icon="shield">
+
+  <Step title="Service Level Agreements" icon="shield" title-type="p">
     99.9% uptime SLA with financial guarantees and priority support.
   </Step>
 </Steps>
 
-<Expandable title="Disaster Recovery Scenarios">
-- **Regional Outage**: Automatic failover to secondary region within 5 minutes
-- **Data Center Failure**: Complete infrastructure rebuild in alternative location
-- **Cyber Attack**: Isolated backup systems with air-gapped recovery options
-- **Data Corruption**: Point-in-time recovery from multiple backup sources
+<Expandable title="Disaster Recovery Scenarios" default-open="false">
+  - **Regional Outage**: Automatic failover to secondary region within 5 minutes
+
+  - **Data Center Failure**: Complete infrastructure rebuild in alternative location
+
+  - **Cyber Attack**: Isolated backup systems with air-gapped recovery options
+
+  - **Data Corruption**: Point-in-time recovery from multiple backup sources
 </Expandable>
 
 ## Advanced Analytics and Reporting
@@ -102,19 +127,19 @@ Enterprise-grade reliability and business continuity features.
 Comprehensive analytics for enterprise workflow management.
 
 <ExpandableGroup>
-  <Expandable title="Executive Dashboards">
+  <Expandable title="Executive Dashboards" default-open="false">
     High-level insights into automation ROI, efficiency gains, and business impact.
   </Expandable>
 
-  <Expandable title="Operational Analytics">
+  <Expandable title="Operational Analytics" default-open="false">
     Detailed performance metrics, bottleneck analysis, and optimization recommendations.
   </Expandable>
 
-  <Expandable title="Compliance Reporting">
+  <Expandable title="Compliance Reporting" default-open="false">
     Automated generation of audit reports and compliance documentation.
   </Expandable>
 
-  <Expandable title="Custom Metrics">
+  <Expandable title="Custom Metrics" default-open="false">
     Define and track organization-specific KPIs and performance indicators.
   </Expandable>
 </ExpandableGroup>
@@ -123,17 +148,20 @@ Comprehensive analytics for enterprise workflow management.
 
 Extended integration capabilities for complex enterprise environments.
 
-<Columns cols={2}>
-  <Card title="Custom Connectors" icon="plug">
+<Columns cols="2">
+  <Card title="Custom Connectors" icon="plug" horizontal="false">
     Develop proprietary connectors for internal systems and legacy applications.
   </Card>
-  <Card title="API Gateway" icon="server">
+
+  <Card title="API Gateway" icon="server" horizontal="false">
     Secure API gateway with rate limiting, authentication, and request routing.
   </Card>
-  <Card title="Webhook Transformations" icon="shuffle">
+
+  <Card title="Webhook Transformations" icon="shuffle" horizontal="false">
     Advanced webhook processing with data transformation and routing rules.
   </Card>
-  <Card title="Database Direct Access" icon="database">
+
+  <Card title="Database Direct Access" icon="database" horizontal="false">
     Direct query capabilities for enterprise databases with proper security controls.
   </Card>
 </Columns>
@@ -142,22 +170,25 @@ Extended integration capabilities for complex enterprise environments.
 
 Dedicated support and success management for critical deployments.
 
-<Expandable title="Support Tiers">
-| Feature | Standard Enterprise | Premium Enterprise |
-|---------|-------------------|-------------------|
-| **Response Time** | 4 hours | 1 hour |
-| **Support Channels** | Email, Portal | Phone, Chat, Portal |
-| **Dedicated Engineer** | ❌ | ✅ |
-| **On-site Support** | ❌ | ✅ (2 days/year) |
-| **Custom Training** | 2 sessions | Unlimited |
-| **Architecture Reviews** | Quarterly | Monthly |
+<Expandable title="Support Tiers" default-open="false">
+  | Feature                  | Standard Enterprise | Premium Enterprise  |
+  | ------------------------ | ------------------- | ------------------- |
+  | **Response Time**        | 4 hours             | 1 hour              |
+  | **Support Channels**     | Email, Portal       | Phone, Chat, Portal |
+  | **Dedicated Engineer**   | ❌                   | ✅                   |
+  | **On-site Support**      | ❌                   | ✅ (2 days/year)     |
+  | **Custom Training**      | 2 sessions          | Unlimited           |
+  | **Architecture Reviews** | Quarterly           | Monthly             |
 </Expandable>
 
-<Expandable title="Success Management">
-- **Technical Account Manager**: Dedicated point of contact for strategic guidance
-- **Quarterly Business Reviews**: Comprehensive reviews of automation initiatives
-- **Success Planning**: Proactive planning for expansion and optimization
-- **Executive Sponsorship**: Direct communication with enterprise leadership
+<Expandable title="Success Management" default-open="false">
+  - **Technical Account Manager**: Dedicated point of contact for strategic guidance
+
+  - **Quarterly Business Reviews**: Comprehensive reviews of automation initiatives
+
+  - **Success Planning**: Proactive planning for expansion and optimization
+
+  - **Executive Sponsorship**: Direct communication with enterprise leadership
 </Expandable>
 
 ## Performance and Scalability
@@ -165,17 +196,23 @@ Dedicated support and success management for critical deployments.
 Features designed for high-volume, mission-critical workflows.
 
 <ExpandableGroup>
-  <Expandable title="Performance Optimization">
+  <Expandable title="Performance Optimization" default-open="false">
     - Dedicated infrastructure with guaranteed performance SLAs
+
     - Advanced caching and optimization for high-throughput workflows
+
     - Parallel processing capabilities for complex, multi-step automations
+
     - Intelligent load balancing across multiple execution environments
   </Expandable>
 
-  <Expandable title="Scalability Features">
+  <Expandable title="Scalability Features" default-open="false">
     - Unlimited workflow executions (based on contract)
+
     - Horizontal scaling capabilities for sudden load spikes
+
     - Resource pooling and optimization across enterprise accounts
+
     - Predictive scaling based on usage patterns and business cycles
   </Expandable>
 </ExpandableGroup>
@@ -184,18 +221,24 @@ Features designed for high-volume, mission-critical workflows.
 
 Advanced data controls for regulatory compliance and privacy requirements.
 
-<Expandable title="Data Residency">
-Choose specific geographic regions for data storage and processing:
-- **EU Data Residency**: All data stored and processed within EU borders
-- **US Data Residency**: SOC 2 compliant US-based infrastructure
-- **Custom Regions**: Dedicated infrastructure in approved locations
+<Expandable title="Data Residency" default-open="false">
+  Choose specific geographic regions for data storage and processing:
+
+  - **EU Data Residency**: All data stored and processed within EU borders
+
+  - **US Data Residency**: SOC 2 compliant US-based infrastructure
+
+  - **Custom Regions**: Dedicated infrastructure in approved locations
 </Expandable>
 
-<Expandable title="Privacy Controls">
-- **Data Sovereignty**: Full control over data location and transfer
-- **Privacy by Design**: Built-in privacy controls and data minimization
-- **Consent Management**: Granular consent controls for data processing
-- **Data Portability**: Easy export and migration of enterprise data
+<Expandable title="Privacy Controls" default-open="false">
+  - **Data Sovereignty**: Full control over data location and transfer
+
+  - **Privacy by Design**: Built-in privacy controls and data minimization
+
+  - **Consent Management**: Granular consent controls for data processing
+
+  - **Data Portability**: Easy export and migration of enterprise data
 </Expandable>
 
 ## Custom Development and Integration
@@ -203,19 +246,19 @@ Choose specific geographic regions for data storage and processing:
 Tailored solutions for unique enterprise requirements.
 
 <ExpandableGroup>
-  <Expandable title="Custom Workflows">
+  <Expandable title="Custom Workflows" default-open="false">
     Pre-built workflow templates customized for specific industry verticals and use cases.
   </Expandable>
 
-  <Expandable title="API Development">
+  <Expandable title="API Development" default-open="false">
     Custom API endpoints and integrations developed specifically for enterprise needs.
   </Expandable>
 
-  <Expandable title="White-Label Solutions">
+  <Expandable title="White-Label Solutions" default-open="false">
     Fully branded AetherFlow deployments for internal enterprise tools.
   </Expandable>
 
-  <Expandable title="Migration Services">
+  <Expandable title="Migration Services" default-open="false">
     Comprehensive migration support from legacy automation platforms.
   </Expandable>
 </ExpandableGroup>
@@ -224,60 +267,76 @@ Tailored solutions for unique enterprise requirements.
 
 Advanced administrative capabilities for large organizations.
 
-<Columns cols={3}>
-  <Card title="Multi-Workspace Management" icon="building">
+<Columns cols="3">
+  <Card title="Multi-Workspace Management" icon="building" horizontal="false">
     Manage multiple isolated workspaces within a single enterprise account.
   </Card>
-  <Card title="Centralized Billing" icon="credit-card">
+
+  <Card title="Centralized Billing" icon="credit-card" horizontal="false">
     Consolidated billing and cost allocation across departments and projects.
   </Card>
-  <Card title="User Lifecycle Management" icon="users">
+
+  <Card title="User Lifecycle Management" icon="users" horizontal="false">
     Automated user onboarding, offboarding, and access management.
   </Card>
 </Columns>
 
 ### Organization Structure
 
-<Expandable title="Hierarchical Management">
-- **Global Administrators**: Organization-wide settings and policies
-- **Department Admins**: Department-specific access and budget controls
-- **Project Managers**: Project-level workflow management and monitoring
-- **End Users**: Day-to-day workflow execution and monitoring
+<Expandable title="Hierarchical Management" default-open="false">
+  - **Global Administrators**: Organization-wide settings and policies
+
+  - **Department Admins**: Department-specific access and budget controls
+
+  - **Project Managers**: Project-level workflow management and monitoring
+
+  - **End Users**: Day-to-day workflow execution and monitoring
 </Expandable>
 
 ## Training and Enablement
 
 Comprehensive training programs for enterprise adoption.
 
-<Expandable title="Training Programs">
-- **Administrator Training**: Platform administration and governance
-- **Developer Training**: API integration and custom development
-- **End-User Training**: Workflow creation and management
-- **Compliance Training**: Regulatory requirements and best practices
+<Expandable title="Training Programs" default-open="false">
+  - **Administrator Training**: Platform administration and governance
+
+  - **Developer Training**: API integration and custom development
+
+  - **End-User Training**: Workflow creation and management
+
+  - **Compliance Training**: Regulatory requirements and best practices
 </Expandable>
 
-<Expandable title="Certification Programs">
-- **AetherFlow Administrator Certification**: Platform management expertise
-- **Workflow Developer Certification**: Advanced workflow creation skills
-- **Compliance Specialist Certification**: Regulatory compliance knowledge
+<Expandable title="Certification Programs" default-open="false">
+  - **AetherFlow Administrator Certification**: Platform management expertise
+
+  - **Workflow Developer Certification**: Advanced workflow creation skills
+
+  - **Compliance Specialist Certification**: Regulatory compliance knowledge
 </Expandable>
 
 ## Cost Management and Optimization
 
 Advanced cost controls and optimization for enterprise budgets.
 
-<Expandable title="Enterprise Billing">
-- **Departmental Allocation**: Cost allocation by department or cost center
-- **Budget Controls**: Spending limits and approval workflows
-- **Cost Optimization**: AI-powered recommendations for cost reduction
-- **Usage Analytics**: Detailed usage reporting and forecasting
+<Expandable title="Enterprise Billing" default-open="false">
+  - **Departmental Allocation**: Cost allocation by department or cost center
+
+  - **Budget Controls**: Spending limits and approval workflows
+
+  - **Cost Optimization**: AI-powered recommendations for cost reduction
+
+  - **Usage Analytics**: Detailed usage reporting and forecasting
 </Expandable>
 
-<Expandable title="Contract Flexibility">
-- **Custom Terms**: Flexible licensing terms and contract durations
-- **Volume Discounts**: Tiered pricing based on usage commitments
-- **Reserved Instances**: Predictable pricing for steady-state workloads
-- **Pay-as-you-go**: Flexible pricing for variable usage patterns
+<Expandable title="Contract Flexibility" default-open="false">
+  - **Custom Terms**: Flexible licensing terms and contract durations
+
+  - **Volume Discounts**: Tiered pricing based on usage commitments
+
+  - **Reserved Instances**: Predictable pricing for steady-state workloads
+
+  - **Pay-as-you-go**: Flexible pricing for variable usage patterns
 </Expandable>
 
 ## Getting Started with Enterprise
@@ -285,30 +344,39 @@ Advanced cost controls and optimization for enterprise budgets.
 Steps to begin your enterprise AetherFlow implementation.
 
 <Steps>
-  <Step title="Requirements Assessment" icon="clipboard">
+  <Step title="Requirements Assessment" icon="clipboard" title-type="p">
     Comprehensive evaluation of your automation needs and current infrastructure.
   </Step>
-  <Step title="Solution Architecture" icon="map">
+
+  <Step title="Solution Architecture" icon="map" title-type="p">
     Design enterprise architecture including security, compliance, and integration requirements.
   </Step>
-  <Step title="Pilot Implementation" icon="flask">
+
+  <Step title="Pilot Implementation" icon="flask" title-type="p">
     Start with a pilot project to validate the solution and build internal expertise.
   </Step>
-  <Step title="Full Deployment" icon="rocket">
+
+  <Step title="Full Deployment" icon="rocket" title-type="p">
     Enterprise-wide rollout with change management and user training.
   </Step>
-  <Step title="Optimization and Support" icon="settings">
+
+  <Step title="Optimization and Support" icon="settings" title-type="p">
     Ongoing optimization, support, and expansion of automation capabilities.
   </Step>
 </Steps>
 
-<Expandable title="Enterprise Onboarding Timeline">
-- **Week 1-2**: Requirements gathering and solution design
-- **Week 3-4**: Pilot setup and initial training
-- **Week 5-8**: Pilot execution and evaluation
-- **Week 9-12**: Full deployment planning and preparation
-- **Week 13-16**: Phased rollout and user enablement
-- **Ongoing**: Continuous optimization and expansion
+<Expandable title="Enterprise Onboarding Timeline" default-open="false">
+  - **Week 1-2**: Requirements gathering and solution design
+
+  - **Week 3-4**: Pilot setup and initial training
+
+  - **Week 5-8**: Pilot execution and evaluation
+
+  - **Week 9-12**: Full deployment planning and preparation
+
+  - **Week 13-16**: Phased rollout and user enablement
+
+  - **Ongoing**: Continuous optimization and expansion
 </Expandable>
 
-Enterprise features provide the foundation for scalable, secure, and compliant automation at any organizational level.
+Enterprise features provide the foundation for scalable, secure, and compliant automation at any organizational level. test link
