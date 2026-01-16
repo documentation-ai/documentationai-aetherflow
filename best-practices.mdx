@@ -2,12 +2,11 @@
 title: Best Practices
 description: Optimize your AetherFlow workflows with proven strategies and patterns
 ---
-
 ## Workflow Design Principles
 
 Build reliable, maintainable workflows using these fundamental principles.
 
-<Callout kind="info">
+<Callout kind="info" collapsed="false">
   Well-designed workflows are easier to debug, maintain, and scale over time.
 </Callout>
 
@@ -15,21 +14,23 @@ Build reliable, maintainable workflows using these fundamental principles.
 
 Craft effective natural language prompts for optimal AI interpretation.
 
-<Columns cols={3}>
-  <Card title="Be Specific" icon="target">
+<Columns cols="3">
+  <Card title="Be Specific" icon="target" horizontal="false">
     Clearly define triggers, conditions, and actions. Avoid ambiguous language.
   </Card>
-  <Card title="Use Context" icon="file-text">
+
+  <Card title="Use Context" icon="file-text" horizontal="false">
     Provide relevant background information and examples in your prompts.
   </Card>
-  <Card title="Iterate Gradually" icon="refresh-cw">
+
+  <Card title="Iterate Gradually" icon="refresh-cw" horizontal="false">
     Start simple and add complexity incrementally through testing.
   </Card>
 </Columns>
 
 <Tabs>
   <Tab title="Good Examples" icon="check-circle">
-    ```prompt
+    ```prompt wrap
     When a new customer support ticket is created in Zendesk with priority "High",
     analyze the ticket content for keywords related to billing, technical issues, or account problems,
     then route to the appropriate agent based on their expertise and current workload,
@@ -47,11 +48,13 @@ Craft effective natural language prompts for optimal AI interpretation.
     ```prompt
     Handle tickets and send notifications.
     ```
+
     *Too vague - lacks specific conditions and actions*
 
     ```prompt
     Do everything related to customer support automatically.
     ```
+
     *Overly broad - creates unpredictable behavior*
   </Tab>
 </Tabs>
@@ -61,20 +64,24 @@ Craft effective natural language prompts for optimal AI interpretation.
 Build robust workflows that handle failures gracefully.
 
 <Steps>
-  <Step title="Implement Fallbacks" icon="shield">
+  <Step title="Implement Fallbacks" icon="shield" title-type="p">
     Define alternative actions when primary integrations fail.
   </Step>
-  <Step title="Add Validation" icon="check-circle">
+
+  <Step title="Add Validation" icon="check-circle" title-type="p">
     Verify data integrity before processing or sending.
   </Step>
-  <Step title="Monitor Success Rates" icon="bar-chart">
+
+  <Step title="Monitor Success Rates" icon="bar-chart" title-type="p">
     Set up alerts for workflows with declining performance.
   </Step>
 </Steps>
 
-<Expandable title="Retry Strategies">
+<Expandable title="Retry Strategies" default-open="false">
   - **Fixed Interval**: Retry failed steps after a set delay (e.g., 30 seconds)
+
   - **Exponential Backoff**: Increase delay between retries (30s, 1m, 2m, 4m...)
+
   - **Circuit Breaker**: Stop retrying after multiple failures, alert for manual intervention
 </Expandable>
 
@@ -83,13 +90,15 @@ Build robust workflows that handle failures gracefully.
 Ensure workflows run efficiently and within resource limits.
 
 <ExpandableGroup>
-  <Expandable title="Batch Processing">
+  <Expandable title="Batch Processing" default-open="false">
     Group similar operations to reduce API calls and improve throughput.
   </Expandable>
-  <Expandable title="Caching Strategies">
+
+  <Expandable title="Caching Strategies" default-open="false">
     Store frequently accessed data to avoid redundant API requests.
   </Expandable>
-  <Expandable title="Parallel Execution">
+
+  <Expandable title="Parallel Execution" default-open="false">
     Run independent steps simultaneously when possible.
   </Expandable>
 </ExpandableGroup>
@@ -98,17 +107,20 @@ Ensure workflows run efficiently and within resource limits.
 
 Protect sensitive data and maintain compliance.
 
-<Columns cols={2}>
-  <Card title="Data Encryption" icon="lock">
+<Columns cols="2">
+  <Card title="Data Encryption" icon="lock" horizontal="false">
     Use encrypted connections and avoid logging sensitive information.
   </Card>
-  <Card title="Access Control" icon="key">
+
+  <Card title="Access Control" icon="key" horizontal="false">
     Limit workflow permissions to minimum required scopes.
   </Card>
-  <Card title="Audit Logging" icon="file-text">
+
+  <Card title="Audit Logging" icon="file-text" horizontal="false">
     Enable logging for compliance and debugging purposes.
   </Card>
-  <Card title="Regular Reviews" icon="eye">
+
+  <Card title="Regular Reviews" icon="eye" horizontal="false">
     Periodically audit workflows for security vulnerabilities.
   </Card>
 </Columns>
@@ -121,9 +133,11 @@ Thoroughly test workflows before deploying to production.
   <Tab title="Test Environments" icon="flask">
     Create separate test workflows that mirror production setups.
   </Tab>
+
   <Tab title="Edge Cases" icon="alert-triangle">
     Test with unusual data inputs, network failures, and integration outages.
   </Tab>
+
   <Tab title="Load Testing" icon="zap">
     Verify performance under expected peak loads.
   </Tab>
@@ -134,13 +148,15 @@ Thoroughly test workflows before deploying to production.
 Keep workflows running smoothly with proactive monitoring.
 
 <Steps>
-  <Step title="Set Up Alerts" icon="bell">
+  <Step title="Set Up Alerts" icon="bell" title-type="p">
     Configure notifications for failures, performance degradation, and unusual patterns.
   </Step>
-  <Step title="Regular Audits" icon="clipboard">
+
+  <Step title="Regular Audits" icon="clipboard" title-type="p">
     Review workflow performance and update as needed quarterly.
   </Step>
-  <Step title="Documentation" icon="book">
+
+  <Step title="Documentation" icon="book" title-type="p">
     Maintain clear documentation of workflow logic and dependencies.
   </Step>
 </Steps>
@@ -149,15 +165,19 @@ Keep workflows running smoothly with proactive monitoring.
 
 Best practices for multi-user workflow development.
 
-<Expandable title="Version Control">
+<Expandable title="Version Control" default-open="false">
   - Use descriptive names for workflow versions
+
   - Document changes and reasoning
+
   - Test thoroughly before promoting to production
 </Expandable>
 
-<Expandable title="Code Reviews">
+<Expandable title="Code Reviews" default-open="false">
   - Peer review complex workflows before deployment
+
   - Check for security implications
+
   - Validate error handling and edge cases
 </Expandable>
 
@@ -165,13 +185,13 @@ Best practices for multi-user workflow development.
 
 Prepare workflows for growing usage and complexity.
 
-| Scale Level | Characteristics | Strategies |
-|-------------|-----------------|------------|
-| Small | 1-5 workflows, basic integrations | Focus on reliability and documentation |
-| Medium | 10-50 workflows, multiple teams | Implement monitoring and testing frameworks |
-| Large | 100+ workflows, enterprise integrations | Automate deployment, use advanced monitoring |
+| Scale Level | Characteristics                         | Strategies                                   |
+| ----------- | --------------------------------------- | -------------------------------------------- |
+| Small       | 1-5 workflows, basic integrations       | Focus on reliability and documentation       |
+| Medium      | 10-50 workflows, multiple teams         | Implement monitoring and testing frameworks  |
+| Large       | 100+ workflows, enterprise integrations | Automate deployment, use advanced monitoring |
 
-<Callout kind="tip">
+<Callout kind="tip" collapsed="false">
   Plan for scale from the beginning by designing modular, reusable workflow components.
 </Callout>
 
@@ -180,13 +200,15 @@ Prepare workflows for growing usage and complexity.
 Manage AetherFlow usage costs effectively.
 
 <ExpandableGroup>
-  <Expandable title="Usage Monitoring">
+  <Expandable title="Usage Monitoring" default-open="false">
     Track workflow execution frequency and identify optimization opportunities.
   </Expandable>
-  <Expandable title="Resource Efficiency">
+
+  <Expandable title="Resource Efficiency" default-open="false">
     Choose appropriate plan tiers based on actual usage patterns.
   </Expandable>
-  <Expandable title="Automation ROI">
+
+  <Expandable title="Automation ROI" default-open="false">
     Regularly assess workflow benefits against operational costs.
   </Expandable>
 </ExpandableGroup>

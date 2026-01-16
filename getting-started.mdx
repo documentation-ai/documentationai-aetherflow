@@ -1,14 +1,12 @@
 ---
 title: Getting Started
-
 description: Step-by-step guide to set up and launch your first workflow in AetherFlow
 ---
-
 ## Account Creation and Onboarding
 
 You begin by signing up for AetherFlow to access the dashboard. The platform guides you through a quick onboarding process, explaining core concepts like prompts and triggers. This ensures you understand how natural language drives automations without technical barriers.
 
-<Callout kind="tip">
+<Callout kind="tip" collapsed="false">
   Use your work email for team collaboration features from the start.
 </Callout>
 
@@ -17,18 +15,21 @@ You begin by signing up for AetherFlow to access the dashboard. The platform gui
 No software installation is needed; AetherFlow runs in the cloud. Access it via any modern browser. For API usage, generate an API key from settings.
 
 <Steps>
-  <Step title="Create Account" icon="user-plus">
-    Visit aetherflow.com and click Sign Up. Fill in your details and verify via email.
+  <Step title="Create Account" icon="user-plus" title-type="p">
+    Visit aetherflow\.com and click Sign Up. Fill in your details and verify via email.
   </Step>
-  <Step title="Dashboard Tour" icon="home">
+
+  <Step title="Dashboard Tour" icon="home" title-type="p">
     Complete the interactive tour to familiarize yourself with the interface.
+
     ```javascript
     // Generate API key example
     const apiKey = await fetch('/api/keys', { method: 'POST' });
     console.log(`Your key: ${apiKey}`);
     ```
   </Step>
-  <Step title="First Integration" icon="plug">
+
+  <Step title="First Integration" icon="plug" title-type="p">
     Go to Integrations tab and connect Slack. Authorize permissions for messaging.
   </Step>
 </Steps>
@@ -40,7 +41,8 @@ Describe your automation in plain English. For example, "When I receive an email
 <Tabs>
   <Tab title="Basic Workflow" icon="play">
     Use the builder to input your prompt. Preview the generated steps.
-    <CodeGroup tabs="JavaScript,Python">
+
+    <CodeGroup show-lines="true" tabs={[]}>
       ```javascript
       // API to create workflow
       await fetch('/workflows', {
@@ -51,6 +53,7 @@ Describe your automation in plain English. For example, "When I receive an email
         })
       });
       ```
+
       ```python
       # Python SDK example
       from aetherflow import Client
@@ -62,19 +65,22 @@ Describe your automation in plain English. For example, "When I receive an email
       ```
     </CodeGroup>
   </Tab>
+
   <Tab title="Advanced Triggers" icon="zap">
     Set natural language triggers like "On new ticket in Zendesk."
-    <Expandable title="Trigger Options">
+
+    <Expandable title="Trigger Options" default-open="false">
       Choose from email, app events, or scheduled runs.
     </Expandable>
   </Tab>
 </Tabs>
 
-<Columns cols={2}>
-  <Card title="Test Run" icon="play-circle">
+<Columns cols="2">
+  <Card title="Test Run" icon="play-circle" horizontal="false">
     Execute a test to verify the workflow behaves as expected.
   </Card>
-  <Card title="Monitor Logs" icon="eye">
+
+  <Card title="Monitor Logs" icon="eye" horizontal="false">
     View real-time logs in the dashboard for debugging.
   </Card>
 </Columns>
@@ -83,20 +89,20 @@ Describe your automation in plain English. For example, "When I receive an email
 
 Start with simple workflows to build confidence. Test thoroughly before enabling live runs. Monitor analytics to refine prompts for better AI accuracy.
 
-| Step | Action | Time Estimate |
-|------|--------|---------------|
-| 1 | Sign Up | `<5` min |
-| 2 | Integrate | `10-15` min |
-| 3 | Build | `20` min |
+| Step | Action    | Time Estimate |
+| ---- | --------- | ------------- |
+| 1    | Sign Up   | `<5` min      |
+| 2    | Integrate | `10-15` min   |
+| 3    | Build     | `20` min      |
 
-<Callout kind="success">
+<Callout kind="success" collapsed="false">
   Your first workflow should automate a daily task to see immediate value.
 </Callout>
 
 For troubleshooting, check the expandable section below.
 
 <ExpandableGroup>
-  <Expandable title="Common Issues">
+  <Expandable title="Common Issues" default-open="false">
     If integration fails, verify permissions. For prompt errors, rephrase for clarity.
   </Expandable>
 </ExpandableGroup>
