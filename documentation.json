@@ -35,8 +35,8 @@
   "navigation": {
     "tabs": [
       {
-        "tab": "Home",
-        "icon": "home",
+        "tab": "Guides",
+        "icon": "book-open",
         "groups": [
           {
             "group": "Getting Started",
@@ -134,16 +134,6 @@
                 "title": "Enterprise Features",
                 "path": "enterprise-features",
                 "icon": "building"
-              },
-              {
-                "title": "Pricing & Plans",
-                "path": "pricing-plans",
-                "icon": "dollar-sign"
-              },
-              {
-                "title": "Data Privacy & Compliance",
-                "path": "data-privacy-compliance",
-                "icon": "lock"
               }
             ]
           }
@@ -182,6 +172,28 @@
         ]
       },
       {
+        "tab": "Pricing & Plans",
+        "icon": "credit-card",
+        "pages": [
+          {
+            "title": "Pricing & Plans",
+            "path": "pricing-plans",
+            "icon": "dollar-sign"
+          }
+        ]
+      },
+      {
+        "tab": "Security & Compliance",
+        "icon": "shield",
+        "pages": [
+          {
+            "title": "Data Privacy & Compliance",
+            "path": "data-privacy-compliance",
+            "icon": "lock"
+          }
+        ]
+      },
+      {
         "tab": "Help & Support",
         "icon": "help-circle",
         "pages": [
@@ -210,5 +222,5 @@
     "robots:follow": false
   },
   "logo-dark": "https://blob-cdn.documentation.ai/org-a78a7fa2-dcee-40a8-b887-d5d5b2ded474/doc-d7fcf659-1ace-458b-b090-28a59ad7fe5d/1768976529141-9hmb8mgvujm-AethorFlow-company-logo_dark.png?q=85&fm=auto&auto=compress%2Cformat",
-  "logo-light": "https://blob-cdn.documentation.ai/org-a78a7fa2-dcee-40a8-b887-d5d5b2ded474/doc-d7fcf659-1ace-458b-b090-28a59ad7fe5d/1768976539661-qy5jbxq2wto-AethorFlow-company-logo_light.png?q=85&fm=auto&auto=compress%2Cformat"
+  "logo-light": "https://blob-cdn.documentation.ai/org-a78a7fa2-dcee-40a8-b887-d5d5b2ded474/doc-d7fcf659-1ace-458b-b090-28a59ad7fe5d/1768977082345-t0flx4vx1g-AethorFlow-company-logo_light_2.png?q=85&fm=auto&auto=compress%2Cformat"
 }
