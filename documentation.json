@@ -202,54 +202,37 @@
             ]
           },
           {
-            "group": "Guides & Tutorials",
-            "icon": "book-open",
+            "group": "Help Categories",
+            "icon": "folder",
             "pages": [
               {
                 "title": "Getting Started",
-                "path": "getting-started-help",
+                "path": "getting-started",
                 "icon": "rocket"
               },
               {
                 "title": "Workflows & Automation",
-                "path": "workflows-automation-help",
+                "path": "workflows",
                 "icon": "git-branch"
               },
               {
                 "title": "Integrations & APIs",
-                "path": "integrations-apis-help",
+                "path": "integrations",
                 "icon": "plug"
               },
               {
                 "title": "Troubleshooting",
-                "path": "troubleshooting-help",
+                "path": "troubleshooting",
                 "icon": "alert-circle"
-              }
-            ]
-          },
-          {
-            "group": "Account & Billing",
-            "icon": "user",
-            "pages": [
-              {
-                "title": "Account Management",
-                "path": "account-billing-help",
-                "icon": "user"
               },
               {
-                "title": "Pricing & Plans",
-                "path": "pricing-plans-help",
+                "title": "Pricing & Billing",
+                "path": "pricing",
                 "icon": "dollar-sign"
-              }
-            ]
-          },
-          {
-            "group": "Enterprise",
-            "icon": "building",
-            "pages": [
+              },
               {
                 "title": "Enterprise Features",
-                "path": "enterprise-features-help",
+                "path": "enterprise",
                 "icon": "building"
               }
             ]
