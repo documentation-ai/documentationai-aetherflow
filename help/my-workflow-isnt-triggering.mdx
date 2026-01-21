@@ -1,0 +1,232 @@
+---
+title: My workflow isn't triggering
+description: Common reasons why workflows don't start and how to diagnose trigger issues
+---
+
+# My workflow isn't triggering
+
+If your AetherFlow workflow isn't starting when expected, there are several common causes and solutions to check. Follow this systematic troubleshooting guide to identify and resolve trigger issues.
+
+## Quick Diagnosis Checklist
+
+<Steps>
+  <Step title="Check workflow status">
+    Ensure the workflow is set to "Active" (not paused or disabled)
+  </Step>
+  <Step title="Verify trigger conditions">
+    Confirm your trigger settings match the expected events
+  </Step>
+  <Step title="Test integrations">
+    Make sure connected services are properly authorized
+  </Step>
+  <Step title="Check execution logs">
+    Review recent activity for error messages or failures
+  </Step>
+  <Step title="Test manually">
+    Use the manual test feature to isolate trigger issues
+  </Step>
+</Steps>
+
+## Common Trigger Issues
+
+### 1. Workflow Status Problems
+
+**Issue:** Workflow appears active but isn't triggering
+
+**Possible causes:**
+- Workflow is in "Draft" mode
+- Scheduled maintenance or system updates
+- Plan limits exceeded (execution quota reached)
+- Account suspension or billing issues
+
+**Solutions:**
+- Check workflow status in the dashboard
+- Verify account status and billing
+- Contact support if account issues persist
+
+### 2. Trigger Configuration Errors
+
+**Issue:** Trigger conditions don't match actual events
+
+**Email triggers:**
+- Wrong email address or domain specified
+- Incorrect keyword matching (case sensitivity)
+- Subject/body filters too restrictive
+
+**Schedule triggers:**
+- Time zone settings incorrect
+- Business hours restrictions active
+- Holiday calendar exclusions
+
+**API/Webhook triggers:**
+- Incorrect webhook URL
+- Missing authentication headers
+- Invalid payload format
+
+### 3. Integration Authorization Issues
+
+**Issue:** Connected services can't communicate with AetherFlow
+
+**Symptoms:**
+- "Authentication failed" errors
+- "Access denied" messages
+- Integration showing "disconnected" status
+
+**Solutions:**
+- Re-authorize the integration in Settings
+- Check API permissions in the connected service
+- Verify API keys or OAuth tokens are valid
+- Confirm the integration supports the required scopes
+
+### 4. Data Format Mismatches
+
+**Issue:** Trigger data doesn't match expected format
+
+**Common problems:**
+- Date formats inconsistent
+- Field names changed in source system
+- Data types don't match (string vs number)
+- Required fields missing or empty
+
+**Solutions:**
+- Review source system data structure
+- Update field mappings in workflow settings
+- Test with sample data first
+
+### 5. Rate Limiting and Quotas
+
+**Issue:** Trigger events exceed service limits
+
+**External service limits:**
+- API rate limits reached
+- Daily/weekly quotas exceeded
+- Concurrent connection limits
+
+**AetherFlow limits:**
+- Monthly execution quota reached
+- Too many workflows running simultaneously
+- API call limits on your plan
+
+## Advanced Troubleshooting
+
+### Using Execution Logs
+
+<Steps>
+  <Step title="Access workflow logs">
+    Go to your workflow and click the "Logs" tab
+  </Step>
+  <Step title="Filter by time range">
+    Focus on periods when triggers should have fired
+  </Step>
+  <Step title="Look for error patterns">
+    Identify common failure messages or error codes
+  </Step>
+  <Step title="Check trigger events">
+    Verify if trigger events are being received at all
+  </Step>
+</Steps>
+
+### Manual Testing
+
+<Steps>
+  <Step title="Use test mode">
+    Click "Test" in workflow settings
+  </Step>
+  <Step title="Provide sample data">
+    Enter data that should trigger the workflow
+  </Step>
+  <Step title="Check each step">
+    Verify data flows correctly through the workflow
+  </Step>
+  <Step title="Review results">
+    Confirm expected actions occur
+  </Step>
+</Steps>
+
+### Integration Health Checks
+
+<Steps>
+  <Step title="Visit integrations page">
+    Go to Settings → Integrations
+  </Step>
+  <Step title="Check connection status">
+    Look for "Connected" or "Error" indicators
+  </Step>
+  <Step title="Test each integration">
+    Use the "Test Connection" button
+  </Step>
+  <Step title="Re-authorize if needed">
+    Click "Reconnect" for problematic services
+  </Step>
+</Steps>
+
+## Service-Specific Issues
+
+### Email Triggers (Gmail/Outlook)
+- Check spam/junk folders for test emails
+- Verify email forwarding is enabled
+- Confirm app passwords or OAuth permissions
+- Check for email filters or rules
+
+### Webhook Triggers
+- Verify webhook URL is correct and accessible
+- Check webhook signature validation
+- Confirm payload format matches expectations
+- Test webhook endpoint with tools like Postman
+
+### Schedule Triggers
+- Verify server time zone settings
+- Check for daylight saving time issues
+- Confirm business hours settings
+- Review holiday calendar configurations
+
+### API Triggers
+- Validate API endpoint URLs
+- Check authentication credentials
+- Verify request headers and parameters
+- Confirm response format expectations
+
+## Prevention Best Practices
+
+<Callout type="info">
+  **Prevent Future Trigger Issues:**
+
+  - **Test thoroughly**: Always test workflows before going live
+  - **Monitor regularly**: Set up alerts for workflow failures
+  - **Keep integrations updated**: Re-authorize services periodically
+  - **Use specific conditions**: Avoid overly broad trigger criteria
+  - **Document configurations**: Keep records of trigger settings
+</Callout>
+
+### Monitoring Setup
+- Enable workflow performance alerts
+- Set up integration health monitoring
+- Create dashboards for trigger success rates
+- Establish regular review processes
+
+### Backup Plans
+- Have manual alternatives for critical workflows
+- Maintain documentation for quick recovery
+- Test failover scenarios regularly
+- Keep contact information for integration support teams
+
+## Getting Additional Help
+
+If you can't resolve the trigger issue:
+
+**For technical issues:**
+- Check our [troubleshooting guide](/help/troubleshooting)
+- Review [integration documentation](/integrations)
+- Contact support at [support@aetherflow.com](mailto:support@aetherflow.com)
+
+**For integration-specific problems:**
+- Consult the service's API documentation
+- Check the service's status page
+- Contact the service's support team
+
+**For complex workflows:**
+- Schedule a consultation with our solutions team
+- Join our [community forum](/community) for peer advice
+- Request custom workflow assistance
+
+[Contact Support →](mailto:support@aetherflow.com)

@@ -1,0 +1,167 @@
+---
+title: What triggers are available?
+description: Explore different ways to automatically start your AetherFlow workflows
+---
+
+# What triggers are available?
+
+AetherFlow workflows can be triggered in multiple ways, allowing you to automate processes based on events, schedules, or manual actions. Choose the right trigger for your specific use case.
+
+## Event-Based Triggers
+
+### Email Triggers
+- **New email received** in Gmail or Outlook
+- **Email with specific keywords** in subject or body
+- **Email from specific senders** or domains
+- **Email attachments** processing
+
+### Form & Survey Triggers
+- **New form submission** (Typeform, Google Forms, etc.)
+- **Survey responses** with specific answers
+- **Contact form submissions** on websites
+- **Lead generation forms** from landing pages
+
+### CRM & Sales Triggers
+- **New lead/contact** added to CRM
+- **Deal/opportunity** status changes
+- **Customer data updates** in your CRM
+- **Sales milestone** achievements
+
+### E-commerce Triggers
+- **New orders** placed in your store
+- **Payment received** confirmations
+- **Shipping status** updates
+- **Inventory level** alerts
+
+### Social Media Triggers
+- **New mentions** or tags on social platforms
+- **Direct messages** received
+- **Post engagement** thresholds met
+- **Review/rating** submissions
+
+### File & Document Triggers
+- **New file uploaded** to cloud storage
+- **Document status** changes (approved, rejected)
+- **File sharing** notifications
+- **Document processing** completion
+
+## Time-Based Triggers
+
+### Schedule Triggers
+- **Daily** at specific times
+- **Weekly** on selected days and times
+- **Monthly** on specific dates
+- **Custom intervals** (every X hours/days)
+
+### Conditional Scheduling
+- **Business hours only** triggers
+- **Weekday vs weekend** scheduling
+- **Holiday exclusions** and custom calendars
+- **Time zone** specific execution
+
+## API & Webhook Triggers
+
+### Webhook Triggers
+- **HTTP POST** requests to your webhook URL
+- **Custom payload** processing
+- **Signature verification** for security
+- **Real-time event** processing
+
+### API Triggers
+- **REST API calls** to trigger workflows
+- **GraphQL mutations** support
+- **Authentication** via API keys or OAuth
+- **Rate limiting** and abuse protection
+
+## Manual Triggers
+
+### Button Triggers
+- **Dashboard buttons** for manual execution
+- **Mobile app** triggers
+- **Browser extensions** for quick actions
+- **Keyboard shortcuts** support
+
+### User-Initiated Triggers
+- **Form submissions** within AetherFlow
+- **Manual data entry** workflows
+- **Approval workflows** requiring user input
+- **Interactive workflows** with user decisions
+
+## Advanced Trigger Features
+
+### Conditional Triggers
+- **Multiple conditions** with AND/OR logic
+- **Data filtering** before workflow execution
+- **Threshold triggers** (when metrics exceed limits)
+- **Composite triggers** combining multiple events
+
+### Trigger Queues & Buffering
+- **Event batching** for high-volume triggers
+- **Queue management** for processing delays
+- **Duplicate prevention** for repeated events
+- **Retry logic** for failed trigger processing
+
+### Trigger Monitoring
+- **Trigger health** dashboards
+- **Event volume** tracking
+- **Failure rate** monitoring
+- **Performance analytics** for triggers
+
+## Choosing the Right Trigger
+
+### For Real-Time Automation
+Use **webhook** or **API triggers** for instant processing when events occur.
+
+### For Scheduled Tasks
+Use **time-based triggers** for regular reports, maintenance, or recurring processes.
+
+### For User-Initiated Workflows
+Use **button triggers** or **manual triggers** when human decision-making is required.
+
+### For Volume Processing
+Use **conditional triggers** with batching for high-volume data processing.
+
+## Trigger Best Practices
+
+<Callout type="info">
+  **Trigger Optimization Tips:**
+
+  - **Be specific**: Use precise conditions to avoid unnecessary executions
+  - **Test thoroughly**: Verify triggers work with real data before going live
+  - **Monitor performance**: Track trigger success rates and execution volumes
+  - **Use webhooks when possible**: More efficient than polling-based triggers
+</Callout>
+
+### Performance Considerations
+- **Rate limiting**: Respect API limits of connected services
+- **Batch processing**: Group similar events for efficiency
+- **Error handling**: Plan for trigger failures and retries
+- **Resource usage**: Monitor execution costs and plan limits
+
+### Security Considerations
+- **Validate sources**: Verify webhook signatures and API authentication
+- **Access controls**: Limit who can trigger sensitive workflows
+- **Audit logging**: Track all trigger events for compliance
+- **Data validation**: Sanitize input data from external triggers
+
+## Getting Started with Triggers
+
+<Steps>
+  <Step title="Identify your use case">
+    Determine what event or schedule should start your workflow
+  </Step>
+  <Step title="Choose trigger type">
+    Select the appropriate trigger from available options
+  </Step>
+  <Step title="Configure conditions">
+    Set specific criteria for when the trigger should fire
+  </Step>
+  <Step title="Test the trigger">
+    Verify the trigger works with sample data
+  </Step>
+  <Step title="Monitor performance">
+    Track trigger success and optimize as needed
+  </Step>
+</Steps>
+
+[Explore Trigger Options →](/workflows/triggers)
