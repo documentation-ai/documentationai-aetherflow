@@ -182,13 +182,77 @@
         ]
       },
       {
-        "tab": "Help & Support",
+        "tab": "Help Center",
         "icon": "help-circle",
-        "pages": [
+        "groups": [
           {
-            "title": "FAQ",
-            "path": "faq",
-            "icon": "question"
+            "group": "Getting Help",
+            "icon": "search",
+            "pages": [
+              {
+                "title": "Help Center",
+                "path": "help-center",
+                "icon": "home"
+              },
+              {
+                "title": "Support & Resources",
+                "path": "support-resources-help",
+                "icon": "headphones"
+              }
+            ]
+          },
+          {
+            "group": "Guides & Tutorials",
+            "icon": "book-open",
+            "pages": [
+              {
+                "title": "Getting Started",
+                "path": "getting-started-help",
+                "icon": "rocket"
+              },
+              {
+                "title": "Workflows & Automation",
+                "path": "workflows-automation-help",
+                "icon": "git-branch"
+              },
+              {
+                "title": "Integrations & APIs",
+                "path": "integrations-apis-help",
+                "icon": "plug"
+              },
+              {
+                "title": "Troubleshooting",
+                "path": "troubleshooting-help",
+                "icon": "alert-circle"
+              }
+            ]
+          },
+          {
+            "group": "Account & Billing",
+            "icon": "user",
+            "pages": [
+              {
+                "title": "Account Management",
+                "path": "account-billing-help",
+                "icon": "user"
+              },
+              {
+                "title": "Pricing & Plans",
+                "path": "pricing-plans-help",
+                "icon": "dollar-sign"
+              }
+            ]
+          },
+          {
+            "group": "Enterprise",
+            "icon": "building",
+            "pages": [
+              {
+                "title": "Enterprise Features",
+                "path": "enterprise-features-help",
+                "icon": "building"
+              }
+            ]
           }
         ]
       },
