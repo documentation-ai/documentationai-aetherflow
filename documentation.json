@@ -186,7 +186,10 @@
             "pages": [
               {
                 "title": "Custom Integration",
-                "path": "custom-integration"
+                "path": "custom-integration",
+                "openapi": "openapi.yaml GET /integrations",
+                "openapi-mode": "auto",
+                "method": "GET"
               }
             ]
           }
