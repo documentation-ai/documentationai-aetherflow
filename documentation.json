@@ -182,7 +182,16 @@
           {
             "group": "Endpoints",
             "openapi": "openapi.yaml",
-            "icon": "terminal"
+            "icon": "terminal",
+            "pages": [
+              {
+                "title": "Custom Integration",
+                "path": "custom-integration",
+                "openapi": "openapi.yaml GET /integrations",
+                "openapi-mode": "auto",
+                "method": "GET"
+              }
+            ]
           }
         ]
       },
