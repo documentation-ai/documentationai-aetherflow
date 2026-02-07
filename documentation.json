@@ -182,7 +182,10 @@
           {
             "group": "Endpoints",
             "openapi": "openapi.yaml",
-            "icon": "terminal"
+            "icon": "terminal",
+            "hidden-apis": [
+              "GET /analytics/workflows"
+            ]
           }
         ]
       },
