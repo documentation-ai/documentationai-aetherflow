@@ -3,7 +3,7 @@
   "initialRoute": "introduction",
   "colors": {
     "light": {
-      "brand": "#DD9000",
+      "brand": "#1a1a1a",
       "heading": "#1a1a1a",
       "text": "#374151"
     },
