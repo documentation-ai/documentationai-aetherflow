@@ -81,12 +81,12 @@
               {
                 "title": "Slack Integration",
                 "path": "slack-integration",
-                "icon": "message-circle"
+                "icon": "lucide-slack"
               },
               {
                 "title": "Microsoft Teams Integration",
                 "path": "microsoft-teams-integration",
-                "icon": "message-circle"
+                "icon": "lucide-users"
               },
               {
                 "title": "Discord Integration",
