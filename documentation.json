@@ -263,7 +263,33 @@
       },
       {
         "product": "Individuals",
-        "pages": []
+        "pages": [
+          {
+            "title": "Individuals overview",
+            "path": "individuals/individuals-overview",
+            "icon": "book-open"
+          },
+          {
+            "title": "Individuals quickstart",
+            "path": "individuals/individuals-getting-started",
+            "icon": "rocket"
+          },
+          {
+            "title": "Workflows for Individuals",
+            "path": "individuals/individuals-workflows",
+            "icon": "git-branch"
+          },
+          {
+            "title": "Integrations for Individuals",
+            "path": "individuals/individuals-integrations",
+            "icon": "plug"
+          },
+          {
+            "title": "Individuals FAQ",
+            "path": "individuals/individuals-faq",
+            "icon": "help-circle"
+          }
+        ]
       }
     ]
   },

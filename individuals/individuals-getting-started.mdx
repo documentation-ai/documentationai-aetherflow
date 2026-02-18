@@ -1,0 +1,230 @@
+---
+title: "Individuals quickstart"
+description: "Set up your Individuals account, create your first workflow, connect an integration, and run a test in a few minutes."
+---
+
+## Overview
+
+This quickstart walks you through the fastest path to value with Individuals:
+
+- Confirm your account and basic settings
+- Create your first workflow
+- Connect an integration
+- Run and verify a test
+- Fix common issues
+
+If you need a higher-level introduction before diving in, see the [Individuals overview](/individuals-overview).
+
+<Callout kind="info">
+
+This guide focuses on a simple, end-to-end setup. For more patterns and advanced options, check the dedicated [Individuals workflows](/individuals-workflows) and [Individuals integrations](/individuals-integrations) pages.
+
+</Callout>
+
+## Prerequisites
+
+Before you start, make sure you have:
+
+- A verified Individuals account
+- Access to at least one tool you want to connect (for example, a notes app, todo app, or calendar)
+- A recent browser (Chrome, Edge, Safari, or Firefox)
+
+If you have issues signing up or logging in, see the Individuals section in the general [help center](/help-center).
+
+## Step 1: Sign in and review your workspace
+
+<Steps>
+  <Step title="Open the Individuals app" icon="play-circle">
+
+  1. Navigate to the Individuals sign-in page.
+  2. Log in with the same email you used when you registered.
+  3. If prompted, complete any multi-factor or email verification.
+
+  </Step>
+  <Step title="Check your profile and time zone" icon="settings">
+
+  - Open your profile or settings menu.
+  - Confirm your name, email, and time zone are correct.
+  - Optionally enable error notifications so you are alerted when a workflow fails.
+
+  </Step>
+</Steps>
+
+<Callout kind="tip">
+
+If you plan to run time-based workflows (for example, every morning at 9:00), make sure your time zone is set correctly before you continue.
+
+</Callout>
+
+## Step 2: Create your first workflow
+
+You will now create a basic workflow that runs on a simple trigger and performs one or two actions.
+
+<Steps>
+  <Step title="Start a new workflow" icon="plus">
+
+  1. From the main navigation, go to the **Workflows** section.
+  2. Select **Create workflow**.
+  3. Give your workflow a clear name, for example `Daily summary` or `Capture ideas`.
+
+  </Step>
+
+  <Step title="Choose a trigger" icon="zap">
+
+  Common starter triggers include:
+
+  - **On schedule** (for example, every day at a specific time)
+  - **On new item** in a connected app (for example, new note or task)
+  - **On manual run** (you start it yourself when needed)
+
+  Select a trigger, then set any required options such as frequency, folders, or filters.
+
+  </Step>
+
+  <Step title="Add one or more actions" icon="code">
+
+  1. Click **Add step** or **Add action**.
+  2. Choose a simple action, for example:
+     - Create a note or task
+     - Append text to a daily log
+     - Send yourself a summary via email or chat
+  3. Configure the fields with fixed text or values from the trigger, such as title, content, or labels.
+
+  </Step>
+</Steps>
+
+To explore additional building blocks, see [Individuals workflows](/individuals-workflows).
+
+## Step 3: Connect an integration
+
+Most workflows rely on one or more integrations to read or write data to your tools.
+
+<Steps>
+  <Step title="Open the integrations catalog" icon="folder">
+
+  - Go to the **Integrations** section from the main navigation.
+  - Browse or search for the app you want to connect.
+
+  </Step>
+
+  <Step title="Authorize the integration" icon="lock">
+
+  1. Select the integration you want, then choose **Connect** or **Enable**.
+  2. When redirected, sign in to the external app if needed.
+  3. Review the permissions requested and approve if they look correct.
+
+  </Step>
+
+  <Step title="Return to your workflow and link the integration" icon="arrow-right">
+
+  - Reopen your workflow from the **Workflows** list.
+  - For each step that uses an external app, select the newly connected integration.
+  - If required, pick a specific workspace, project, or folder inside that app.
+
+  </Step>
+</Steps>
+
+You can find more details about each supported app on [Individuals integrations](/individuals-integrations).
+
+## Step 4: Run and test your workflow
+
+Before relying on a workflow, run a simple test to confirm that triggers and actions behave as expected.
+
+<Steps>
+  <Step title="Save and validate" icon="check-circle">
+
+  - Make sure all required fields in each step are filled in.
+  - Click **Save** or **Publish**.
+  - Resolve any validation messages before continuing.
+
+  </Step>
+
+  <Step title="Trigger a test run" icon="play-circle">
+
+  There are two common ways to test:
+
+  - **Manual test**:
+    - Use a **Run now** or **Test** button from the workflow editor.
+    - Provide any required test inputs when prompted.
+  - **Real trigger**:
+    - Perform the action that should trigger the workflow (for example, create a new note or task).
+    - Wait for the workflow to run based on your trigger conditions.
+
+  </Step>
+
+  <Step title="Check the run history and results" icon="bar-chart">
+
+  1. Open the **Run history** for your workflow.
+  2. Confirm that the test run appears with a `Success` status.
+  3. Verify the expected changes in your connected app (for example, new note, updated task, or message).
+
+  </Step>
+</Steps>
+
+If the workflow did not run or produced unexpected results, continue to the troubleshooting section.
+
+## Troubleshooting quick guide
+
+<ExpandableGroup>
+  <Expandable title="My workflow is not triggering" default-open="true">
+
+  - Confirm the workflow is **enabled** or **active**.
+  - Make sure the trigger conditions match your test (for example, correct folder, project, or time).
+  - Check that the integration used by the trigger is connected and not revoked.
+
+  For more in-depth help, see [Individuals workflows](/individuals-workflows) and the general [troubleshooting guide](/troubleshooting).
+
+  </Expandable>
+
+  <Expandable title="The integration connection fails or expires">
+
+  - Reopen the relevant item on [Individuals integrations](/individuals-integrations).
+  - Click **Reconnect** and complete the authorization flow again.
+  - If your external app has team or workspace permissions, confirm you have rights to install apps.
+
+  If the issue persists across multiple attempts, contact support using the help options from the app.
+
+  </Expandable>
+
+  <Expandable title="The workflow runs but the output is not what I expect">
+
+  - Review each step in the editor and confirm fields are mapped correctly.
+  - Use the run history to inspect inputs and outputs for each step.
+  - Simplify the workflow by disabling optional steps, then re-test.
+
+  When you know the pattern you want to implement, the [Individuals workflows](/individuals-workflows) page has more examples and design tips.
+
+  </Expandable>
+
+  <Expandable title="Where can I find more Individuals help?">
+
+  For more common questions about Individuals, see:
+
+  - [Individuals overview](/individuals-overview)
+  - [Individuals workflows](/individuals-workflows)
+  - [Individuals integrations](/individuals-integrations)
+  - [Individuals FAQ](/individuals-faq)
+
+  </Expandable>
+</ExpandableGroup>
+
+## Next steps
+
+You now have a basic Individuals workflow connected to at least one integration and verified with a test run.
+
+To go further:
+
+<Columns cols={2}>
+  <Card title="Explore workflow patterns" href="/individuals-workflows" icon="git-branch" cta="Open workflows">
+
+  Learn how to design multi-step workflows, reuse common patterns, and handle errors.
+
+  </Card>
+  <Card title="Connect more tools" href="/individuals-integrations" icon="plug" cta="View integrations">
+
+  Discover additional apps to connect so your workflows can span more of your daily tools.
+
+  </Card>
+</Columns>
+
+If you have questions about limits, pricing, or data handling for Individuals, check the [Individuals FAQ](/individuals-faq).

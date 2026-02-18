@@ -1,0 +1,237 @@
+---
+title: Integrations for Individuals
+description: Learn how Individuals accounts connect to third‑party apps, manage permissions, keep data secure, and troubleshoot common integration issues.
+---
+
+## What integrations are for Individuals
+
+As an Individual, integrations (also called connections) let your account securely access data and actions in third‑party tools such as email, chat, storage, or project management apps.
+
+When you connect an app:
+
+- You approve access via the app&apos;s own sign‑in screen (typically OAuth).
+- We receive a short‑lived authorization code and exchange it for tokens.
+- Your workflows can then read or update data in that app according to the permissions you granted.
+
+<Callout kind="info">
+
+New to Individuals? Start with the [Individuals overview](/individuals-overview) and [Individuals getting started](/individuals-getting-started) before adding integrations.
+
+</Callout>
+
+## Security and data access
+
+Integrations for Individuals are designed around three principles:
+
+- **Consent:** Nothing is connected unless you explicitly approve it.
+- **Scoping:** Each integration is limited to the permissions you grant.
+- **Revocation:** You can disconnect at any time, both from your account and from the third‑party app.
+
+### What we can see and do
+
+The exact data access depends on each app and the scopes you approve, but in general:
+
+- We store encrypted access tokens so your workflows can call the app&apos;s API.
+- We only read or modify data when a workflow you created runs and needs that data.
+- We log integration usage so you can audit which workflows used which connection.
+
+<Callout kind="tip">
+
+For details on how data is stored and encrypted across the platform, see [Data privacy and compliance](/data-privacy-compliance).
+
+</Callout>
+
+## Connecting a new integration
+
+You typically connect integrations from your Individuals settings or when configuring a workflow step that needs an app.
+
+<Steps>
+
+<Step title="Open your Individuals integrations" icon="settings">
+
+- Sign in to your Individuals account.
+- Go to **Settings** and open the **Integrations** or **Connections** tab.
+
+</Step>
+
+<Step title="Choose the app to connect" icon="plus">
+
+- Click **Connect** next to the app you want to use.
+- Review the short description of what the integration can do.
+
+</Step>
+
+<Step title="Approve access in the third‑party app" icon="lock">
+
+- You are redirected to the app&apos;s sign‑in or consent screen.
+- Sign in (if needed) and review the requested permissions.
+- Click **Allow**, **Approve**, or the equivalent button to grant access.
+
+</Step>
+
+<Step title="Finish setup and test" icon="check-circle">
+
+- You are redirected back to your Individuals account.
+- The new connection appears as **Connected**.
+- Optionally run a test workflow or a sample action to confirm everything works.
+
+</Step>
+
+</Steps>
+
+### Connecting from a workflow
+
+You can also connect an app while building a workflow:
+
+1. Create or open a workflow in your Individuals workspace.
+2. Add a step that uses the app (for example, &quot;Send email&quot; or &quot;Post to chat&quot;).
+3. When prompted to choose a connection, click **New connection** and follow the same approval flow.
+
+For an end‑to‑end example of using integrations inside automations, see [Individuals workflows](/individuals-workflows).
+
+## Permission scopes and least privilege
+
+Most apps support granular permission scopes, such as:
+
+- Read‑only vs. read/write
+- Access to a single calendar, channel, or project instead of your entire account
+- Limited access to metadata (for example, message subjects only)
+
+To follow least‑privilege best practices:
+
+- **Grant the smallest scope that still lets your workflow succeed.**
+- **Create separate connections** for different purposes (for example, a read‑only connection for analytics workflows, a write‑enabled one for notifications).
+- **Avoid reusing personal connections** for testing in shared contexts; instead, keep a dedicated automation or service account where the app supports it.
+
+<Callout kind="success">
+
+You can update permissions at any time by disconnecting and reconnecting an app with different scopes.
+
+</Callout>
+
+## Disconnecting an integration
+
+You can revoke access from either your Individuals account or directly in the third‑party app. For full revocation, do both.
+
+<Steps>
+
+<Step title="Disconnect from your Individuals account" icon="trash">
+
+- Go to **Settings → Integrations**.
+- Find the connected app.
+- Click **Disconnect** or **Remove**.
+- Confirm you understand existing workflows using this connection may fail until you reconnect.
+
+</Step>
+
+<Step title="Revoke access in the third‑party app" icon="shield">
+
+- Open the third‑party app&apos;s security or connected apps settings.
+- Locate the connection associated with your Individuals account.
+- Revoke or remove access to ensure any remaining tokens are invalidated.
+
+</Step>
+
+</Steps>
+
+After disconnecting, workflows that depended on that integration will return authentication errors until you reconnect or update them to use a different connection.
+
+## Troubleshooting authentication issues
+
+Authentication failures usually fall into a few categories.
+
+<ExpandableGroup>
+
+<Expandable title="Expired or revoked tokens" default-open="true">
+
+Common symptoms:
+
+- Workflows that used to work start failing with unauthorized errors.
+- Logs mention &quot;token expired&quot; or &quot;invalid_grant&quot;.
+
+How to fix:
+
+1. Go to **Settings → Integrations**.
+2. Click **Reconnect** (if available) or disconnect and connect the app again.
+3. Re‑run the affected workflow.
+
+</Expandable>
+
+<Expandable title="Changed password or multi‑factor settings">
+
+If you recently changed your password or security settings in the connected app, it may invalidate existing tokens.
+
+To resolve:
+
+1. Sign in to the third‑party app and confirm your account is active.
+2. Reconnect the integration from your Individuals settings.
+3. If the app requires additional verification, complete those steps during the consent flow.
+
+</Expandable>
+
+<Expandable title="Insufficient permissions or missing scopes">
+
+If a workflow fails with errors like &quot;forbidden&quot; or &quot;missing_scope&quot;:
+
+1. Review the specific action the workflow is trying to perform.
+2. Disconnect the integration.
+3. Reconnect the app, carefully granting the scopes required for that action.
+4. Re‑run the workflow to confirm.
+
+</Expandable>
+
+<Expandable title="App‑side restrictions or admin policies">
+
+Some apps restrict third‑party access based on organization or admin policy. If you see messages about blocked access or disallowed apps:
+
+1. Check whether your account is allowed to install third‑party apps.
+2. If you are using a work account, contact your admin.
+3. Consider connecting with a different account that permits automations, if appropriate.
+
+</Expandable>
+
+</ExpandableGroup>
+
+If problems persist, see [Individuals FAQ](/individuals-faq) or the broader [Troubleshooting guide](/troubleshooting-help) for more help.
+
+## Best practices for Individuals integrations
+
+Use these guidelines to keep your personal automations safe and manageable:
+
+- **Prefer least privilege:** Always choose the narrowest reasonable scopes.
+- **Review connections regularly:** Periodically remove integrations you no longer use.
+- **Separate testing from production:** Use a dedicated test integration for experiments so you do not accidentally affect important data.
+- **Audit workflows after changes:** If you change or disconnect a connection, review the workflows that used it.
+- **Avoid sharing credentials:** Do not share connected accounts or tokens. If someone needs access, share the workflow logic, not your login.
+
+<Columns cols={2}>
+
+<Card title="Individuals overview" href="/individuals-overview" icon="book-open" cta="Read overview">
+
+High‑level tour of Individuals features, including how integrations fit into your account.
+
+</Card>
+
+<Card title="Getting started for Individuals" href="/individuals-getting-started" icon="play-circle" cta="Start here">
+
+Step‑by‑step guide to creating your first workflows and adding your first integration.
+
+</Card>
+
+</Columns>
+
+<Columns cols={2}>
+
+<Card title="Individuals workflows" href="/individuals-workflows" icon="zap" cta="Build automations">
+
+Learn how to design workflows that use your connected apps safely and effectively.
+
+</Card>
+
+<Card title="Individuals FAQ" href="/individuals-faq" icon="help-circle" cta="View common questions">
+
+Answers to common questions about Individuals accounts, security, and integrations.
+
+</Card>
+
+</Columns>

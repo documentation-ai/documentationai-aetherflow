@@ -1,0 +1,288 @@
+---
+title: Workflows for Individuals
+description: Learn how to design, test, and maintain reliable workflows as an individual user, including triggers, steps, runs, error handling, and example recipes.
+---
+
+## Overview
+
+Workflows for Individuals let you automate personal tasks and routines: from reacting to events in your favorite apps to running scheduled cleanups or notifications.
+
+If you are new to Individuals, start with the [overview](/individuals-overview) and [getting started](/individuals-getting-started) guides, then return here to design your first production-ready workflow.
+
+<Callout kind="info">
+
+This page focuses on **how** to structure and operate workflows as an individual user. For connecting specific tools, see [Individuals integrations](/individuals-integrations). For common questions, see the [Individuals FAQ](/individuals-faq).
+
+</Callout>
+
+## Core workflow concepts
+
+### Triggers
+
+A **trigger** is what starts a workflow run. Typical trigger types:
+
+- **Event triggers**: fire when something happens in a connected app (for example, new email received, task created).
+- **Schedule triggers**: run at a defined time or interval (for example, every morning at 8:00).
+- **Manual triggers**: start when you click a button or call an endpoint.
+
+Good trigger design:
+
+- Be **specific** (for example, "new starred email in Inbox" instead of "any new email").
+- Filter as early as possible to avoid unnecessary runs.
+- Prefer a **single, clear entry point** per workflow.
+
+### Steps
+
+A **step** is an action, transformation, or decision in your workflow. Common step types:
+
+- **Actions**: send a message, create a task, update a record.
+- **Logic**: conditionals (if/else), branching, and loops.
+- **Utilities**: format text, parse dates, map fields between apps.
+
+Tips for step design:
+
+- Keep each step **single-purpose** (do one thing well).
+- Name steps after their outcome (for example, "Create follow-up task" instead of "Step 3").
+- Centralize reusable logic (for example, "Normalize contact data") instead of repeating it.
+
+### Runs
+
+A **run** is a single execution of a workflow from trigger to completion.
+
+Each run should have:
+
+- A unique identifier.
+- A status (for example, `success`, `failed`, `canceled`).
+- A timeline of executed steps and their outputs.
+
+Use runs to:
+
+- Debug behavior (what happened and why).
+- Measure performance (how long it takes to complete).
+- Monitor reliability (how often runs fail or are retried).
+
+## Recommended workflow structure
+
+### Keep one responsibility per workflow
+
+Design workflows around a clear, user-facing outcome:
+
+- "Turn important emails into tasks."
+- "Summarize my calendar each morning."
+- "Sync notes to a backup notebook."
+
+Avoid workflows that:
+
+- Mix unrelated responsibilities.
+- Depend on many fragile conditions.
+- Are hard to explain in one sentence.
+
+### Suggested layout
+
+A simple structure that works well for most Individuals workflows:
+
+1. **Trigger & initial filters**
+   - Receive the event or schedule.
+   - Discard runs that clearly do not matter.
+
+2. **Normalization & context**
+   - Clean up text and dates.
+   - Fetch any related data you need once and reuse it.
+
+3. **Decision logic**
+   - Branch on relevant conditions (importance, labels, source app).
+   - Keep branching shallow and readable.
+
+4. **Actions**
+   - Perform the minimal set of external actions.
+   - Group related updates when possible to reduce noise.
+
+5. **Notifications & logging**
+   - Optionally notify yourself when something important happens.
+   - Store enough information to understand what the workflow did.
+
+<Steps>
+
+<Step title="Example structure: Inbox to task list" icon="git-branch">
+
+1. Trigger on **new important email**.
+2. Filter out newsletters and automated notifications.
+3. Extract subject, sender, and due date hints from the email.
+4. Decide priority based on sender and keywords.
+5. Create a task in your task manager with parsed details.
+6. Add a short log entry so you can later audit what was created.
+
+</Step>
+
+</Steps>
+
+## Error handling and resilience
+
+### Design for failure
+
+Assume that:
+
+- External apps can be temporarily unavailable.
+- Individual steps can fail for a subset of inputs.
+- Configuration (for example, credentials, channels) might change over time.
+
+Common patterns for resilient workflows:
+
+- Validate inputs early (for example, require a non-empty title before creating a task).
+- Use safe defaults when optional data is missing.
+- Guard integrations behind feature flags or conditionals when experimenting.
+
+<Callout kind="tip">
+
+When you add a new integration step, first protect it with a simple condition such as "only run when a specific label or tag is present" until you are confident it behaves as expected.
+
+</Callout>
+
+### Handling step failures
+
+A practical approach for Individuals:
+
+- **Fail fast** on critical steps that must succeed (for example, creating a calendar event).
+- **Skip non-critical steps** when they fail (for example, optional notification) and continue the run.
+- Add **clear error messages** to failed runs so you can quickly see what went wrong.
+
+Examples of error handling strategies:
+
+- Wrap fragile steps in conditionals (for example, "only send DM if chat handle is set").
+- Provide fallback values (for example, use today as a due date if a date cannot be parsed).
+- Use separate workflows for "happy path" and "exception handling" when things get complex.
+
+## Testing workflows safely
+
+### Use test inputs
+
+Before you rely on a workflow for daily use:
+
+1. Create or select test data in your connected apps.
+2. Run the workflow **manually** with that input where available.
+3. Inspect the run details after each change.
+
+Focus on testing:
+
+- Typical inputs that you expect most often.
+- Edge cases (missing fields, very long text, unusual characters).
+- Failure paths (for example, disconnected integrations).
+
+### Use sandbox destinations when possible
+
+Where your tools support it:
+
+- Send outputs to a **test project, notebook, or calendar** first.
+- Use a dedicated test channel or email address for notifications.
+- Move to your real destination only after runs look consistently correct.
+
+## Versioning personal workflows
+
+Even as an individual user, treating workflows as versioned artifacts makes changes safer.
+
+Recommended practices:
+
+- Maintain a clear **version label** or note in the workflow description.
+- When making risky changes, **duplicate** the workflow and experiment in the copy.
+- Keep a short **change log** in the description (for example, "v2: added calendar step, v3: new filters for newsletters").
+
+<ExpandableGroup>
+
+<Expandable title="When to create a new version" default-open="true">
+
+Create a new workflow version instead of editing in place when:
+
+- You are changing the trigger behavior.
+- You are adding or removing major integrations.
+- You cannot afford disruptions (for example, important reminders or backups).
+
+Run the new version in parallel for a while, then disable the old one when you are confident it is stable.
+
+</Expandable>
+
+<Expandable title="When to edit in place" default-open="false">
+
+It is usually safe to edit a workflow directly when:
+
+- You are only updating labels, descriptions, or notification text.
+- You are fixing an obvious bug with a very small change.
+- You are adding extra logging without changing behavior.
+
+Even for small edits, test with a manual run if the workflow is critical.
+
+</Expandable>
+
+</ExpandableGroup>
+
+## Example workflow recipes
+
+### Recipe 1: Turn starred emails into follow-up tasks
+
+Use this when you star emails that need a response and want an up-to-date task list.
+
+<Steps>
+
+<Step title="Define the trigger" icon="zap">
+
+- Trigger: new email in your inbox.
+- Filter: only emails where you are the direct recipient.
+- Additional filter: only when the email is **starred** or marked important.
+
+</Step>
+
+<Step title="Map email to task fields" icon="settings">
+
+- Title: email subject.
+- Description: short summary including sender and the first lines of the email.
+- Due date: tomorrow for high-priority emails, two days later for others.
+- Labels: add labels such as `email`, `follow-up`.
+
+</Step>
+
+<Step title="Create and confirm the task" icon="check-circle">
+
+- Create a task in your chosen task manager.
+- Optionally post a confirmation to a private chat or email so you can see what was created.
+- Log the created task identifier on the run for quick debugging.
+
+</Step>
+
+</Steps>
+
+### Recipe 2: Daily agenda summary
+
+Get a daily digest of your upcoming day without opening your calendar and task apps.
+
+<Steps>
+
+<Step title="Schedule the trigger" icon="clock">
+
+- Trigger: schedule at **7:00 local time** every weekday.
+- Optional: add a condition to skip holidays if your calendar exposes them.
+
+</Step>
+
+<Step title="Collect events and tasks" icon="database">
+
+- Fetch calendar events for the next 24 hours.
+- Fetch tasks due today or overdue.
+- Sort by time and importance.
+
+</Step>
+
+<Step title="Generate and send the summary" icon="send">
+
+- Format a compact text summary: meetings, tasks, and any blockers.
+- Send the summary to your preferred destination: email, chat DM, or notes.
+- Include a link back to the individual items where possible.
+
+</Step>
+
+</Steps>
+
+## Where to go next
+
+- Learn the overall Individuals experience in the [Individuals overview](/individuals-overview).
+- Build and activate your first workflow with [Individuals getting started](/individuals-getting-started).
+- Explore available apps and connections in [Individuals integrations](/individuals-integrations).
+- Troubleshoot and refine your setup using the [Individuals FAQ](/individuals-faq).
