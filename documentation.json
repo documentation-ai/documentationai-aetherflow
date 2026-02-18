@@ -33,228 +33,237 @@
   },
   "template": "classic",
   "navigation": {
-    "tabs": [
+    "products": [
       {
-        "tab": "Home",
-        "icon": "book-open",
-        "groups": [
+        "product": "Teams",
+        "tabs": [
           {
-            "group": "Getting Started",
-            "icon": "rocket",
-            "pages": [
+            "tab": "Home",
+            "icon": "book-open",
+            "groups": [
               {
-                "title": "Introduction",
-                "path": "introduction",
-                "icon": "home"
+                "group": "Getting Started",
+                "icon": "rocket",
+                "pages": [
+                  {
+                    "title": "Introduction",
+                    "path": "introduction",
+                    "icon": "home"
+                  },
+                  {
+                    "title": "Getting Started",
+                    "path": "getting-started",
+                    "icon": "play"
+                  },
+                  {
+                    "title": "Use Cases & Examples",
+                    "path": "use-cases",
+                    "icon": "lightbulb"
+                  },
+                  {
+                    "title": "Migration Guide",
+                    "path": "migration-guide",
+                    "icon": "arrow-right"
+                  }
+                ]
               },
               {
-                "title": "Getting Started",
-                "path": "getting-started",
-                "icon": "play"
+                "group": "Core Features",
+                "icon": "zap",
+                "pages": [
+                  {
+                    "title": "Workflows",
+                    "path": "workflows",
+                    "icon": "git-branch"
+                  },
+                  {
+                    "title": "Integrations",
+                    "path": "integrations",
+                    "icon": "plug"
+                  },
+                  {
+                    "title": "Slack Integration",
+                    "path": "slack-integration",
+                    "icon": "lucide-slack"
+                  },
+                  {
+                    "title": "Microsoft Teams Integration",
+                    "path": "microsoft-teams-integration",
+                    "icon": "lucide-users"
+                  },
+                  {
+                    "title": "Discord Integration",
+                    "path": "discord-integration",
+                    "icon": "message-circle"
+                  },
+                  {
+                    "title": "Advanced Features",
+                    "path": "advanced-features",
+                    "icon": "settings"
+                  },
+                  {
+                    "title": "Best Practices",
+                    "path": "best-practices",
+                    "icon": "check-circle"
+                  },
+                  {
+                    "title": "Performance Optimization",
+                    "path": "performance-optimization",
+                    "icon": "zap"
+                  }
+                ]
               },
               {
-                "title": "Use Cases & Examples",
-                "path": "use-cases",
-                "icon": "lightbulb"
+                "group": "Monitoring & Analytics",
+                "icon": "bar-chart",
+                "pages": [
+                  {
+                    "title": "Analytics & Monitoring",
+                    "path": "analytics-monitoring",
+                    "icon": "activity"
+                  },
+                  {
+                    "title": "Troubleshooting Guide",
+                    "path": "troubleshooting",
+                    "icon": "alert-circle"
+                  }
+                ]
               },
               {
-                "title": "Migration Guide",
-                "path": "migration-guide",
-                "icon": "arrow-right"
+                "group": "Team & Enterprise",
+                "icon": "users",
+                "pages": [
+                  {
+                    "title": "Team Collaboration",
+                    "path": "team-collaboration",
+                    "icon": "user-plus"
+                  },
+                  {
+                    "title": "Enterprise Features",
+                    "path": "enterprise-features",
+                    "icon": "building"
+                  },
+                  {
+                    "title": "Pricing & Plans",
+                    "path": "pricing-plans",
+                    "icon": "dollar-sign"
+                  },
+                  {
+                    "title": "Data Privacy & Compliance",
+                    "path": "data-privacy-compliance",
+                    "icon": "lock"
+                  }
+                ]
               }
             ]
           },
           {
-            "group": "Core Features",
-            "icon": "zap",
-            "pages": [
+            "tab": "API Reference",
+            "icon": "code",
+            "groups": [
               {
-                "title": "Workflows",
-                "path": "workflows",
-                "icon": "git-branch"
+                "group": "REST API",
+                "icon": "server",
+                "pages": [
+                  {
+                    "title": "API Authentication & Security",
+                    "path": "api-authentication",
+                    "icon": "key"
+                  },
+                  {
+                    "title": "SDK Documentation",
+                    "path": "sdk-documentation",
+                    "icon": "code"
+                  },
+                  {
+                    "title": "Webhooks",
+                    "path": "webhooks",
+                    "icon": "webhook"
+                  }
+                ]
               },
               {
-                "title": "Integrations",
-                "path": "integrations",
-                "icon": "plug"
-              },
-              {
-                "title": "Slack Integration",
-                "path": "slack-integration",
-                "icon": "lucide-slack"
-              },
-              {
-                "title": "Microsoft Teams Integration",
-                "path": "microsoft-teams-integration",
-                "icon": "lucide-users"
-              },
-              {
-                "title": "Discord Integration",
-                "path": "discord-integration",
-                "icon": "message-circle"
-              },
-              {
-                "title": "Advanced Features",
-                "path": "advanced-features",
-                "icon": "settings"
-              },
-              {
-                "title": "Best Practices",
-                "path": "best-practices",
-                "icon": "check-circle"
-              },
-              {
-                "title": "Performance Optimization",
-                "path": "performance-optimization",
-                "icon": "zap"
+                "group": "Endpoints",
+                "openapi": "openapi.yaml",
+                "icon": "terminal",
+                "pages": []
               }
             ]
           },
           {
-            "group": "Monitoring & Analytics",
-            "icon": "bar-chart",
-            "pages": [
+            "tab": "Help Center",
+            "icon": "help-circle",
+            "groups": [
               {
-                "title": "Analytics & Monitoring",
-                "path": "analytics-monitoring",
-                "icon": "activity"
+                "group": "Getting Help",
+                "icon": "search",
+                "pages": [
+                  {
+                    "title": "Help Center",
+                    "path": "help-center",
+                    "icon": "home"
+                  },
+                  {
+                    "title": "Support & Resources",
+                    "path": "support-resources-help",
+                    "icon": "headphones"
+                  }
+                ]
               },
               {
-                "title": "Troubleshooting Guide",
-                "path": "troubleshooting",
-                "icon": "alert-circle"
+                "group": "Help Categories",
+                "icon": "folder",
+                "pages": [
+                  {
+                    "title": "Getting Started",
+                    "path": "getting-started",
+                    "icon": "rocket"
+                  },
+                  {
+                    "title": "Workflows & Automation",
+                    "path": "workflows",
+                    "icon": "git-branch"
+                  },
+                  {
+                    "title": "Integrations & APIs",
+                    "path": "integrations",
+                    "icon": "plug"
+                  },
+                  {
+                    "title": "Troubleshooting",
+                    "path": "troubleshooting",
+                    "icon": "alert-circle"
+                  },
+                  {
+                    "title": "Pricing & Billing",
+                    "path": "pricing",
+                    "icon": "dollar-sign"
+                  },
+                  {
+                    "title": "Enterprise Features",
+                    "path": "enterprise",
+                    "icon": "building"
+                  }
+                ]
               }
             ]
           },
           {
-            "group": "Team & Enterprise",
-            "icon": "users",
+            "tab": "Changelog",
+            "icon": "clock",
             "pages": [
               {
-                "title": "Team Collaboration",
-                "path": "team-collaboration",
-                "icon": "user-plus"
-              },
-              {
-                "title": "Enterprise Features",
-                "path": "enterprise-features",
-                "icon": "building"
-              },
-              {
-                "title": "Pricing & Plans",
-                "path": "pricing-plans",
-                "icon": "dollar-sign"
-              },
-              {
-                "title": "Data Privacy & Compliance",
-                "path": "data-privacy-compliance",
-                "icon": "lock"
+                "title": "Release History",
+                "path": "changelog",
+                "icon": "history"
               }
             ]
           }
         ]
       },
       {
-        "tab": "API Reference",
-        "icon": "code",
-        "groups": [
-          {
-            "group": "REST API",
-            "icon": "server",
-            "pages": [
-              {
-                "title": "API Authentication & Security",
-                "path": "api-authentication",
-                "icon": "key"
-              },
-              {
-                "title": "SDK Documentation",
-                "path": "sdk-documentation",
-                "icon": "code"
-              },
-              {
-                "title": "Webhooks",
-                "path": "webhooks",
-                "icon": "webhook"
-              }
-            ]
-          },
-          {
-            "group": "Endpoints",
-            "openapi": "openapi.yaml",
-            "icon": "terminal",
-            "pages": []
-          }
-        ]
-      },
-      {
-        "tab": "Help Center",
-        "icon": "help-circle",
-        "groups": [
-          {
-            "group": "Getting Help",
-            "icon": "search",
-            "pages": [
-              {
-                "title": "Help Center",
-                "path": "help-center",
-                "icon": "home"
-              },
-              {
-                "title": "Support & Resources",
-                "path": "support-resources-help",
-                "icon": "headphones"
-              }
-            ]
-          },
-          {
-            "group": "Help Categories",
-            "icon": "folder",
-            "pages": [
-              {
-                "title": "Getting Started",
-                "path": "getting-started",
-                "icon": "rocket"
-              },
-              {
-                "title": "Workflows & Automation",
-                "path": "workflows",
-                "icon": "git-branch"
-              },
-              {
-                "title": "Integrations & APIs",
-                "path": "integrations",
-                "icon": "plug"
-              },
-              {
-                "title": "Troubleshooting",
-                "path": "troubleshooting",
-                "icon": "alert-circle"
-              },
-              {
-                "title": "Pricing & Billing",
-                "path": "pricing",
-                "icon": "dollar-sign"
-              },
-              {
-                "title": "Enterprise Features",
-                "path": "enterprise",
-                "icon": "building"
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "tab": "Changelog",
-        "icon": "clock",
-        "pages": [
-          {
-            "title": "Release History",
-            "path": "changelog",
-            "icon": "history"
-          }
-        ]
+        "product": "Individuals",
+        "pages": []
       }
     ]
   },
