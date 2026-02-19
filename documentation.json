@@ -274,7 +274,7 @@
         "product": "For Individuals",
         "tabs": [
           {
-            "tab": "Home",
+            "tab": "Guides",
             "pages": [
               {
                 "title": "Individuals overview",
@@ -308,7 +308,7 @@
             "pages": []
           },
           {
-            "tab": "Help Center",
+            "tab": "Contact Support",
             "pages": []
           }
         ]
