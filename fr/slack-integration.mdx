@@ -1,0 +1,255 @@
+---
+title: Intégration Slack
+
+description: Connectez AetherFlow à Slack pour automatiser les notifications, les mises à jour d'équipe et les communications de flux de travail
+---
+
+## Vue d'ensemble
+
+L'intégration Slack permet une communication fluide entre les flux de travail AetherFlow et vos espaces de travail Slack. Envoyez des notifications automatisées, publiez des mises à jour, créez des canaux et déclenchez des flux de travail depuis des événements Slack. Cette intégration prend en charge les messages entrants et sortants, les webhooks et la gestion des événements en temps réel.
+
+<Columns cols={2}>
+  <Card title="Fonctionnalités clés" icon="zap">
+    - Notifications automatisées depuis les flux de travail
+    - Publication dans des canaux et messages directs
+    - Déclencheurs d'événements Slack
+    - Traitement des messages en temps réel
+    - Configurations de bot personnalisées
+  </Card>
+  <Card title="Cas d'utilisation" icon="target">
+    - Alertes de fin d'exécution des flux de travail
+    - Mises à jour de statut d'équipe
+    - Notifications d'incidents
+    - Rapports de synthèse quotidiens
+    - Demandes d'approbation
+  </Card>
+</Columns>
+
+## Configuration de l'intégration Slack
+
+Accédez au tableau de bord des intégrations dans AetherFlow et sélectionnez Slack parmi les options disponibles. Vous aurez besoin des permissions d'administrateur de l'espace de travail Slack pour terminer la configuration.
+
+<Steps>
+  <Step title="Créer une application Slack" icon="settings">
+    Accédez à l'[API Slack](https://api.slack.com/apps) et créez une nouvelle application pour votre espace de travail. Choisissez « À partir de zéro » et fournissez un nom et un espace de travail.
+  </Step>
+  <Step title="Configurer les permissions" icon="key">
+    Ajoutez les portées OAuth suivantes dans la section « OAuth & Permissions » :
+    - `channels:read` - Accéder aux canaux publics
+    - `channels:write` - Publier des messages dans les canaux
+    - `chat:write` - Envoyer des messages
+    - `chat:write.public` - Publier dans les canaux publics
+    - `files:write` - Téléverser des fichiers
+    - `users:read` - Accéder aux informations des utilisateurs
+  </Step>
+  <Step title="Installer dans l'espace de travail" icon="download">
+    Installez l'application dans votre espace de travail et copiez le jeton OAuth du bot utilisateur.
+  </Step>
+  <Step title="Connecter dans AetherFlow" icon="link">
+    Collez le jeton dans la configuration de l'intégration AetherFlow et autorisez la connexion.
+    ```bash
+    # Alternative: CLI setup
+    aetherflow integrations connect slack --token xoxb-your-bot-token
+    ```
+  </Step>
+</Steps>
+
+## Options de configuration
+
+### Configuration du bot
+
+Personnalisez l'apparence et le comportement de votre bot Slack :
+
+<Columns cols={2}>
+  <Card title="Paramètres de base" icon="settings">
+    Définissez le nom du bot, l'icône et le canal par défaut pour les notifications.
+    <CodeGroup tabs="JSON,Environment">
+      ```json
+      {
+        "bot_name": "AetherFlow Bot",
+        "icon_emoji": ":robot_face:",
+        "default_channel": "#general"
+      }
+      ```
+      ```bash
+      export SLACK_BOT_NAME="AetherFlow Bot"
+      export SLACK_ICON_EMOJI=":robot_face:"
+      export SLACK_DEFAULT_CHANNEL="#general"
+      ```
+    </CodeGroup>
+  </Card>
+  <Card title="Paramètres avancés" icon="cog">
+    Configurez la mise en forme des messages, la logique de nouvelle tentative et la limitation du débit.
+    <Expandable title="Limitation du débit">
+      Slack autorise 1 message par seconde par canal. AetherFlow gère cela automatiquement par mise en file d'attente.
+    </Expandable>
+  </Card>
+</Columns>
+
+### Gestion des canaux
+
+Gérez les canaux auxquels votre bot peut accéder et dans lesquels il peut publier :
+
+| Niveau d'autorisation | Description | Cas d'utilisation |
+|-----------------------|-------------|-------------------|
+| Canaux publics | Publier dans n'importe quel canal public | Annonces d'équipe |
+| Canaux privés | Nécessite une invitation dans les canaux privés | Mises à jour confidentielles |
+| Messages directs | Envoyer des DM aux utilisateurs | Notifications personnelles |
+
+## Utilisation de Slack dans les flux de travail
+
+### Publication de messages de base
+
+Référencez Slack dans les invites de votre flux de travail naturellement :
+
+```
+Lorsqu'un nouveau client s'inscrit, publiez un message de bienvenue dans le canal #customer-success sur Slack.
+```
+
+### Exemples d'automatisation avancée
+
+<CodeGroup tabs="JavaScript,Python">
+  ```javascript
+  // Post formatted message with attachments
+  const message = {
+    channel: '#alerts',
+    text: '🚨 System Alert',
+    blocks: [
+      {
+        type: 'section',
+        text: {
+          type: 'mrkdwn',
+          text: '*Alert:* Database connection issues detected'
+        }
+      },
+      {
+        type: 'actions',
+        elements: [
+          {
+            type: 'button',
+            text: { type: 'plain_text', text: 'Investigate' },
+            action_id: 'investigate_alert'
+          }
+        ]
+      }
+    ]
+  };
+
+  await slack.postMessage(message);
+  ```
+
+  ```python
+  # Send file with workflow results
+  from aetherflow import SlackClient
+
+  slack = SlackClient()
+  slack.upload_file(
+      channels=['#reports'],
+      filename='weekly_summary.pdf',
+      file=open('summary.pdf', 'rb'),
+      title='Weekly Performance Summary',
+      initial_comment='Here\'s this week\'s summary report 📊'
+  )
+  ```
+</CodeGroup>
+
+### Déclencheurs d'événements
+
+Configurez des flux de travail qui répondent aux événements Slack :
+
+- **Événements de message** : se déclencher sur des mots-clés ou des modèles spécifiques
+- **Événements de canal** : réagir aux nouveaux canaux ou aux nouvelles adhésions
+- **Événements de réaction** : traiter les réactions emoji
+- **Événements de mention** : répondre quand le bot est mentionné
+
+Exemple d'invite de déclencheur :
+```
+Lorsque quelqu'un mentionne @AetherFlow dans Slack avec « urgent », créez un ticket haute priorité et notifiez l'ingénieur d'astreinte.
+```
+
+## Intégration des webhooks
+
+Pour les événements Slack en temps réel, configurez les webhooks :
+
+<Steps>
+  <Step title="Activer les événements" icon="webhook">
+    Dans les paramètres de votre application Slack, accédez à « Abonnements aux événements » et activez les événements.
+  </Step>
+  <Step title="S'abonner aux événements" icon="bell">
+    Ajoutez des abonnements aux événements de bot tels que `message.channels`, `reaction_added`.
+  </Step>
+  <Step title="Définir l'URL de la requête" icon="link">
+    Utilisez votre URL de webhook AetherFlow : `https://api.aetherflow.com/webhooks/slack`
+  </Step>
+</Steps>
+
+## Surveillance et analyse
+
+Suivez les performances de votre intégration Slack :
+
+<Columns cols={3}>
+  <Card title="Indicateurs de messages" icon="message-square">
+    Messages envoyés, taux de livraison, temps de réponse
+  </Card>
+  <Card title="Activité des canaux" icon="activity">
+    Canaux actifs, taux d'engagement
+  </Card>
+  <Card title="Suivi des erreurs" icon="alert-triangle">
+    Livraisons échouées, problèmes de permissions
+  </Card>
+</Columns>
+
+## Résolution des problèmes
+
+### Problèmes courants
+
+<ExpandableGroup>
+  <Expandable title="Échec de l'authentification">
+    Vérifiez que votre jeton de bot est correct et dispose des portées requises. Réinstallez l'application si nécessaire.
+  </Expandable>
+  <Expandable title="Messages non publiés">
+    Vérifiez les permissions des canaux et assurez-vous que le bot est invité dans les canaux privés.
+  </Expandable>
+  <Expandable title="Limitation du débit">
+    Implémentez la mise en file d'attente des messages dans votre flux de travail. Slack autorise 1 message/seconde par canal.
+  </Expandable>
+  <Expandable title="Événements webhook non reçus">
+    Confirmez que l'URL de la requête est correcte et que les événements sont correctement abonnés dans Slack.
+  </Expandable>
+</ExpandableGroup>
+
+### Commandes de débogage
+
+```bash
+# Test connection
+aetherflow integrations test slack
+
+# View logs
+aetherflow logs --integration slack --last 24h
+
+# Reset integration
+aetherflow integrations reset slack
+```
+
+## Considérations de sécurité
+
+<Callout kind="alert">
+  Stockez les jetons Slack de manière sécurisée et renouvelez-les régulièrement. Utilisez les permissions minimales requises pour votre cas d'utilisation.
+</Callout>
+
+- **Gestion des jetons** : AetherFlow chiffre tous les jetons d'intégration
+- **Limitation des portées** : ne demandez que les portées OAuth nécessaires
+- **Journalisation d'audit** : toutes les interactions Slack sont enregistrées à des fins de conformité
+- **Contrôle d'accès** : l'accès aux intégrations suit les permissions de votre espace de travail
+
+## Bonnes pratiques
+
+1. **Organisation des canaux** : utilisez des canaux dédiés pour les différents types de notifications
+2. **Mise en forme des messages** : utilisez le Block Kit de Slack pour des messages riches et interactifs
+3. **Gestion des erreurs** : implémentez des canaux de secours pour les notifications critiques
+4. **Tests** : testez toujours les intégrations dans un espace de travail de développement d'abord
+5. **Surveillance** : configurez des alertes pour les échecs d'intégration
+
+<Callout kind="success">
+  L'intégration Slack transforme AetherFlow en hub de communication de votre équipe, s'assurant que chacun reste informé des processus automatisés.
+</Callout>

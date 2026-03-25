@@ -1,0 +1,255 @@
+---
+title: Intégration Discord
+
+description: Connectez AetherFlow à Discord pour automatiser les notifications, les mises à jour du serveur et les communications de flux de travail
+---
+
+## Vue d'ensemble
+
+L'intégration Discord permet une communication fluide entre les flux de travail AetherFlow et vos serveurs Discord. Envoyez des notifications automatisées, publiez des mises à jour, créez des canaux et déclenchez des flux de travail depuis des événements Discord. Cette intégration prend en charge les messages entrants et sortants, les webhooks et la gestion des événements en temps réel.
+
+<Columns cols={2}>
+  <Card title="Fonctionnalités clés" icon="zap">
+    - Notifications automatisées depuis les flux de travail
+    - Publication dans des canaux et messages directs
+    - Déclencheurs d'événements Discord
+    - Traitement des messages en temps réel
+    - Configurations de bot personnalisées
+  </Card>
+  <Card title="Cas d'utilisation" icon="target">
+    - Alertes de fin d'exécution des flux de travail
+    - Mises à jour de statut du serveur
+    - Notifications d'incidents
+    - Rapports de synthèse quotidiens
+    - Demandes d'approbation
+  </Card>
+</Columns>
+
+## Configuration de l'intégration Discord
+
+Accédez au tableau de bord des intégrations dans AetherFlow et sélectionnez Discord parmi les options disponibles. Vous aurez besoin des permissions d'administrateur du serveur Discord pour terminer la configuration.
+
+<Steps>
+  <Step title="Créer une application Discord" icon="settings">
+    Accédez au [Portail des développeurs Discord](https://discord.com/developers/applications) et créez une nouvelle application. Fournissez un nom et acceptez les conditions d'utilisation.
+  </Step>
+  <Step title="Configurer les paramètres du bot" icon="key">
+    Accédez à la section « Bot » et cliquez sur « Add Bot ». Activez les permissions suivantes :
+    - `Send Messages` - Publier des messages dans les canaux
+    - `Read Messages/View Channels` - Accéder au contenu des canaux
+    - `Embed Links` - Envoyer des embeds enrichis
+    - `Attach Files` - Téléverser des fichiers
+    - `Read Message History` - Accéder à l'historique des messages
+    - `Manage Webhooks` - Créer et gérer des webhooks
+  </Step>
+  <Step title="Obtenir le jeton du bot" icon="download">
+    Copiez le jeton du bot depuis la section Bot. Activez les intentions (Gateway Intents) requises si vous utilisez des événements.
+  </Step>
+  <Step title="Connecter dans AetherFlow" icon="link">
+    Collez le jeton dans la configuration de l'intégration AetherFlow et autorisez la connexion.
+    ```bash
+    # Alternative: CLI setup
+    aetherflow integrations connect discord --token your-bot-token
+    ```
+  </Step>
+</Steps>
+
+## Options de configuration
+
+### Configuration du bot
+
+Personnalisez l'apparence et le comportement de votre bot Discord :
+
+<Columns cols={2}>
+  <Card title="Paramètres de base" icon="settings">
+    Définissez le nom du bot, l'avatar et le canal par défaut pour les notifications.
+    <CodeGroup tabs="JSON,Environment">
+      ```json
+      {
+        "bot_name": "AetherFlow Bot",
+        "avatar_url": "https://example.com/bot-avatar.png",
+        "default_channel_id": "123456789012345678"
+      }
+      ```
+      ```bash
+      export DISCORD_BOT_NAME="AetherFlow Bot"
+      export DISCORD_AVATAR_URL="https://example.com/bot-avatar.png"
+      export DISCORD_DEFAULT_CHANNEL_ID="123456789012345678"
+      ```
+    </CodeGroup>
+  </Card>
+  <Card title="Paramètres avancés" icon="cog">
+    Configurez la mise en forme des messages, la logique de nouvelle tentative et la limitation du débit.
+    <Expandable title="Limitation du débit">
+      Discord autorise 5 messages par tranche de 5 secondes par canal. AetherFlow gère cela automatiquement par mise en file d'attente.
+    </Expandable>
+  </Card>
+</Columns>
+
+### Gestion des canaux
+
+Gérez les canaux auxquels votre bot peut accéder et dans lesquels il peut publier :
+
+| Niveau d'autorisation | Description | Cas d'utilisation |
+|-----------------------|-------------|-------------------|
+| Canaux texte | Publier dans n'importe quel canal texte | Annonces du serveur |
+| Canaux de fils | Créer et publier dans des fils de discussion | Discussions organisées |
+| Messages directs | Envoyer des DM aux utilisateurs | Notifications personnelles |
+
+## Utilisation de Discord dans les flux de travail
+
+### Publication de messages de base
+
+Référencez Discord dans les invites de votre flux de travail naturellement :
+
+```
+Lorsqu'un nouveau client s'inscrit, publiez un message de bienvenue dans le canal #customer-success sur Discord.
+```
+
+### Exemples d'automatisation avancée
+
+<CodeGroup tabs="JavaScript,Python">
+  ```javascript
+  // Post formatted message with embeds
+  const message = {
+    channelId: '123456789012345678',
+    content: '🚨 System Alert',
+    embeds: [
+      {
+        title: 'Alert: Database Connection Issues',
+        description: 'Database connection issues detected',
+        color: 0xFF0000,
+        fields: [
+          {
+            name: 'Severity',
+            value: 'High',
+            inline: true
+          },
+          {
+            name: 'Status',
+            value: 'Investigating',
+            inline: true
+          }
+        ],
+        timestamp: new Date()
+      }
+    ]
+  };
+
+  await discord.sendMessage(message);
+  ```
+
+  ```python
+  # Send file with workflow results
+  from aetherflow import DiscordClient
+
+  discord = DiscordClient()
+  discord.upload_file(
+      channel_id='123456789012345678',
+      filename='weekly_summary.pdf',
+      file=open('summary.pdf', 'rb'),
+      content='Here\'s this week\'s summary report 📊'
+  )
+  ```
+</CodeGroup>
+
+### Déclencheurs d'événements
+
+Configurez des flux de travail qui répondent aux événements Discord :
+
+- **Événements de message** : se déclencher sur des mots-clés ou des modèles spécifiques
+- **Événements du serveur** : réagir aux nouveaux membres ou aux changements de rôles
+- **Événements de réaction** : traiter les réactions emoji
+- **Événements de mention** : répondre quand le bot est mentionné
+
+Exemple d'invite de déclencheur :
+```
+Lorsque quelqu'un mentionne @AetherFlow dans Discord avec « urgent », créez un ticket haute priorité et notifiez l'ingénieur d'astreinte.
+```
+
+## Intégration des webhooks
+
+Pour les événements Discord en temps réel, configurez les webhooks :
+
+<Steps>
+  <Step title="Activer les Gateway Intents" icon="webhook">
+    Dans les paramètres de votre application Discord, accédez à « Bot » et activez les Gateway Intents requis tels que « Server Members » et « Message Content ».
+  </Step>
+  <Step title="S'abonner aux événements" icon="bell">
+    Configurez les événements à écouter : créations de messages, réactions, mises à jour des membres.
+  </Step>
+  <Step title="Définir l'URL du webhook" icon="link">
+    Utilisez votre URL de webhook AetherFlow : `https://api.aetherflow.com/webhooks/discord`
+  </Step>
+</Steps>
+
+## Surveillance et analyse
+
+Suivez les performances de votre intégration Discord :
+
+<Columns cols={3}>
+  <Card title="Indicateurs de messages" icon="message-square">
+    Messages envoyés, taux de livraison, temps de réponse
+  </Card>
+  <Card title="Activité des canaux" icon="activity">
+    Canaux actifs, taux d'engagement
+  </Card>
+  <Card title="Suivi des erreurs" icon="alert-triangle">
+    Livraisons échouées, problèmes de permissions
+  </Card>
+</Columns>
+
+## Résolution des problèmes
+
+### Problèmes courants
+
+<ExpandableGroup>
+  <Expandable title="Échec de l'authentification">
+    Vérifiez que votre jeton de bot est correct et dispose des permissions requises. Régénérez le jeton si nécessaire.
+  </Expandable>
+  <Expandable title="Messages non publiés">
+    Vérifiez les permissions du canal et assurez-vous que le bot a accès au canal cible.
+  </Expandable>
+  <Expandable title="Limitation du débit">
+    Implémentez la mise en file d'attente des messages dans votre flux de travail. Discord autorise 5 messages par tranche de 5 secondes par canal.
+  </Expandable>
+  <Expandable title="Événements webhook non reçus">
+    Confirmez que les Gateway Intents sont activés et que le bot dispose des permissions appropriées sur votre serveur Discord.
+  </Expandable>
+</ExpandableGroup>
+
+### Commandes de débogage
+
+```bash
+# Test connection
+aetherflow integrations test discord
+
+# View logs
+aetherflow logs --integration discord --last 24h
+
+# Reset integration
+aetherflow integrations reset discord
+```
+
+## Considérations de sécurité
+
+<Callout kind="alert">
+  Stockez les jetons Discord de manière sécurisée et renouvelez-les régulièrement. Utilisez les permissions minimales requises pour votre cas d'utilisation.
+</Callout>
+
+- **Gestion des jetons** : AetherFlow chiffre tous les jetons d'intégration
+- **Limitation des permissions** : n'accordez que les permissions de bot nécessaires
+- **Journalisation d'audit** : toutes les interactions Discord sont enregistrées à des fins de conformité
+- **Contrôle d'accès** : l'accès aux intégrations suit les permissions de votre espace de travail
+
+## Bonnes pratiques
+
+1. **Organisation des canaux** : utilisez des canaux dédiés pour les différents types de notifications
+2. **Mise en forme des messages** : utilisez les embeds Discord pour des messages riches et interactifs
+3. **Gestion des erreurs** : implémentez des canaux de secours pour les notifications critiques
+4. **Tests** : testez toujours les intégrations dans un serveur de développement d'abord
+5. **Surveillance** : configurez des alertes pour les échecs d'intégration
+
+<Callout kind="success">
+  L'intégration Discord transforme AetherFlow en hub de communication de votre serveur, s'assurant que chacun reste informé des processus automatisés.
+</Callout>

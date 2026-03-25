@@ -1,0 +1,326 @@
+---
+title: Datenschutz und Compliance
+description: Erfahren Sie, wie AetherFlow Datenschutz, Sicherheit und regulatorische Compliance handhabt
+---
+
+## Datenschutzuebersicht
+
+AetherFlow verpflichtet sich zum Schutz Ihrer Datenprivatsphaere und zur Einhaltung globaler Vorschriften.
+
+<Callout kind="info">
+  Wir implementieren branchenfuehrende Sicherheitsmassnahmen und halten die Compliance mit wichtigen Datenschutzvorschriften aufrecht.
+</Callout>
+
+## Datenerhebung und -nutzung
+
+Verstehen Sie, welche Daten wir erheben und wie sie zur Bereitstellung von AetherFlow-Diensten verwendet werden.
+
+<ExpandableGroup>
+  <Expandable title="Kontodaten">
+    - E-Mail-Adresse und grundlegende Profilinformationen
+    - Authentifizierungsdaten (verschluesselt und gesalzen)
+    - Abrechnungs- und Zahlungsinformationen (PCI-DSS-konform)
+    - Nutzungsmetriken und Funktionsadoptionsdaten
+  </Expandable>
+
+  <Expandable title="Workflow-Daten">
+    - Workflow-Konfigurationen und Eingaben in natuerlicher Sprache
+    - Integrationsdaten und Verbindungseinstellungen
+    - Ausfuehrungsprotokolle und Leistungsmetriken
+    - Fehlerberichte und Debugging-Informationen
+  </Expandable>
+
+  <Expandable title="Integrationsdaten">
+    - OAuth-Token und API-Daten (im Ruhezustand verschluesselt)
+    - Integrationsspezifische Konfigurationsdaten
+    - Verbindungsstatus und Gesundheitsmetriken
+  </Expandable>
+</ExpandableGroup>
+
+## Datenverschluesselung
+
+Mehrere Verschluesselungsebenen schuetzen Ihre Daten waehrend ihres gesamten Lebenszyklus.
+
+<Columns cols={3}>
+  <Card title="Im Ruhezustand" icon="database">
+    AES-256-Verschluesselung fuer alle gespeicherten Daten mit Umschlagverschluesselung.
+  </Card>
+  <Card title="Beim Transport" icon="wifi">
+    TLS-1.3-Verschluesselung fuer alle Datenuebertragungen mit Perfect Forward Secrecy.
+  </Card>
+  <Card title="Anwendungsebene" icon="lock">
+    Zusaetzliche Verschluesselung fuer sensible Felder wie API-Schluessel und Token.
+  </Card>
+</Columns>
+
+<Expandable title="Verschluesselungsarchitektur">
+- **Datenbankverschluesselung**: Transparente Datenverschluesselung (TDE) mit AES-256
+- **Dateispeicherung**: Serverseitige Verschluesselung mit kundenseitig verwalteten Schluesseln (Enterprise)
+- **Backup-Verschluesselung**: Alle Backups werden mit eindeutigen Schluesseln verschluesselt
+- **Schluessel-Management**: Hardware-Sicherheitsmodule (HSMs) fuer Schluesselspeicherung und -rotation
+</Expandable>
+
+## Datenaufbewahrung
+
+Klare Richtlinien regeln, wie lange verschiedene Datentypen aufbewahrt werden.
+
+| Datentyp | Aufbewahrungszeitraum | Grund |
+|----------|-----------------------|-------|
+| **Kontodaten** | Bis zur Kontoloesch&shy;ung | Dienstleistungserbringung und Compliance |
+| **Workflow-Protokolle** | 90 Tage (7 Jahre fuer Enterprise) | Debugging und Analysen |
+| **Ausfuehrungsdaten** | 30 Tage (anpassbar fuer Enterprise) | Leistungsueberwachung |
+| **Audit-Protokolle** | 7 Jahre | Regulatorische Compliance |
+| **Backup-Daten** | 30 Tage nach Loeschung | Wiederherstellungszwecke |
+
+<Expandable title="Datenloesch&shy;ung">
+- **Kontoloesch&shy;ung**: Alle zugehoerigen Daten werden innerhalb von 30 Tagen dauerhaft geloescht
+- **Workflow-Loesch&shy;ung**: Daten werden sofort entfernt, Backups nach 30 Tagen bereinigt
+- **DSGVO-Recht auf Loesch&shy;ung**: Daten werden auf verifizierten Antrag innerhalb von 30 Tagen geloescht
+</Expandable>
+
+## DSGVO-Compliance
+
+AetherFlow erfuellt vollstaendig die Anforderungen der Datenschutz-Grundverordnung (DSGVO).
+
+<Callout kind="success">
+  Als DSGVO-konformer Dienst helfen wir Ihnen, Ihre Datenschutzverpflichtungen zu erfuellen.
+</Callout>
+
+### Rechte der betroffenen Personen
+
+Wir unterstuetzen alle DSGVO-Rechte betroffener Personen:
+
+<Columns cols={2}>
+  <Card title="Recht auf Auskunft" icon="eye">
+    Fordern Sie eine Kopie aller personenbezogenen Daten an, die wir ueber Sie speichern.
+  </Card>
+  <Card title="Recht auf Berichtigung" icon="edit">
+    Korrigieren Sie ungenaue oder unvollstaendige personenbezogene Daten.
+  </Card>
+  <Card title="Recht auf Loesch&shy;ung" icon="trash">
+    Beantragen Sie die Loeschung Ihrer personenbezogenen Daten ("Recht auf Vergessenwerden").
+  </Card>
+  <Card title="Recht auf Einschraenkung" icon="pause">
+    Begrenzen Sie die Verarbeitung Ihrer personenbezogenen Daten unter bestimmten Umstaenden.
+  </Card>
+  <Card title="Recht auf Datenuebertragbarkeit" icon="download">
+    Erhalten Sie Ihre Daten in einem strukturierten, maschinenlesbaren Format.
+  </Card>
+  <Card title="Widerspruchsrecht" icon="x">
+    Widersprechen Sie der Verarbeitung auf Grundlage berechtigter Interessen oder Direktwerbung.
+  </Card>
+</Columns>
+
+### DSGVO-Implementierung
+
+<Expandable title="Privacy by Design">
+- Datensparsamkeitsgrundsaetze fuer alle Funktionen angewendet
+- Datenschutz-Folgenabschaetzungen fuer neue Funktionen
+- Automatische Datenklassifizierung und -kennzeichnung
+- Regelmaessige Datenschutzpruefungen und Compliance-Reviews
+</Expandable>
+
+<Expandable title="Datenverarbeitungsvertrag">
+Fuer Enterprise-Kunden verfuegbar umfasst unser DV folgendes:
+- Detaillierte Beschreibungen der Datenverarbeitung
+- Sicherheitsmassnahmen und Schutzvorrichtungen
+- Auftragnehmerverzeichnisse und Genehmigungsprozesse
+- Verfahren zur Benachrichtigung bei Datenschutzverletzungen
+- Pruefrechte und Compliance-Zertifizierungen
+</Expandable>
+
+## CCPA-Compliance
+
+Compliance mit dem California Consumer Privacy Act fuer Einwohner Kaliforniens.
+
+<ExpandableGroup>
+  <Expandable title="CCPA-Rechte">
+    - **Recht auf Information**: Welche personenbezogenen Daten wir erheben und wie sie verwendet werden
+    - **Recht auf Loesch&shy;ung**: Beantragen Sie die Loesch&shy;ung personenbezogener Daten
+    - **Widerspruchsrecht**: Opt-out vom Verkauf personenbezogener Daten
+    - **Recht auf Nichtdiskriminierung**: Keine unterschiedliche Behandlung bei der Ausuebung von Rechten
+  </Expandable>
+
+  <Expandable title="CCPA-Implementierung">
+    - Kein Verkauf personenbezogener Daten an Dritte
+    - Klare Datenschutzhinweise mit CCPA-spezifischen Offenlegungen
+    - Dediziertes Portal fuer CCPA-Anfragen
+    - Jaehrliche Datenschutzberichte fuer Einwohner Kaliforniens
+  </Expandable>
+</ExpandableGroup>
+
+## SOC-2-Compliance
+
+SOC-2-Typ-II-Compliance belegt unsere Sicherheits- und Datenschutzkontrollen.
+
+<Expandable title="SOC-2-Vertrauensdienstkriterien">
+- **Sicherheit**: Schutz vor unbefugtem Zugriff und Datenpannen
+- **Verfuegbarkeit**: Systemverfuegbarkeit und Belastbarkeit
+- **Verarbeitungsintegritaet**: Genauigkeit und Vollstaendigkeit der Datenverarbeitung
+- **Vertraulichkeit**: Schutz vertraulicher Informationen
+- **Datenschutz**: Angemessene Erhebung, Nutzung und Offenlegung personenbezogener Daten
+</Expandable>
+
+<Expandable title="SOC-2-Kontrollen">
+- Zugriffskontrollen und Multi-Faktor-Authentifizierung
+- Regelmaessige Sicherheitsbewertungen und Penetrationstests
+- Verfahren zur Incident Response und Benachrichtigung bei Datenpannen
+- Change-Management und Konfigurationskontrollen
+- Kontinuierliche Ueberwachung und Protokollierung
+</Expandable>
+
+## Internationale Compliance
+
+Einhaltung von Datenschutzvorschriften in wichtigen Maerkten weltweit.
+
+<Columns cols={4}>
+  <Card title="Kanada" icon="🇨🇦">
+    PIPEDA-Compliance fuer den Schutz kanadischer personenbezogener Daten.
+  </Card>
+  <Card title="Australien" icon="🇦🇺">
+    OAIC-Compliance und das Schema fuer meldepflichtige Datenpannen.
+  </Card>
+  <Card title="Vereinigtes Koenigreich" icon="🇬🇧">
+    UK-DSGVO-Compliance nach dem Brexit.
+  </Card>
+  <Card title="Japan" icon="🇯🇵">
+    APPI-Compliance fuer den Schutz personenbezogener Daten.
+  </Card>
+</Columns>
+
+## Sicherheitsmassnahmen
+
+Umfassende Sicherheitskontrollen schuetzen Ihre Daten und Systeme.
+
+<ExpandableGroup>
+  <Expandable title="Infrastruktursicherheit">
+    - SOC-2-Typ-II-konforme Cloud-Infrastruktur
+    - Regelmaessige Sicherheitspruefungen und Penetrationstests
+    - Automatisiertes Schwachstellenscanning und Patching
+    - DDoS-Schutz und Ratenbegrenzung
+  </Expandable>
+
+  <Expandable title="Zugriffskontrollen">
+    - Rollenbasierte Zugriffskontrolle (RBAC) nach dem Prinzip der minimalen Rechte
+    - Multi-Faktor-Authentifizierung (MFA) erforderlich
+    - Single-Sign-On-(SSO)-Integration verfuegbar
+    - Sitzungsverwaltung und automatische Timeouts
+  </Expandable>
+
+  <Expandable title="Ueberwachung und Reaktion">
+    - 24/7-Sicherheitsueberwachung und Benachrichtigung
+    - Automatisierte Bedrohungserkennung und -reaktion
+    - Incident-Response-Plan mit definierten Verfahren
+    - Regelmaessige Schulungen zum Sicherheitsbewusstsein
+  </Expandable>
+</ExpandableGroup>
+
+## Datenverarbeitungsstandorte
+
+Verstehen Sie, wo Ihre Daten gespeichert und verarbeitet werden.
+
+<Expandable title="Primaere Rechenzentren">
+- **USA Ost (N. Virginia)**: Primaerregion fuer US-Kunden
+- **EU West (Irland)**: DSGVO-konforme Region fuer EU-Kunden
+- **Asien-Pazifik (Singapur)**: APAC-Region fuer asiatische Kunden
+
+*Enterprise-Kunden koennen bestimmte Regionen fuer den Datenaufenthaltsort waehlen.*
+</Expandable>
+
+<Expandable title="Datensouveraenitaet">
+- Daten werden in regionsspezifischen Rechenzentren gespeichert
+- Grenzueberschreitende Uebertragungen entsprechen lokalen Vorschriften
+- Standardvertragsklauseln fuer internationale Uebertragungen
+- Verbindliche Unternehmensregeln fuer gruppeninterne Uebertragungen
+</Expandable>
+
+## Drittanbieter-Auftragsverarbeiter
+
+Transparenz ueber unsere Unterauftragsverarbeiter und deren Compliance-Status.
+
+<Expandable title="Kategorien von Unterauftragsverarbeitern">
+- **Cloud-Infrastruktur**: AWS, Google Cloud, Azure (SOC-2-konform)
+- **Zahlungsabwicklung**: Stripe, Braintree (PCI-DSS-konform)
+- **Analysen**: Mixpanel, Amplitude (DSGVO-konform)
+- **Kundensupport**: Zendesk, Intercom (SOC-2-konform)
+</Expandable>
+
+<Expandable title="Unterauftragsverarbeiter-Vereinbarung">
+Alle Unterauftragsverarbeiter unterzeichnen Datenverarbeitungsvertraege mit:
+- Sicherheits- und Vertraulichkeitsverpflichtungen
+- Datenschutz- und Privatsphaereschutzanforderungen
+- Verfahren zur Incident-Benachrichtigung
+- Pruefrechte und Compliance-Zertifizierungen
+</Expandable>
+
+## Incident Response
+
+Unsere Verfahren fuer den Umgang mit Sicherheitsvorfaellen und Datenschutzverletzungen.
+
+<Steps>
+  <Step title="Erkennung" icon="search">
+    Automatisierte Ueberwachungs- und Warnsysteme erkennen potenzielle Vorfaelle.
+  </Step>
+  <Step title="Bewertung" icon="clipboard">
+    Das Sicherheitsteam bewertet den Umfang und die Auswirkungen des Vorfalls.
+  </Step>
+  <Step title="Eindaemmung" icon="shield">
+    Sofortige Massnahmen zur Eindaemmung des Vorfalls und Verhinderung der Ausbreitung.
+  </Step>
+  <Step title="Wiederherstellung" icon="refresh-cw">
+    Systeme werden wiederhergestellt und Daten bei Bedarf aus Backups zurueckgespielt.
+  </Step>
+  <Step title="Benachrichtigung" icon="bell">
+    Betroffene Kunden werden innerhalb der vorgeschriebenen Fristen benachrichtigt.
+  </Step>
+  <Step title="Ueberpruefung" icon="eye">
+    Nachtraeglich werden Analysen durchgefuehrt und Verbesserungen implementiert.
+  </Step>
+</Steps>
+
+<Expandable title="Benachrichtigung bei Datenpannen">
+Gemaess geltenden Gesetzen:
+- **DSGVO**: Benachrichtigung innerhalb von 72 Stunden nach Kenntniserlangung einer Datenpanne
+- **CCPA**: Benachrichtigung "so schnell wie moeglich"
+- **Allgemein**: Betroffene Kunden werden umgehend mit Abhilfemassnahmen benachrichtigt
+</Expandable>
+
+## Privacy by Design
+
+Wie Datenschutzueberlegungen in unsere Produktentwicklung eingebaut sind.
+
+<ExpandableGroup>
+  <Expandable title="Entwicklungsprozess">
+    - Datenschutz-Folgenabschaetzungen fuer alle neuen Funktionen
+    - Datensparsamkeitsgrundsaetze bei der Datenerhebung angewendet
+    - Standard-Datenschutzeinstellungen beguenstigen den Nutzerschutz
+    - Regelmaessige Datenschutzschulungen fuer das Entwicklungsteam
+  </Expandable>
+
+  <Expandable title="Datenschutzfunktionen">
+    - Granulare Datenweitergabe-Kontrollen
+    - Datenexport- und -loeschungsoptionen
+    - Datenschutz-Dashboard fuer Benutzer
+    - Einwilligungsverwaltung fuer die Datenverarbeitung
+  </Expandable>
+</ExpandableGroup>
+
+## Kontaktinformationen
+
+So erreichen Sie uns bei Datenschutz- und Compliance-Fragen.
+
+<Expandable title="Kontakt zum Datenschutzteam">
+- **E-Mail**: privacy@aetherflow.com
+- **Reaktionszeit**: Innerhalb von 24 Stunden bei dringenden Datenschutzfragen
+- **Datenanfragen**: privacy-requests@aetherflow.com
+- **Sicherheitsberichte**: security@aetherflow.com
+</Expandable>
+
+<Expandable title="Compliance-Ressourcen">
+- **Datenschutzrichtlinie**: Vollstaendige Datenschutzrichtlinie verfuegbar unter aetherflow.com/privacy
+- **Sicherheitsuebersicht**: Technische Sicherheitsdokumentation
+- **Compliance-Zertifikate**: SOC-2-Berichte und DSGVO-Compliance-Dokumentation
+- **Liste der Unterauftragsverarbeiter**: Vollstaendige Liste der Drittanbieter-Verarbeiter
+</Expandable>
+
+Ihre Privatsphaere und Datensicherheit haben fuer uns hoechste Prioritaet. Wir arbeiten kontinuierlich daran, die hoechsten Standards der Compliance und des Schutzes aufrechtzuerhalten.

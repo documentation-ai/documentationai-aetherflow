@@ -1,0 +1,255 @@
+---
+title: Discord-Integration
+
+description: AetherFlow mit Discord verbinden, um Benachrichtigungen, Server-Updates und Workflow-Kommunikation zu automatisieren
+---
+
+## Ueberblick
+
+Die Discord-Integration ermoeoelicht nahtlose Kommunikation zwischen AetherFlow-Workflows und Ihren Discord-Servern. Senden Sie automatisierte Benachrichtigungen, posten Sie Updates, erstellen Sie Kanaele und loesen Sie Workflows aus Discord-Ereignissen aus. Diese Integration unterstuetzt sowohl eingehende als auch ausgehende Nachrichten, Webhooks und Echtzeit-Ereignisverarbeitung.
+
+<Columns cols={2}>
+  <Card title="Hauptfunktionen" icon="zap">
+    - Automatisierte Benachrichtigungen aus Workflows
+    - Kanal- und Direktnachrichten-Posting
+    - Discord-Ereignis-Trigger
+    - Echtzeit-Nachrichtenverarbeitung
+    - Benutzerdefinierte Bot-Konfigurationen
+  </Card>
+  <Card title="Anwendungsbeispiele" icon="target">
+    - Benachrichtigungen bei Workflow-Abschluss
+    - Server-Statusupdates
+    - Incident-Benachrichtigungen
+    - Taegliche Zusammenfassungsberichte
+    - Genehmigungsanfragen
+  </Card>
+</Columns>
+
+## Discord-Integration einrichten
+
+Navigieren Sie zum Integrations-Dashboard in AetherFlow und waehlen Sie Discord aus den verfuegbaren Optionen. Sie benoetigen Discord-Server-Administratorberechtigungen, um die Einrichtung abzuschliessen.
+
+<Steps>
+  <Step title="Discord-Anwendung erstellen" icon="settings">
+    Gehen Sie zum [Discord Developer Portal](https://discord.com/developers/applications) und erstellen Sie eine neue Anwendung. Geben Sie einen Namen an und akzeptieren Sie die Nutzungsbedingungen.
+  </Step>
+  <Step title="Bot-Einstellungen konfigurieren" icon="key">
+    Navigieren Sie zum Bereich "Bot" und klicken Sie auf "Add Bot". Aktivieren Sie die folgenden Berechtigungen:
+    - `Send Messages` – Nachrichten in Kanaele posten
+    - `Read Messages/View Channels` – Auf Kanaelinhalt zugreifen
+    - `Embed Links` – Umfangreiche Embeds senden
+    - `Attach Files` – Dateien hochladen
+    - `Read Message History` – Auf Nachrichtenverlauf zugreifen
+    - `Manage Webhooks` – Webhooks erstellen und verwalten
+  </Step>
+  <Step title="Bot-Token erhalten" icon="download">
+    Kopieren Sie das Bot-Token aus dem Bot-Bereich. Aktivieren Sie bei Bedarf Gateway Intents fuer Ereignisse.
+  </Step>
+  <Step title="In AetherFlow verbinden" icon="link">
+    Das Token in der AetherFlow-Integrationseinrichtung einfuegen und die Verbindung autorisieren.
+    ```bash
+    # Alternative: CLI setup
+    aetherflow integrations connect discord --token your-bot-token
+    ```
+  </Step>
+</Steps>
+
+## Konfigurationsoptionen
+
+### Bot-Konfiguration
+
+Passen Sie das Erscheinungsbild und Verhalten Ihres Discord-Bots an:
+
+<Columns cols={2}>
+  <Card title="Grundeinstellungen" icon="settings">
+    Bot-Namen, Avatar und Standard-Kanal fuer Benachrichtigungen festlegen.
+    <CodeGroup tabs="JSON,Environment">
+      ```json
+      {
+        "bot_name": "AetherFlow Bot",
+        "avatar_url": "https://example.com/bot-avatar.png",
+        "default_channel_id": "123456789012345678"
+      }
+      ```
+      ```bash
+      export DISCORD_BOT_NAME="AetherFlow Bot"
+      export DISCORD_AVATAR_URL="https://example.com/bot-avatar.png"
+      export DISCORD_DEFAULT_CHANNEL_ID="123456789012345678"
+      ```
+    </CodeGroup>
+  </Card>
+  <Card title="Erweiterte Einstellungen" icon="cog">
+    Nachrichtenformatierung, Wiederholungslogik und Rate-Limiting konfigurieren.
+    <Expandable title="Rate-Limiting">
+      Discord erlaubt 5 Nachrichten pro 5 Sekunden pro Kanal. AetherFlow behandelt dies automatisch mit Warteschlangen.
+    </Expandable>
+  </Card>
+</Columns>
+
+### Kanalverwaltung
+
+Verwalten Sie, auf welche Kanaele Ihr Bot zugreifen und in welche er posten kann:
+
+| Berechtigungsstufe | Beschreibung | Anwendungsfall |
+|--------------------|--------------|----------------|
+| Text-Kanaele | In jeden Text-Kanal posten | Server-Ankuendigungen |
+| Thread-Kanaele | Threads erstellen und darin posten | Organisierte Diskussionen |
+| Direktnachrichten | DMs an Benutzer senden | Persoenliche Benachrichtigungen |
+
+## Discord in Workflows verwenden
+
+### Einfaches Nachrichten-Posting
+
+Discord in Ihren Workflow-Prompts auf natuerliche Weise referenzieren:
+
+```
+When a new customer signs up, post a welcome message to #customer-success channel in Discord.
+```
+
+### Erweiterte Automatisierungsbeispiele
+
+<CodeGroup tabs="JavaScript,Python">
+  ```javascript
+  // Post formatted message with embeds
+  const message = {
+    channelId: '123456789012345678',
+    content: '🚨 System Alert',
+    embeds: [
+      {
+        title: 'Alert: Database Connection Issues',
+        description: 'Database connection issues detected',
+        color: 0xFF0000,
+        fields: [
+          {
+            name: 'Severity',
+            value: 'High',
+            inline: true
+          },
+          {
+            name: 'Status',
+            value: 'Investigating',
+            inline: true
+          }
+        ],
+        timestamp: new Date()
+      }
+    ]
+  };
+
+  await discord.sendMessage(message);
+  ```
+
+  ```python
+  # Send file with workflow results
+  from aetherflow import DiscordClient
+
+  discord = DiscordClient()
+  discord.upload_file(
+      channel_id='123456789012345678',
+      filename='weekly_summary.pdf',
+      file=open('summary.pdf', 'rb'),
+      content='Here\'s this week\'s summary report 📊'
+  )
+  ```
+</CodeGroup>
+
+### Ereignis-Trigger
+
+Workflows einrichten, die auf Discord-Ereignisse reagieren:
+
+- **Nachrichten-Ereignisse**: Bei bestimmten Schluesselwoertern oder Mustern ausloesen
+- **Server-Ereignisse**: Auf neue Mitglieder oder Rollenänderungen reagieren
+- **Reaktions-Ereignisse**: Emoji-Reaktionen verarbeiten
+- **Erwaehungs-Ereignisse**: Reagieren, wenn der Bot erwaehnt wird
+
+Beispiel-Trigger-Prompt:
+```
+When someone mentions @AetherFlow in Discord with "urgent", create a high-priority ticket and notify the on-call engineer.
+```
+
+## Webhook-Integration
+
+Fuer Echtzeit-Discord-Ereignisse Webhooks konfigurieren:
+
+<Steps>
+  <Step title="Gateway Intents aktivieren" icon="webhook">
+    Aktivieren Sie in Ihren Discord-Anwendungseinstellungen unter "Bot" die erforderlichen Gateway Intents wie "Server Members" und "Message Content".
+  </Step>
+  <Step title="Ereignisse abonnieren" icon="bell">
+    Konfigurieren Sie, auf welche Ereignisse Sie hoeren moechten: Nachrichtenerstellungen, Reaktionen, Mitgliederaktualisierungen.
+  </Step>
+  <Step title="Webhook-URL festlegen" icon="link">
+    Ihre AetherFlow-Webhook-URL verwenden: `https://api.aetherflow.com/webhooks/discord`
+  </Step>
+</Steps>
+
+## Ueberwachung und Analysen
+
+Leistung Ihrer Discord-Integration verfolgen:
+
+<Columns cols={3}>
+  <Card title="Nachrichten-Kennzahlen" icon="message-square">
+    Gesendete Nachrichten, Zustellraten, Antwortzeiten
+  </Card>
+  <Card title="Kanal-Aktivitaet" icon="activity">
+    Aktive Kanaele, Engagement-Raten
+  </Card>
+  <Card title="Fehlerverfolgung" icon="alert-triangle">
+    Fehlgeschlagene Zustellungen, Berechtigungsprobleme
+  </Card>
+</Columns>
+
+## Fehlerbehebung
+
+### Haeufige Probleme
+
+<ExpandableGroup>
+  <Expandable title="Authentifizierung fehlgeschlagen">
+    Ueberpruefen Sie, ob Ihr Bot-Token korrekt ist und die erforderlichen Berechtigungen hat. Generieren Sie das Token bei Bedarf neu.
+  </Expandable>
+  <Expandable title="Nachrichten werden nicht gepostet">
+    Kanal-Berechtigungen pruefen und sicherstellen, dass der Bot Zugriff auf den Zielkanal hat.
+  </Expandable>
+  <Expandable title="Rate-Limiting">
+    Nachrichten-Warteschlangen in Ihrem Workflow implementieren. Discord erlaubt 5 Nachrichten pro 5 Sekunden pro Kanal.
+  </Expandable>
+  <Expandable title="Webhook-Ereignisse werden nicht empfangen">
+    Bestaetigen Sie, dass Gateway Intents aktiviert sind und der Bot die entsprechenden Berechtigungen auf Ihrem Discord-Server hat.
+  </Expandable>
+</ExpandableGroup>
+
+### Debug-Befehle
+
+```bash
+# Test connection
+aetherflow integrations test discord
+
+# View logs
+aetherflow logs --integration discord --last 24h
+
+# Reset integration
+aetherflow integrations reset discord
+```
+
+## Sicherheitsueberlegungen
+
+<Callout kind="alert">
+  Discord-Tokens sicher aufbewahren und regelmaessig rotieren. Verwenden Sie die minimal erforderlichen Berechtigungen fuer Ihren Anwendungsfall.
+</Callout>
+
+- **Token-Verwaltung**: AetherFlow verschluesselt alle Integrations-Tokens
+- **Berechtigungsbeschraenkung**: Nur notwendige Bot-Berechtigungen erteilen
+- **Audit-Protokollierung**: Alle Discord-Interaktionen werden fuer Compliance protokolliert
+- **Zugriffskontrolle**: Integrationszugriff folgt Ihren Workspace-Berechtigungen
+
+## Best Practices
+
+1. **Kanal-Organisation**: Dedizierte Kanaele fuer verschiedene Arten von Benachrichtigungen verwenden
+2. **Nachrichtenformatierung**: Discord-Embeds fuer umfangreiche, interaktive Nachrichten nutzen
+3. **Fehlerbehandlung**: Fallback-Kanaele fuer kritische Benachrichtigungen implementieren
+4. **Tests**: Integrationen immer zuerst auf einem Entwicklungsserver testen
+5. **Ueberwachung**: Alerts fuer Integrationsfehler einrichten
+
+<Callout kind="success">
+  Die Discord-Integration macht AetherFlow zum Kommunikationszentrum Ihres Servers und sorgt dafuer, dass alle ueber automatisierte Prozesse informiert bleiben.
+</Callout>

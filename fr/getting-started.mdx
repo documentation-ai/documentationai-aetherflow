@@ -1,0 +1,110 @@
+---
+title: Premiers pas
+description: Guide etape par etape pour configurer et lancer votre premier workflow dans AetherFlow
+---
+## Creation de compte et integration
+
+Vous commencez par vous inscrire sur AetherFlow pour acceder au tableau de bord. La plateforme vous guide a travers un processus d'integration rapide, expliquant les concepts cles comme les prompts et les declencheurs. Cela vous permet de comprendre comment le langage naturel pilote les automatisations sans barriere technique.
+
+<Callout kind="tip" collapsed="false">
+  Utilisez votre adresse e-mail professionnelle pour beneficier des fonctionnalites de collaboration d'equipe des le depart.
+</Callout>
+
+## Installation et configuration
+
+Aucune installation logicielle n'est necessaire ; AetherFlow fonctionne dans le cloud. Accedez-y via n'importe quel navigateur moderne. Pour utiliser l'API, generez une cle API depuis les parametres.
+
+<Steps>
+  <Step title="Creer un compte" icon="user-plus" title-type="p">
+    Rendez-vous sur aetherflow\.com et cliquez sur S'inscrire. Remplissez vos informations et verifiez par e-mail.
+  </Step>
+
+  <Step title="Visite du tableau de bord" icon="home" title-type="p">
+    Completez la visite interactive pour vous familiariser avec l'interface.
+
+    ```javascript
+    // Generate API key example
+    const apiKey = await fetch('/api/keys', { method: 'POST' });
+    console.log(`Your key: ${apiKey}`);
+    ```
+  </Step>
+
+  <Step title="Premiere integration" icon="plug" title-type="p">
+    Allez dans l'onglet Integrations et connectez Slack. Autorisez les permissions de messagerie.
+  </Step>
+</Steps>
+
+## Creer votre premier workflow
+
+Decrivez votre automatisation en langage naturel. Par exemple, "Quand je recois un e-mail, resumez-le et publiez-le sur le canal Slack #team-updates."
+
+<Tabs>
+  <Tab title="Workflow basique" icon="play">
+    Utilisez le constructeur pour saisir votre prompt. Previsualisez les etapes generees.
+
+    <CodeGroup show-lines="true" tabs={[]}>
+      ```javascript
+      // API to create workflow
+      await fetch('/workflows', {
+        method: 'POST',
+        body: JSON.stringify({
+          name: 'Email Summary',
+          prompt: 'Summarize emails and post to Slack'
+        })
+      });
+      ```
+
+      ```python
+      # Python SDK example
+      from aetherflow import Client
+      client = Client(api_key='your_key')
+      workflow = client.workflows.create(
+          name='Email Summary',
+          prompt='Summarize emails and post to Slack'
+      )
+      ```
+    </CodeGroup>
+  </Tab>
+
+  <Tab title="Declencheurs avances" icon="zap">
+    Definissez des declencheurs en langage naturel comme "Lors d'un nouveau ticket dans Zendesk."
+
+    <Expandable title="Options de declenchement" default-open="false">
+      Choisissez entre e-mail, evenements d'application ou executions planifiees.
+    </Expandable>
+  </Tab>
+</Tabs>
+
+<Columns cols="2">
+  <Card title="Execution de test" icon="play-circle" horizontal="false">
+    Executez un test pour verifier que le workflow se comporte comme prevu.
+  </Card>
+
+  <Card title="Consulter les logs" icon="eye" horizontal="false">
+    Consultez les logs en temps reel dans le tableau de bord pour le debogage.
+  </Card>
+</Columns>
+
+## Bonnes pratiques
+
+Commencez par des workflows simples pour gagner en confiance. Testez minutieusement avant d'activer les executions en production. Surveillez les analytiques pour affiner les prompts et ameliorer la precision de l'IA.
+
+| Etape | Action      | Temps estime  |
+| ----- | ----------- | ------------- |
+| 1     | Inscription | `<5` min      |
+| 2     | Integration | `10-15` min   |
+| 3     | Creation    | `20` min      |
+
+<Callout kind="success" collapsed="false">
+  Votre premier workflow devrait automatiser une tache quotidienne pour en voir la valeur immediatement.
+</Callout>
+
+Pour le depannage, consultez la section deroulante ci-dessous.
+
+<ExpandableGroup>
+  <Expandable title="Problemes courants" default-open="false">
+    Si l'integration echoue, verifiez les permissions. Pour les erreurs de prompt, reformulez pour plus de clarte.
+  </Expandable>
+</ExpandableGroup>
+
+Ce guide fournit des etapes concretes pour devenir productif rapidement.

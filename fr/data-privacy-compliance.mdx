@@ -1,0 +1,326 @@
+---
+title: Confidentialité des données et conformité
+description: Comprendre comment AetherFlow gère la confidentialité des données, la sécurité et la conformité réglementaire
+---
+
+## Présentation de la confidentialité
+
+AetherFlow s'engage à protéger la confidentialité de vos données et à assurer la conformité aux réglementations mondiales.
+
+<Callout kind="info">
+  Nous mettons en œuvre des mesures de sécurité de pointe et maintenons la conformité aux principales réglementations en matière de confidentialité.
+</Callout>
+
+## Collecte et utilisation des données
+
+Comprenez quelles données nous collectons et comment elles sont utilisées pour alimenter les services AetherFlow.
+
+<ExpandableGroup>
+  <Expandable title="Données de compte">
+    - Adresse e-mail et informations de profil de base
+    - Identifiants d'authentification (chiffrés et hachés)
+    - Informations de facturation et de paiement (conformes PCI DSS)
+    - Métriques d'utilisation et données d'adoption des fonctionnalités
+  </Expandable>
+
+  <Expandable title="Données de workflow">
+    - Configurations de workflow et invites en langage naturel
+    - Identifiants d'intégration et paramètres de connexion
+    - Journaux d'exécution et métriques de performance
+    - Rapports d'erreurs et informations de débogage
+  </Expandable>
+
+  <Expandable title="Données d'intégration">
+    - Jetons OAuth et identifiants API (chiffrés au repos)
+    - Données de configuration spécifiques à l'intégration
+    - État de connexion et métriques de santé
+  </Expandable>
+</ExpandableGroup>
+
+## Chiffrement des données
+
+Plusieurs couches de chiffrement protègent vos données tout au long de leur cycle de vie.
+
+<Columns cols={3}>
+  <Card title="Au repos" icon="database">
+    Chiffrement AES-256 pour toutes les données stockées avec chiffrement d'enveloppe.
+  </Card>
+  <Card title="En transit" icon="wifi">
+    Chiffrement TLS 1.3 pour toutes les transmissions de données avec confidentialité persistante.
+  </Card>
+  <Card title="Couche applicative" icon="lock">
+    Chiffrement supplémentaire pour les champs sensibles tels que les clés API et les jetons.
+  </Card>
+</Columns>
+
+<Expandable title="Architecture de chiffrement">
+- **Chiffrement de base de données** : Transparent Data Encryption (TDE) avec AES-256
+- **Stockage de fichiers** : Chiffrement côté serveur avec clés gérées par le client (Entreprise)
+- **Chiffrement des sauvegardes** : Toutes les sauvegardes chiffrées avec des clés uniques
+- **Gestion des clés** : Modules de sécurité matériels (HSM) pour le stockage et la rotation des clés
+</Expandable>
+
+## Rétention des données
+
+Des politiques claires régissent la durée de conservation des différents types de données.
+
+| Type de données | Période de rétention | Raison |
+|-----------------|---------------------|--------|
+| **Données de compte** | Jusqu'à la suppression du compte | Fourniture du service et conformité |
+| **Journaux de workflow** | 90 jours (7 ans pour Entreprise) | Débogage et analyses |
+| **Données d'exécution** | 30 jours (personnalisable pour Entreprise) | Surveillance des performances |
+| **Journaux d'audit** | 7 ans | Conformité réglementaire |
+| **Données de sauvegarde** | 30 jours après suppression | Fins de récupération |
+
+<Expandable title="Suppression des données">
+- **Suppression de compte** : Toutes les données associées définitivement supprimées dans les 30 jours
+- **Suppression de workflow** : Données supprimées immédiatement, sauvegardes effacées après 30 jours
+- **Droit à l'effacement RGPD** : Données supprimées sur demande vérifiée dans les 30 jours
+</Expandable>
+
+## Conformité au RGPD
+
+AetherFlow est entièrement conforme au Règlement Général sur la Protection des Données (RGPD).
+
+<Callout kind="success">
+  En tant que service conforme au RGPD, nous vous aidons à remplir vos obligations en matière de protection des données.
+</Callout>
+
+### Droits des personnes concernées
+
+Nous respectons tous les droits des personnes concernées au titre du RGPD :
+
+<Columns cols={2}>
+  <Card title="Droit d'accès" icon="eye">
+    Demandez une copie de toutes les données personnelles que nous détenons à votre sujet.
+  </Card>
+  <Card title="Droit de rectification" icon="edit">
+    Corrigez les données personnelles inexactes ou incomplètes.
+  </Card>
+  <Card title="Droit à l'effacement" icon="trash">
+    Demandez la suppression de vos données personnelles (« droit à l'oubli »).
+  </Card>
+  <Card title="Droit à la limitation du traitement" icon="pause">
+    Limitez le traitement de vos données personnelles dans certaines circonstances.
+  </Card>
+  <Card title="Droit à la portabilité" icon="download">
+    Recevez vos données dans un format structuré et lisible par machine.
+  </Card>
+  <Card title="Droit d'opposition" icon="x">
+    Opposez-vous au traitement fondé sur des intérêts légitimes ou à des fins de prospection directe.
+  </Card>
+</Columns>
+
+### Mise en œuvre du RGPD
+
+<Expandable title="Confidentialité dès la conception">
+- Principes de minimisation des données appliqués à toutes les fonctionnalités
+- Analyses d'impact sur la vie privée pour les nouvelles fonctionnalités
+- Classification et étiquetage automatisés des données
+- Audits de confidentialité réguliers et révisions de conformité
+</Expandable>
+
+<Expandable title="Accord de traitement des données">
+Disponible pour les clients Entreprise, notre DPA comprend :
+- Descriptions détaillées du traitement des données
+- Mesures et garanties de sécurité
+- Listes de sous-traitants et processus d'approbation
+- Procédures de notification en cas de violation
+- Droits d'audit et certifications de conformité
+</Expandable>
+
+## Conformité au CCPA
+
+Conformité au California Consumer Privacy Act pour les résidents californiens.
+
+<ExpandableGroup>
+  <Expandable title="Droits au titre du CCPA">
+    - **Droit à l'information** : Quelles informations personnelles nous collectons et comment elles sont utilisées
+    - **Droit à la suppression** : Demander la suppression des informations personnelles
+    - **Droit d'opposition à la vente** : S'opposer à la vente d'informations personnelles
+    - **Droit à la non-discrimination** : Pas de traitement différent pour l'exercice des droits
+  </Expandable>
+
+  <Expandable title="Mise en œuvre du CCPA">
+    - Aucune vente d'informations personnelles à des tiers
+    - Avis de confidentialité clairs avec divulgations spécifiques au CCPA
+    - Portail dédié au traitement des demandes CCPA
+    - Rapports annuels sur la confidentialité pour les résidents californiens
+  </Expandable>
+</ExpandableGroup>
+
+## Conformité SOC 2
+
+Conformité SOC 2 de Type II démontrant nos contrôles de sécurité et de confidentialité.
+
+<Expandable title="Critères des services de confiance SOC 2">
+- **Sécurité** : Protection contre les accès non autorisés et les violations de données
+- **Disponibilité** : Disponibilité et résilience du système
+- **Intégrité du traitement** : Exactitude et complétude du traitement des données
+- **Confidentialité** : Protection des informations confidentielles
+- **Vie privée** : Collecte, utilisation et divulgation appropriées des informations personnelles
+</Expandable>
+
+<Expandable title="Contrôles SOC 2">
+- Contrôles d'accès et authentification multifacteur
+- Évaluations de sécurité régulières et tests d'intrusion
+- Procédures de réponse aux incidents et de notification en cas de violation
+- Gestion des changements et contrôles de configuration
+- Surveillance et journalisation continues
+</Expandable>
+
+## Conformité internationale
+
+Respect des réglementations sur la confidentialité dans les principaux marchés mondiaux.
+
+<Columns cols={4}>
+  <Card title="Canada" icon="🇨🇦">
+    Conformité PIPEDA pour la protection des informations personnelles canadiennes.
+  </Card>
+  <Card title="Australie" icon="🇦🇺">
+    Conformité OAIC et dispositif de notification obligatoire des violations de données.
+  </Card>
+  <Card title="Royaume-Uni" icon="🇬🇧">
+    Conformité au RGPD britannique post-Brexit.
+  </Card>
+  <Card title="Japon" icon="🇯🇵">
+    Conformité APPI pour la protection des informations personnelles.
+  </Card>
+</Columns>
+
+## Mesures de sécurité
+
+Des contrôles de sécurité complets protègent vos données et vos systèmes.
+
+<ExpandableGroup>
+  <Expandable title="Sécurité de l'infrastructure">
+    - Infrastructure cloud conforme SOC 2 Type II
+    - Audits de sécurité réguliers et tests d'intrusion
+    - Analyse automatisée des vulnérabilités et application des correctifs
+    - Protection DDoS et limitation de débit
+  </Expandable>
+
+  <Expandable title="Contrôles d'accès">
+    - Contrôle d'accès basé sur les rôles (RBAC) avec moindre privilège
+    - Authentification multifacteur (MFA) obligatoire
+    - Intégration d'authentification unique (SSO) disponible
+    - Gestion des sessions et délais d'expiration automatiques
+  </Expandable>
+
+  <Expandable title="Surveillance et réponse">
+    - Surveillance et alertes de sécurité 24h/24 et 7j/7
+    - Détection et réponse automatisées aux menaces
+    - Plan de réponse aux incidents avec procédures définies
+    - Formation régulière à la sensibilisation à la sécurité
+  </Expandable>
+</ExpandableGroup>
+
+## Emplacements de traitement des données
+
+Comprenez où vos données sont stockées et traitées.
+
+<Expandable title="Centres de données principaux">
+- **Est des États-Unis (Virginie du Nord)** : Région principale pour les clients américains
+- **Ouest de l'UE (Irlande)** : Région conforme au RGPD pour les clients européens
+- **Asie-Pacifique (Singapour)** : Région APAC pour les clients asiatiques
+
+*Les clients Entreprise peuvent choisir des régions spécifiques pour la résidence des données.*
+</Expandable>
+
+<Expandable title="Souveraineté des données">
+- Données stockées dans des centres de données régionaux
+- Transferts transfrontaliers conformes aux réglementations locales
+- Clauses contractuelles types pour les transferts internationaux
+- Règles d'entreprise contraignantes pour les transferts intragroupe
+</Expandable>
+
+## Sous-traitants tiers
+
+Transparence concernant nos sous-traitants et leur statut de conformité.
+
+<Expandable title="Catégories de sous-traitants">
+- **Infrastructure cloud** : AWS, Google Cloud, Azure (conformes SOC 2)
+- **Traitement des paiements** : Stripe, Braintree (conformes PCI DSS)
+- **Analyses** : Mixpanel, Amplitude (conformes RGPD)
+- **Assistance client** : Zendesk, Intercom (conformes SOC 2)
+</Expandable>
+
+<Expandable title="Accord avec les sous-traitants">
+Tous les sous-traitants signent des accords de traitement des données incluant :
+- Obligations de sécurité et de confidentialité
+- Exigences en matière de protection des données et de confidentialité
+- Procédures de notification des incidents
+- Droits d'audit et certifications de conformité
+</Expandable>
+
+## Réponse aux incidents
+
+Nos procédures de gestion des incidents de sécurité et des violations de données.
+
+<Steps>
+  <Step title="Détection" icon="search">
+    Les systèmes de surveillance et d'alerte automatisés détectent les incidents potentiels.
+  </Step>
+  <Step title="Évaluation" icon="clipboard">
+    L'équipe de sécurité évalue la portée et l'impact de l'incident.
+  </Step>
+  <Step title="Confinement" icon="shield">
+    Mesures immédiates prises pour contenir l'incident et prévenir sa propagation.
+  </Step>
+  <Step title="Récupération" icon="refresh-cw">
+    Systèmes restaurés et données récupérées à partir des sauvegardes si nécessaire.
+  </Step>
+  <Step title="Notification" icon="bell">
+    Les clients concernés notifiés dans les délais requis.
+  </Step>
+  <Step title="Révision" icon="eye">
+    Analyse post-incident et améliorations mises en œuvre.
+  </Step>
+</Steps>
+
+<Expandable title="Notification de violation">
+Conformément aux lois applicables :
+- **RGPD** : Notification dans les 72 heures suivant la prise de connaissance de la violation
+- **CCPA** : Notification « dans les meilleurs délais »
+- **Général** : Les clients concernés notifiés rapidement avec les étapes correctives
+</Expandable>
+
+## Confidentialité dès la conception
+
+Comment les considérations de confidentialité sont intégrées dans notre développement produit.
+
+<ExpandableGroup>
+  <Expandable title="Processus de développement">
+    - Analyses d'impact sur la vie privée pour toutes les nouvelles fonctionnalités
+    - Principes de minimisation des données appliqués à la collecte des données
+    - Les paramètres de confidentialité par défaut favorisent la protection des utilisateurs
+    - Formation régulière à la confidentialité pour l'équipe de développement
+  </Expandable>
+
+  <Expandable title="Fonctionnalités de confidentialité">
+    - Contrôles granulaires du partage des données
+    - Options d'exportation et de suppression des données
+    - Tableau de bord de confidentialité pour les utilisateurs
+    - Gestion du consentement pour le traitement des données
+  </Expandable>
+</ExpandableGroup>
+
+## Coordonnées
+
+Comment nous contacter pour les questions relatives à la confidentialité et à la conformité.
+
+<Expandable title="Contact de l'équipe Confidentialité">
+- **E-mail** : privacy@aetherflow.com
+- **Délai de réponse** : Dans les 24 heures pour les préoccupations urgentes en matière de confidentialité
+- **Demandes de données** : privacy-requests@aetherflow.com
+- **Signalements de sécurité** : security@aetherflow.com
+</Expandable>
+
+<Expandable title="Ressources de conformité">
+- **Politique de confidentialité** : Politique de confidentialité complète disponible sur aetherflow.com/privacy
+- **Présentation de la sécurité** : Documentation technique sur la sécurité
+- **Certificats de conformité** : Rapports SOC 2 et documentation de conformité RGPD
+- **Liste des sous-traitants** : Liste complète des sous-traitants tiers
+</Expandable>
+
+Votre confidentialité et la sécurité de vos données sont nos priorités absolues. Nous travaillons en permanence à maintenir les plus hauts standards de conformité et de protection.

@@ -1,0 +1,255 @@
+---
+title: Slack-Integration
+
+description: AetherFlow mit Slack verbinden, um Benachrichtigungen, Team-Updates und Workflow-Kommunikation zu automatisieren
+---
+
+## Ueberblick
+
+Die Slack-Integration ermoeoelicht nahtlose Kommunikation zwischen AetherFlow-Workflows und Ihren Slack-Workspaces. Senden Sie automatisierte Benachrichtigungen, posten Sie Updates, erstellen Sie Kanaele und loesen Sie Workflows aus Slack-Ereignissen aus. Diese Integration unterstuetzt sowohl eingehende als auch ausgehende Nachrichten, Webhooks und Echtzeit-Ereignisverarbeitung.
+
+<Columns cols={2}>
+  <Card title="Hauptfunktionen" icon="zap">
+    - Automatisierte Benachrichtigungen aus Workflows
+    - Kanal- und Direktnachrichten-Posting
+    - Slack-Ereignis-Trigger
+    - Echtzeit-Nachrichtenverarbeitung
+    - Benutzerdefinierte Bot-Konfigurationen
+  </Card>
+  <Card title="Anwendungsbeispiele" icon="target">
+    - Benachrichtigungen bei Workflow-Abschluss
+    - Team-Statusupdates
+    - Incident-Benachrichtigungen
+    - Taegliche Zusammenfassungsberichte
+    - Genehmigungsanfragen
+  </Card>
+</Columns>
+
+## Slack-Integration einrichten
+
+Navigieren Sie zum Integrations-Dashboard in AetherFlow und waehlen Sie Slack aus den verfuegbaren Optionen. Sie benoetigen Slack-Workspace-Administratorberechtigungen, um die Einrichtung abzuschliessen.
+
+<Steps>
+  <Step title="Slack-App erstellen" icon="settings">
+    Gehen Sie zur [Slack API](https://api.slack.com/apps) und erstellen Sie eine neue App fuer Ihren Workspace. Waehlen Sie "From scratch" und geben Sie einen Namen und Workspace an.
+  </Step>
+  <Step title="Berechtigungen konfigurieren" icon="key">
+    Fuegen Sie im Bereich "OAuth & Permissions" folgende OAuth-Berechtigungen hinzu:
+    - `channels:read` – Oeffentliche Kanaele aufrufen
+    - `channels:write` – Nachrichten in Kanaele posten
+    - `chat:write` – Nachrichten senden
+    - `chat:write.public` – In oeffentliche Kanaele posten
+    - `files:write` – Dateien hochladen
+    - `users:read` – Benutzerinformationen aufrufen
+  </Step>
+  <Step title="Im Workspace installieren" icon="download">
+    Die App in Ihrem Workspace installieren und das Bot-User-OAuth-Token kopieren.
+  </Step>
+  <Step title="In AetherFlow verbinden" icon="link">
+    Das Token in der AetherFlow-Integrationseinrichtung einfuegen und die Verbindung autorisieren.
+    ```bash
+    # Alternative: CLI setup
+    aetherflow integrations connect slack --token xoxb-your-bot-token
+    ```
+  </Step>
+</Steps>
+
+## Konfigurationsoptionen
+
+### Bot-Konfiguration
+
+Passen Sie das Erscheinungsbild und Verhalten Ihres Slack-Bots an:
+
+<Columns cols={2}>
+  <Card title="Grundeinstellungen" icon="settings">
+    Bot-Namen, Symbol und Standardkanal fuer Benachrichtigungen festlegen.
+    <CodeGroup tabs="JSON,Environment">
+      ```json
+      {
+        "bot_name": "AetherFlow Bot",
+        "icon_emoji": ":robot_face:",
+        "default_channel": "#general"
+      }
+      ```
+      ```bash
+      export SLACK_BOT_NAME="AetherFlow Bot"
+      export SLACK_ICON_EMOJI=":robot_face:"
+      export SLACK_DEFAULT_CHANNEL="#general"
+      ```
+    </CodeGroup>
+  </Card>
+  <Card title="Erweiterte Einstellungen" icon="cog">
+    Nachrichtenformatierung, Wiederholungslogik und Rate-Limiting konfigurieren.
+    <Expandable title="Rate-Limiting">
+      Slack erlaubt 1 Nachricht pro Sekunde pro Kanal. AetherFlow behandelt dies automatisch mit Warteschlangen.
+    </Expandable>
+  </Card>
+</Columns>
+
+### Kanalverwaltung
+
+Verwalten Sie, auf welche Kanaele Ihr Bot zugreifen und in welche er posten kann:
+
+| Berechtigungsstufe | Beschreibung | Anwendungsfall |
+|--------------------|--------------|----------------|
+| Oeffentliche Kanaele | In jeden oeffentlichen Kanal posten | Team-Ankuendigungen |
+| Private Kanaele | Einladung in private Kanaele erforderlich | Vertrauliche Updates |
+| Direktnachrichten | DMs an Benutzer senden | Persoenliche Benachrichtigungen |
+
+## Slack in Workflows verwenden
+
+### Einfaches Nachrichten-Posting
+
+Slack in Ihren Workflow-Prompts auf natuerliche Weise referenzieren:
+
+```
+When a new customer signs up, post a welcome message to #customer-success channel in Slack.
+```
+
+### Erweiterte Automatisierungsbeispiele
+
+<CodeGroup tabs="JavaScript,Python">
+  ```javascript
+  // Post formatted message with attachments
+  const message = {
+    channel: '#alerts',
+    text: '🚨 System Alert',
+    blocks: [
+      {
+        type: 'section',
+        text: {
+          type: 'mrkdwn',
+          text: '*Alert:* Database connection issues detected'
+        }
+      },
+      {
+        type: 'actions',
+        elements: [
+          {
+            type: 'button',
+            text: { type: 'plain_text', text: 'Investigate' },
+            action_id: 'investigate_alert'
+          }
+        ]
+      }
+    ]
+  };
+
+  await slack.postMessage(message);
+  ```
+
+  ```python
+  # Send file with workflow results
+  from aetherflow import SlackClient
+
+  slack = SlackClient()
+  slack.upload_file(
+      channels=['#reports'],
+      filename='weekly_summary.pdf',
+      file=open('summary.pdf', 'rb'),
+      title='Weekly Performance Summary',
+      initial_comment='Here\'s this week\'s summary report 📊'
+  )
+  ```
+</CodeGroup>
+
+### Ereignis-Trigger
+
+Workflows einrichten, die auf Slack-Ereignisse reagieren:
+
+- **Nachrichten-Ereignisse**: Bei bestimmten Schluesselwoertern oder Mustern ausloesen
+- **Kanal-Ereignisse**: Auf neue Kanaele oder Beitritte reagieren
+- **Reaktions-Ereignisse**: Emoji-Reaktionen verarbeiten
+- **Erwaehungs-Ereignisse**: Reagieren, wenn der Bot erwaehnt wird
+
+Beispiel-Trigger-Prompt:
+```
+When someone mentions @AetherFlow in Slack with "urgent", create a high-priority ticket and notify the on-call engineer.
+```
+
+## Webhook-Integration
+
+Fuer Echtzeit-Slack-Ereignisse Webhooks konfigurieren:
+
+<Steps>
+  <Step title="Ereignisse aktivieren" icon="webhook">
+    Gehen Sie in Ihren Slack-App-Einstellungen zu "Event Subscriptions" und aktivieren Sie Ereignisse.
+  </Step>
+  <Step title="Ereignisse abonnieren" icon="bell">
+    Bot-Ereignisabonnements hinzufuegen wie `message.channels`, `reaction_added`.
+  </Step>
+  <Step title="Request-URL festlegen" icon="link">
+    Ihre AetherFlow-Webhook-URL verwenden: `https://api.aetherflow.com/webhooks/slack`
+  </Step>
+</Steps>
+
+## Ueberwachung und Analysen
+
+Leistung Ihrer Slack-Integration verfolgen:
+
+<Columns cols={3}>
+  <Card title="Nachrichten-Kennzahlen" icon="message-square">
+    Gesendete Nachrichten, Zustellraten, Antwortzeiten
+  </Card>
+  <Card title="Kanal-Aktivitaet" icon="activity">
+    Aktive Kanaele, Engagement-Raten
+  </Card>
+  <Card title="Fehlerverfolgung" icon="alert-triangle">
+    Fehlgeschlagene Zustellungen, Berechtigungsprobleme
+  </Card>
+</Columns>
+
+## Fehlerbehebung
+
+### Haeufige Probleme
+
+<ExpandableGroup>
+  <Expandable title="Authentifizierung fehlgeschlagen">
+    Ueberpruefen Sie, ob Ihr Bot-Token korrekt ist und die erforderlichen Berechtigungen hat. Installieren Sie die App bei Bedarf neu.
+  </Expandable>
+  <Expandable title="Nachrichten werden nicht gepostet">
+    Kanal-Berechtigungen pruefen und sicherstellen, dass der Bot in private Kanaele eingeladen ist.
+  </Expandable>
+  <Expandable title="Rate-Limiting">
+    Nachrichten-Warteschlangen in Ihrem Workflow implementieren. Slack erlaubt 1 Nachricht/Sekunde pro Kanal.
+  </Expandable>
+  <Expandable title="Webhook-Ereignisse werden nicht empfangen">
+    Ueberpruefen Sie, ob die Request-URL korrekt ist und Ereignisse in Slack ordnungsgemaess abonniert sind.
+  </Expandable>
+</ExpandableGroup>
+
+### Debug-Befehle
+
+```bash
+# Test connection
+aetherflow integrations test slack
+
+# View logs
+aetherflow logs --integration slack --last 24h
+
+# Reset integration
+aetherflow integrations reset slack
+```
+
+## Sicherheitsueberlegungen
+
+<Callout kind="alert">
+  Slack-Tokens sicher aufbewahren und regelmaessig rotieren. Verwenden Sie die minimal erforderlichen Berechtigungen fuer Ihren Anwendungsfall.
+</Callout>
+
+- **Token-Verwaltung**: AetherFlow verschluesselt alle Integrations-Tokens
+- **Berechtigungsbeschraenkung**: Nur notwendige OAuth-Berechtigungen anfordern
+- **Audit-Protokollierung**: Alle Slack-Interaktionen werden fuer Compliance protokolliert
+- **Zugriffskontrolle**: Integrationszugriff folgt Ihren Workspace-Berechtigungen
+
+## Best Practices
+
+1. **Kanal-Organisation**: Dedizierte Kanaele fuer verschiedene Arten von Benachrichtigungen verwenden
+2. **Nachrichtenformatierung**: Slacks Block Kit fuer umfangreiche, interaktive Nachrichten nutzen
+3. **Fehlerbehandlung**: Fallback-Kanaele fuer kritische Benachrichtigungen implementieren
+4. **Tests**: Integrationen immer zuerst in einem Entwicklungs-Workspace testen
+5. **Ueberwachung**: Alerts fuer Integrationsfehler einrichten
+
+<Callout kind="success">
+  Die Slack-Integration macht AetherFlow zum Kommunikationszentrum Ihres Teams und sorgt dafuer, dass alle ueber automatisierte Prozesse informiert bleiben.
+</Callout>

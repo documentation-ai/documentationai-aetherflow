@@ -1,0 +1,384 @@
+---
+title: Guide de migration
+description: Migrez en toute fluidité depuis d'autres plateformes d'automatisation vers AetherFlow
+---
+## Vue d'ensemble de la migration
+
+Passez en douceur d'autres outils d'automatisation à AetherFlow grâce à nos outils de migration complets et à notre accompagnement dédié.
+
+<Callout kind="info" collapsed="false">
+  Nos spécialistes en migration peuvent vous aider à déplacer des configurations d'automatisation complexes avec un temps d'arrêt minimal.
+</Callout>
+
+## Évaluation préalable à la migration
+
+Évaluez votre configuration d'automatisation actuelle avant de migrer.
+
+<Steps>
+  <Step title="Inventorier les flux de travail" icon="list" title-type="p">
+    Documentez tous les flux de travail, déclencheurs et intégrations existants.
+  </Step>
+
+  <Step title="Évaluer la complexité" icon="bar-chart" title-type="p">
+    Évaluez la complexité des flux de travail, leurs dépendances et la logique personnalisée.
+  </Step>
+
+  <Step title="Identifier les dépendances" icon="link" title-type="p">
+    Cartographiez les intégrations, les sources de données et les dépendances externes.
+  </Step>
+
+  <Step title="Planifier le calendrier" icon="calendar" title-type="p">
+    Créez un calendrier de migration réaliste avec des jalons.
+  </Step>
+</Steps>
+
+## Plateformes prises en charge
+
+Migrez depuis les plateformes d'automatisation et d'intégration les plus répandues.
+
+<Columns cols="3">
+  <Card title="Zapier" icon="zap" horizontal="false">
+    Import direct des Zaps avec recréation automatique des flux de travail.
+  </Card>
+
+  <Card title="Microsoft Power Automate" icon="microsoft" horizontal="false">
+    Convertissez les Flows à l'aide de notre outil de migration Power Automate.
+  </Card>
+
+  <Card title="IFTTT" icon="ifttt" horizontal="false">
+    Migrez les Applets avec une conversion simplifiée des flux de travail.
+  </Card>
+
+  <Card title="Plateformes personnalisées" icon="code" horizontal="false">
+    Migration par API pour les systèmes d'automatisation propriétaires.
+  </Card>
+</Columns>
+
+## Migration depuis Zapier
+
+Guide étape par étape pour migrer de Zapier vers AetherFlow.
+
+<Tabs>
+  <Tab title="Exporter depuis Zapier" icon="download">
+    1. Connectez-vous à votre compte Zapier
+
+    2. Accédez à Paramètres > Personnel > Exporter vos données
+
+    3. Demandez l'export des données (peut prendre 24 à 48 heures)
+
+    4. Téléchargez le fichier JSON d'export lorsqu'il est prêt
+  </Tab>
+
+  <Tab title="Importer dans AetherFlow" icon="upload">
+    1. Créez votre compte AetherFlow
+
+    2. Accédez à Paramètres > Import/Export
+
+    3. Sélectionnez « Importer depuis Zapier »
+
+    4. Téléversez votre fichier JSON exporté
+
+    5. Vérifiez et associez les intégrations
+
+    6. Testez les flux de travail importés
+  </Tab>
+
+  <Tab title="Tâches post-migration" icon="check-circle">
+    - Vérifier que toutes les intégrations sont connectées
+
+    - Tester les flux de travail avec des données d'exemple
+
+    - Mettre à jour les URL de webhook si nécessaire
+
+    - Surveiller les journaux d'exécution pour détecter les problèmes
+
+    - Optimiser les invites pour l'IA d'AetherFlow
+  </Tab>
+</Tabs>
+
+## Migration depuis Microsoft Power Automate
+
+Convertissez les Flows Microsoft en flux de travail AetherFlow.
+
+<Expandable title="Processus de migration" default-open="false">
+  1. **Exporter les Flows** : utilisez la fonctionnalité d'export de Power Automate pour télécharger les définitions des flows
+
+  2. **Analyser la structure** : examinez la logique des flows, les conditions et les actions
+
+  3. **Recréer dans AetherFlow** : utilisez le langage naturel pour décrire la logique des flows
+
+  4. **Associer les intégrations** : connectez les intégrations AetherFlow équivalentes
+
+  5. **Tester en profondeur** : validez les fonctionnalités avec des tests complets
+</Expandable>
+
+<Expandable title="Défis courants" default-open="false">
+  - La logique conditionnelle complexe peut nécessiter une reformulation
+
+  - Les connecteurs personnalisés doivent être recréés manuellement
+
+  - Les flux d'approbation nécessitent une refonte pour le modèle d'AetherFlow
+
+  - Certaines actions spécifiques à Power Automate n'ont pas d'équivalents directs
+</Expandable>
+
+## Migration depuis IFTTT
+
+Migrez les Applets d'automatisation simples vers AetherFlow.
+
+<Callout kind="tip" collapsed="false">
+  Les migrations depuis IFTTT sont généralement simples en raison du modèle déclencheur-action simple.
+</Callout>
+
+<Steps>
+  <Step title="Passer en revue les Applets" icon="eye" title-type="p">
+    Documentez vos Applets actifs et leur finalité.
+  </Step>
+
+  <Step title="Recréer la logique" icon="refresh-cw" title-type="p">
+    Décrivez la logique des Applets à l'aide d'invites en langage naturel.
+  </Step>
+
+  <Step title="Connecter les services" icon="plug" title-type="p">
+    Configurez les intégrations équivalentes dans AetherFlow.
+  </Step>
+
+  <Step title="Tester les fonctionnalités" icon="play" title-type="p">
+    Vérifiez que les flux de travail fonctionnent comme prévu.
+  </Step>
+</Steps>
+
+## Migration depuis une plateforme personnalisée
+
+Migrez depuis des systèmes d'automatisation propriétaires ou personnalisés.
+
+<ExpandableGroup>
+  <Expandable title="Migration par API" default-open="false">
+    Utilisez les API d'AetherFlow pour recréer les flux de travail par programmation.
+  </Expandable>
+
+  <Expandable title="Export/Import des données" default-open="false">
+    Exportez les définitions de flux de travail et importez-les à l'aide de nos outils d'import en masse.
+  </Expandable>
+
+  <Expandable title="Approche hybride" default-open="false">
+    Faites fonctionner l'ancien et le nouveau système en parallèle pendant la transition.
+  </Expandable>
+</ExpandableGroup>
+
+## Correspondance des intégrations
+
+Comprenez comment vos intégrations actuelles se traduisent dans AetherFlow.
+
+| Plateforme actuelle           | Équivalent AetherFlow       | Remarques                                    |
+| ----------------------------- | --------------------------- | -------------------------------------------- |
+| Applications Zapier           | Intégrations natives        | La plupart des applications sont supportées nativement |
+| Connecteurs Power Automate    | Natif + Personnalisé        | Certains connecteurs nécessitent une configuration personnalisée |
+| Services IFTTT                | Intégrations natives        | Tous les services majeurs sont supportés     |
+| API personnalisées            | Webhooks/Intégration perso. | Système de webhook flexible disponible       |
+
+## Migration des données
+
+Déplacez les données historiques et l'historique d'exécution des flux de travail.
+
+<Columns cols="2">
+  <Card title="Journaux historiques" icon="file-text" horizontal="false">
+    Migrez l'historique d'exécution à des fins de conformité et d'audit.
+  </Card>
+
+  <Card title="Données de configuration" icon="settings" horizontal="false">
+    Transférez les paramètres des flux de travail, les planifications et les préférences.
+  </Card>
+
+  <Card title="Permissions des utilisateurs" icon="users" horizontal="false">
+    Migrez les rôles d'équipe et les contrôles d'accès.
+  </Card>
+
+  <Card title="Ressources personnalisées" icon="package" horizontal="false">
+    Déplacez les scripts personnalisés, les modèles et l'image de marque.
+  </Card>
+</Columns>
+
+## Stratégie de test
+
+Assurez-vous que les flux de travail migrés fonctionnent correctement dans le nouvel environnement.
+
+<Steps>
+  <Step title="Tests unitaires" icon="flask" title-type="p">
+    Testez les composants individuels des flux de travail et les intégrations.
+  </Step>
+
+  <Step title="Tests d'intégration" icon="link" title-type="p">
+    Vérifiez le fonctionnement de bout en bout des flux de travail.
+  </Step>
+
+  <Step title="Tests de charge" icon="activity" title-type="p">
+    Testez les performances dans les conditions de charge attendues.
+  </Step>
+
+  <Step title="Tests d'acceptation utilisateur" icon="user-check" title-type="p">
+    Validez que les flux de travail répondent aux exigences métier.
+  </Step>
+</Steps>
+
+## Plan de retour arrière
+
+Préparez des plans de contingence en cas de problèmes lors de la migration.
+
+<Expandable title="Stratégie de retour arrière" default-open="false">
+  - **Exécution parallèle** : maintenez l'ancien système actif pendant la phase de test
+
+  - **Bascule progressive** : migrez les flux de travail par phases plutôt que tout à la fois
+
+  - **Sauvegarde des données** : conservez des sauvegardes de toutes les données critiques
+
+  - **Retour rapide** : capacité à revenir à l'ancien système en quelques heures si nécessaire
+</Expandable>
+
+## Optimisation des performances
+
+Optimisez les flux de travail migrés pour l'architecture d'AetherFlow.
+
+<Tabs>
+  <Tab title="Optimisation des invites" icon="edit-3">
+    Affinez les invites en langage naturel pour une meilleure interprétation par l'IA.
+  </Tab>
+
+  <Tab title="Efficacité des intégrations" icon="zap">
+    Utilisez les fonctionnalités de traitement par lots et de mise en cache d'AetherFlow.
+  </Tab>
+
+  <Tab title="Gestion des erreurs" icon="alert-triangle">
+    Implémentez une gestion complète des erreurs et une logique de nouvelle tentative.
+  </Tab>
+</Tabs>
+
+## Formation des équipes
+
+Préparez votre équipe à la nouvelle plateforme.
+
+<ExpandableGroup>
+  <Expandable title="Ressources de formation" default-open="false">
+    - Tutoriels d'intégration interactifs
+
+    - Vidéos de présentation des fonctionnalités clés
+
+    - Ateliers pratiques et exercices
+
+    - Documentation et guides des meilleures pratiques
+  </Expandable>
+
+  <Expandable title="Options d'assistance" default-open="false">
+    - Équipe d'assistance dédiée à la migration
+
+    - Assistance technique 24h/24, 7j/7 pendant la transition
+
+    - Communauté Slack pour le soutien entre pairs
+
+    - Permanences avec les experts produit
+  </Expandable>
+</ExpandableGroup>
+
+## Calendrier de migration
+
+Plannings de migration typiques pour différents niveaux de complexité.
+
+| Complexité   | Durée       | Taille de l'équipe | Jalons clés                                                       |
+| ------------ | ----------- | ------------------ | ----------------------------------------------------------------- |
+| **Simple**   | 1-2 semaines | 1-2 personnes     | Évaluation, migration, tests                                      |
+| **Moyenne**  | 4-6 semaines | 2-5 personnes     | Planification, migration par phases, formation                    |
+| **Complexe** | 8-12 semaines | 5+ personnes     | Évaluation complète, développement personnalisé, tests approfondis |
+
+## Considérations financières
+
+Comprenez les aspects financiers de la migration.
+
+<Expandable title="Coûts de migration" default-open="false">
+  - **Évaluation** : 2 500 $ (analyse des flux de travail et planification)
+
+  - **Migration des données** : 1 000 $–5 000 $ (selon le volume de données)
+
+  - **Développement personnalisé** : 150 $/heure (pour les intégrations complexes)
+
+  - **Formation** : 500 $/personne (ateliers pratiques)
+
+  - **Assistance** : incluse dans le forfait de migration
+</Expandable>
+
+<Expandable title="Calendrier de retour sur investissement" default-open="false">
+  - **Immédiat** : économies grâce à la simplification des flux de travail
+
+  - **1 à 3 mois** : amélioration de l'efficacité et réduction du travail manuel
+
+  - **3 à 6 mois** : plein bénéfice de l'automatisation réalisé
+
+  - **6 mois et plus** : gains liés aux fonctionnalités avancées et à l'optimisation
+</Expandable>
+
+## Indicateurs de succès
+
+Mesurez le succès de votre projet de migration.
+
+<Columns cols="4">
+  <Card title="Disponibilité des flux" icon="activity" horizontal="false">
+    Pourcentage de temps pendant lequel les flux de travail sont opérationnels.
+  </Card>
+
+  <Card title="Précision de la migration" icon="target" horizontal="false">
+    Dans quelle mesure les flux migrés correspondent aux fonctionnalités d'origine.
+  </Card>
+
+  <Card title="Adoption par l'équipe" icon="users" horizontal="false">
+    Pourcentage de l'équipe utilisant efficacement la nouvelle plateforme.
+  </Card>
+
+  <Card title="Économies réalisées" icon="dollar-sign" horizontal="false">
+    Réduction des coûts opérationnels après la migration.
+  </Card>
+</Columns>
+
+## Assistance post-migration
+
+Accompagnement continu après la fin de la migration.
+
+<Callout kind="success" collapsed="false">
+  Notre assistance à la migration se poursuit 30 jours après le lancement pour garantir un fonctionnement fluide.
+</Callout>
+
+<ExpandableGroup>
+  <Expandable title="Assistance technique" default-open="false">
+    Accès 24h/24, 7j/7 aux ingénieurs de migration pour les problèmes techniques.
+  </Expandable>
+
+  <Expandable title="Conseil en optimisation" default-open="false">
+    Révisions régulières pour optimiser les flux de travail et améliorer les performances.
+  </Expandable>
+
+  <Expandable title="Sessions de formation complémentaires" default-open="false">
+    Sessions de formation supplémentaires selon les besoins pour les nouveaux membres de l'équipe.
+  </Expandable>
+</ExpandableGroup>
+
+## Démarrer
+
+Commencez votre parcours de migration dès aujourd'hui.
+
+<Steps>
+  <Step title="Contacter les ventes" icon="phone" title-type="p">
+    Prenez contact pour discuter de vos besoins de migration et obtenir un devis personnalisé.
+  </Step>
+
+  <Step title="Planifier une évaluation" icon="calendar" title-type="p">
+    Réservez un appel de découverte pour évaluer votre configuration actuelle.
+  </Step>
+
+  <Step title="Planifier la migration" icon="map" title-type="p">
+    Travaillez avec notre équipe pour créer une feuille de route de migration détaillée.
+  </Step>
+
+  <Step title="Exécuter la migration" icon="play" title-type="p">
+    Lancez le processus de migration avec le plein soutien de notre équipe.
+  </Step>
+</Steps>
+
+Prêt à moderniser votre infrastructure d'automatisation ? Contactez nos spécialistes en migration pour démarrer.

@@ -4,7 +4,9 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Repository Overview
 
-This is a **documentation-only repository** for AetherFlow, an AI-powered workflow automation platform. There is no application source code, build system, or test suite. The repository contains MDX documentation pages, a site configuration file, and an OpenAPI specification.
+This is a **documentation-only repository** for AetherFlow, an AI-powered workflow automation platform. The documentation site is built on **Documentation.AI** (a platform similar to Mintlify). There is no application source code, build system, or test suite. The repository contains MDX documentation pages, a site configuration file, and an OpenAPI specification.
+
+All documentation content must be written using **Documentation.AI components and conventions** as described in this file.
 
 ## Repository Structure
 
@@ -14,21 +16,7 @@ This is a **documentation-only repository** for AetherFlow, an AI-powered workfl
 
 ## No Build/Test/Lint Commands
 
-There is no `package.json`, no build tooling, and no test runner. Changes are committed directly to the `main` branch and picked up by the documentation platform.
-
-## MDX Component Conventions
-
-Documentation pages use custom React components embedded in MDX. Key components and their patterns:
-
-- `<Card title="..." icon="..." horizontal="false">` — Feature cards, usually inside `<Columns cols="N">`
-- `<Columns cols="N">` — Multi-column layout wrapper
-- `<Steps>` / `<Step title="..." icon="..." title-type="p">` — Step-by-step instructions
-- `<Tab>` — Tabbed content sections (used for multi-language code samples)
-- `<Expandable title="...">` — Collapsible detail sections
-- `<CodeGroup>` — Grouped code blocks with language tabs
-- `<Callout kind="info|warning">` — Info/warning callout boxes
-
-Many components accept a `uid` attribute (UUID) for platform tracking. Preserve existing UIDs when editing; new components don't require them.
+There is no `package.json`, no build tooling, and no test runner. Changes are committed directly to the `main` branch and picked up by the Documentation.AI platform.
 
 ## Navigation Architecture
 
@@ -37,8 +25,11 @@ Many components accept a `uid` attribute (UUID) for platform tracking. Preserve 
 ## Editing Guidelines
 
 - **Frontmatter** — Every MDX file starts with YAML frontmatter containing `title` and `description`.
+- **Components** — Use Documentation.AI components (see full reference below). Many components accept a `uid` attribute (UUID) for platform tracking — preserve existing UIDs when editing; new components don't require them.
 - **OpenAPI sync** — The API endpoints group in `documentation.json` points to `openapi.yaml` via `"openapi": "openapi.yaml"`. Keep the spec in sync with any API documentation changes in the MDX pages.
 - **Commit style** — Historical commits follow the pattern: `Documentation Updated Through Editor by Accounts Documentation.AI`.
+
+---
 
 # Documentation.AI technical writing rule
 
@@ -80,25 +71,21 @@ You are an AI writing assistant specialized in creating exceptional technical do
 ### Important syntax notes
 
 **Attribute naming:**
-
 - All Documentation.AI components use **kebab-case** for multi-word attributes: `param-type`, `title-type`, `default-open`, `show-lines`
 - Boolean attributes can be strings: `required="true"`, `collapsed="false"`, or JSX expressions: `horizontal={true}`
 - String attributes use quotes: `kind="info"`, `cols="2"`, `tabs="JavaScript,Python"`
 
 **Layout patterns:**
-
 - Columns with Cards: Wrap Cards directly in `<Columns cols="2">`
 - Columns with plain content: Wrap content in `<div>` inside `<Columns cols="2">`
 - Cards always need `title` and `href` attributes
 - Card layouts: `horizontal={false}` (default, stacked) or `horizontal={true}` (side-by-side)
 
 **Icons:**
-
 - Lucide icons: Use icon names without suffix, e.g., `icon="zap"`, `icon="book-open"`
 - See [Lucide icons](https://lucide.dev/icons/) for complete list
 
 **Optional attributes:**
-
 - `title-type` on Steps: Defaults to `p`, use `h2` or `h3` for semantic heading structure
 - `default-open` on Expandable: Defaults to `false`
 - `collapsed` on Callout: Defaults to `false`
@@ -130,7 +117,7 @@ Use **bold** for emphasis and `inline code` for technical terms.
 
 Create [descriptive links](https://documentation.ai) instead of "click here".
 
-Use _italic_ sparingly for subtle emphasis.
+Use *italic* sparingly for subtle emphasis.
 
 Combine formatting: **bold with `code`** when needed.
 ```
@@ -172,11 +159,11 @@ Standard markdown syntax for organizing information:
 #### Tables
 
 ```markdown
-| Parameter | Type    | Description                 |
-| --------- | ------- | --------------------------- |
-| api_key   | string  | Your API authentication key |
-| timeout   | integer | Request timeout in seconds  |
-| retries   | integer | Number of retry attempts    |
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| api_key | string | Your API authentication key |
+| timeout | integer | Request timeout in seconds |
+| retries | integer | Number of retry attempts |
 ```
 
 #### Best practices
@@ -196,14 +183,11 @@ Embed videos and external content using the Video and Iframe components:
 #### Video component syntax
 
 ```jsx
-<Video src="https://www.youtube.com/watch?v=VIDEO_ID"  width="100%"
-  height="600" />
+<Video src="https://www.youtube.com/watch?v=VIDEO_ID" width="100%" height="600" />
 
-<Video src="https://vimeo.com/VIDEO_ID" w width="100%"
-  height="600" />
+<Video src="https://vimeo.com/VIDEO_ID" width="100%" height="600" />
 
-<Video src="https://www.loom.com/share/VIDEO_ID"  width="100%"
-  height="600" />
+<Video src="https://www.loom.com/share/VIDEO_ID" width="100%" height="600" />
 ```
 
 #### Iframe component syntax
@@ -226,56 +210,41 @@ Embed videos and external content using the Video and Iframe components:
 
 Documentation.AI uses a single Callout component with different `kind` values:
 
-#### Info - Neutral contextual information
+- `kind="info"` — Neutral contextual information
+- `kind="tip"` — Best practices and recommendations
+- `kind="alert"` — Important cautions
+- `kind="danger"` — High-risk actions
+- `kind="success"` — Confirmations and positive outcomes
 
-<Callout kind="info">
-  Supplementary information that supports the main content without interrupting flow
-</Callout>
+```jsx
+<Callout kind="info">Supplementary information that supports the main content.</Callout>
 
-#### Tip - Best practices and recommendations
+<Callout kind="tip">Expert advice, shortcuts, or best practices.</Callout>
 
-<Callout kind="tip">
-  Expert advice, shortcuts, or best practices that enhance user success
-</Callout>
+<Callout kind="alert">Critical information about potential issues or breaking changes.</Callout>
 
-#### Alert - Important cautions
+<Callout kind="danger">Warnings about destructive actions or data loss.</Callout>
 
-<Callout kind="alert">
-  Critical information about potential issues, breaking changes, or actions requiring attention
-</Callout>
-
-#### Danger - High-risk actions
-
-<Callout kind="danger">
-  Warnings about destructive actions, data loss, or irreversible operations
-</Callout>
-
-#### Success - Confirmations and positive outcomes
-
-<Callout kind="success">
-  Positive confirmations, successful completions, or achievement indicators
-</Callout>
+<Callout kind="success">Positive confirmations or successful completions.</Callout>
+```
 
 ### Code components
 
 #### Single code block
 
-Example of a single code block:
-
 ```javascript config.js
 const apiConfig = {
-  baseURL: "https://api.documentation.ai",
+  baseURL: 'https://api.documentation.ai',
   timeout: 5000,
   headers: {
-    Authorization: `Bearer ${process.env.API_TOKEN}`,
-  },
+    'Authorization': `Bearer ${process.env.API_TOKEN}`
+  }
 };
 ```
 
 #### Code group with multiple languages
 
-Example of a code group:
-
+```jsx
 <CodeGroup show-lines="true" tabs="JavaScript,Python,Bash">
   ```javascript
   const response = await fetch('/api/endpoint', {
@@ -284,24 +253,23 @@ Example of a code group:
   const data = await response.json();
   ```
 
-```python
-import requests
-response = requests.get('/api/endpoint',
-  headers={'Authorization': f'Bearer {api_key}'})
-data = response.json()
-```
+  ```python
+  import requests
+  response = requests.get('/api/endpoint',
+    headers={'Authorization': f'Bearer {api_key}'})
+  data = response.json()
+  ```
 
-```bash
-curl -X GET '/api/endpoint' \
-  -H 'Authorization: Bearer YOUR_API_KEY'
-```
-
+  ```bash
+  curl -X GET '/api/endpoint' \
+    -H 'Authorization: Bearer YOUR_API_KEY'
+  ```
 </CodeGroup>
+```
 
 #### Request and Response examples for API docs
 
-Example of request/response documentation:
-
+```jsx
 <Request show-lines="true" tabs="JavaScript,Python">
   ```javascript
   const response = await fetch('https://api.documentation.ai/docs', {
@@ -310,22 +278,18 @@ Example of request/response documentation:
       'Content-Type': 'application/json',
       'Authorization': 'Bearer TOKEN'
     },
-    body: JSON.stringify({
-      title: "Getting Started",
-      content: "Welcome to our API"
-    })
+    body: JSON.stringify({ title: "Getting Started", content: "Welcome to our API" })
   });
   ```
 
-```python
-import requests
-response = requests.post(
-  'https://api.documentation.ai/docs',
-  headers={'Authorization': 'Bearer TOKEN'},
-  json={'title': 'Getting Started', 'content': 'Welcome to our API'}
-)
-```
-
+  ```python
+  import requests
+  response = requests.post(
+    'https://api.documentation.ai/docs',
+    headers={'Authorization': 'Bearer TOKEN'},
+    json={'title': 'Getting Started', 'content': 'Welcome to our API'}
+  )
+  ```
 </Request>
 
 <Response show-lines="true" tabs="200,500">
@@ -338,22 +302,21 @@ response = requests.post(
   }
   ```
 
-```json
-{
-  "error": "Document not found",
-  "code": "DOC_NOT_FOUND",
-  "message": "The requested document does not exist"
-}
-```
-
+  ```json
+  {
+    "error": "Document not found",
+    "code": "DOC_NOT_FOUND",
+    "message": "The requested document does not exist"
+  }
+  ```
 </Response>
+```
 
 ### Structural components
 
 #### Steps for procedures
 
-Example of step-by-step instructions:
-
+```jsx
 <Steps>
   <Step title="Install dependencies" icon="download" titleType="p">
     Run the installation command to add required packages.
@@ -361,11 +324,6 @@ Example of step-by-step instructions:
     ```bash
     npm install documentation-ai
     ```
-
-    <Callout kind="success" collapsed="false">
-      Verify installation by running `npm list documentation-ai`.
-    </Callout>
-
   </Step>
 
   <Step title="Configure environment" icon="settings" titleType="p">
@@ -381,7 +339,6 @@ Example of step-by-step instructions:
     <Callout kind="alert" collapsed="false">
       Never commit API keys or secrets to version control.
     </Callout>
-
   </Step>
 
   <Step title="Start development server" icon="play" titleType="p">
@@ -390,70 +347,60 @@ Example of step-by-step instructions:
     ```bash
     npm run dev
     ```
-
   </Step>
 </Steps>
+```
 
 #### Tabs for alternative content
 
-Example of tabbed content:
-
+```jsx
 <Tabs>
   <Tab title="macOS" icon="apple">
     ```bash
     brew install documentation-ai
-    npm install -g doc-ai-cli
     ```
   </Tab>
 
   <Tab title="Windows" icon="monitor">
     ```powershell
     winget install documentation-ai
-    npm install -g doc-ai-cli
     ```
   </Tab>
 
   <Tab title="Linux" icon="terminal">
     ```bash
     sudo apt install documentation-ai
-    npm install -g doc-ai-cli
     ```
   </Tab>
 </Tabs>
+```
 
 #### Expandables for collapsible content
 
-Example of expandable groups:
-
+```jsx
 <ExpandableGroup>
   <Expandable title="Troubleshooting connection issues" default-open="false">
     - Ensure your API key is valid and not expired
-
     - Check firewall settings allow outbound connections
-
     - Verify you're using the correct API endpoint
-
-    - Try increasing the timeout value in your configuration
-
   </Expandable>
 
   <Expandable title="Advanced configuration options" default-open="false">
     ```javascript
     const advancedConfig = {
       retryAttempts: 3,
-      caching: { enabled: true, ttl: 3600 },
-      logging: { level: 'debug', format: 'json' }
+      caching: { enabled: true, ttl: 3600 }
     };
     ```
   </Expandable>
 </ExpandableGroup>
+```
 
 ### Cards for navigation and highlights
 
-Example of cards:
-
+```jsx
 <Card title="Getting started guide" href="/getting-started/quickstart" icon="rocket" horizontal="false">
-  Complete walkthrough from installation to your first deployment in under 10 minutes.
+  Complete walkthrough from installation to your first deployment.
 </Card>
 
 <Columns cols="2">
@@ -464,22 +411,14 @@ Example of cards:
   <Card title="API Reference" href="/api-documentation-and-playground/openapi-import" icon="code" horizontal="false">
     Import and organize your API documentation with OpenAPI support.
   </Card>
-
-  <Card title="AI Features" href="/ai/ai-assistant" icon="bot" horizontal="false">
-    Explore AI-powered documentation assistance and search.
-  </Card>
-
-  <Card title="Customize" href="/customize/site-configuration" icon="palette" horizontal="false">
-    Customize your documentation site's appearance and behavior.
-  </Card>
 </Columns>
+```
 
 ### API documentation components
 
 #### Parameter fields
 
-Example of parameter documentation:
-
+```jsx
 <ParamField path="doc_id" param-type="string" required="true" deprecated="false">
   Unique identifier for the documentation page. Must be a valid slug format (lowercase, hyphens only).
 </ParamField>
@@ -495,17 +434,13 @@ Example of parameter documentation:
 <ParamField body="title" param-type="string" required="true" deprecated="false">
   Page title displayed in navigation and browser tabs. Maximum 100 characters.
 </ParamField>
+```
 
 #### Response fields
 
-Example of response field documentation:
-
+```jsx
 <ResponseField name="doc_id" field-type="string" required="true" deprecated="false">
   Unique identifier assigned to the newly created documentation page.
-</ResponseField>
-
-<ResponseField name="published_at" field-type="string" required="false" deprecated="false">
-  ISO 8601 formatted timestamp of when the page was published.
 </ResponseField>
 
 <ResponseField name="metadata" field-type="string" required="false" deprecated="false">
@@ -519,52 +454,31 @@ Example of response field documentation:
     <ResponseField name="tags" field-type="string" required="false" deprecated="false">
       Array of tag strings for categorization and search.
     </ResponseField>
-
-    <ResponseField name="last_modified" field-type="string" required="false" deprecated="false">
-      ISO 8601 timestamp of the most recent modification.
-    </ResponseField>
-
   </Expandable>
 </ResponseField>
+```
 
 ### Images
 
-Wrap images using the Image component:
-
-<Image src="/images/dashboard-overview.png" width="670" height="400" alt="Documentation.AI dashboard showing analytics and recent activity" />
+```jsx
+<Image src="/images/dashboard-overview.png" width="670" height="400" alt="Descriptive alt text" />
+```
 
 ### Update component for changelogs
 
-Example of Update component for version releases:
-
+```jsx
 <Update label="2025-01-15" description="v2.0.0" tags={["Breaking Change"]}>
+  ### Major update
 
-### Major update
-
-- New authentication system with OAuth 2.0 support
-
-- Redesigned dashboard with improved performance
-
-- Breaking: Old API endpoints deprecated, use v2 endpoints
-
-**Migration guide:** Follow the [v2 migration guide](/api/migration-v2) to update your integration.
+  - New authentication system with OAuth 2.0 support
+  - Redesigned dashboard with improved performance
+  - Breaking: Old API endpoints deprecated, use v2 endpoints
 </Update>
-
-<Update label="2024-12-01" description="v1.5.0" tags={["New Feature"]}>
-
-### Enhanced search
-
-- AI-powered semantic search
-
-- Filter by content type
-
-- Search suggestions and autocomplete
-  </Update>
+```
 
 ### Mermaid diagrams
 
-Example of Mermaid diagram for visualizations:
-
+````markdown
 ```mermaid
 graph TD
     A[User Request] --> B{Authentication}
@@ -573,24 +487,11 @@ graph TD
     C --> E[Fetch Data]
     E --> F[Return Response]
 ```
-
-```mermaid
-sequenceDiagram
-    participant User
-    participant API
-    participant Database
-    User->>API: POST /api/docs
-    API->>Database: INSERT document
-    Database-->>API: Document ID
-    API-->>User: 201 Created
-```
+````
 
 ### Columns for side-by-side content
 
-Example of columns with plain content:
-
-Example of columns with Cards:
-
+```jsx
 <Columns cols="3">
   <Card title="Fast Setup" href="#" icon="zap" horizontal="false">
     Get started in minutes with zero configuration.
@@ -604,6 +505,7 @@ Example of columns with Cards:
     Built for collaboration and scale.
   </Card>
 </Columns>
+```
 
 ## Required page structure
 
@@ -622,7 +524,7 @@ Optional frontmatter fields:
 ---
 title: "Page Title"
 description: "Page description"
-type: "reference" # or "guide", "tutorial", etc.
+type: "reference"  # or "guide", "tutorial", etc.
 ---
 ```
 
@@ -631,83 +533,50 @@ type: "reference" # or "guide", "tutorial", etc.
 ### Code examples requirements
 
 - Always include complete, runnable examples that users can copy and execute
-
 - Show proper error handling and edge case management
-
 - Use realistic data instead of placeholder values
-
 - Include expected outputs and results for verification
-
 - Test all code examples thoroughly before publishing
-
 - Specify language and include filename when relevant
-
 - Add explanatory comments for complex logic
-
 - Never include real API keys or secrets in code examples
 
 ### API documentation requirements
 
 - Document all parameters including optional ones with clear descriptions
-
 - Show both success and error response examples with realistic data
-
 - Include rate limiting information with specific limits
-
 - Provide authentication examples showing proper format
-
 - Explain all HTTP status codes and error handling
-
 - Cover complete request/response cycles
-
 - Use ParamField for parameters and ResponseField for responses
-
 - Display examples in the right sidebar using Request/Response components
 
 ### Accessibility requirements
 
 - Include descriptive alt text for all images and diagrams
-
 - Use specific, actionable link text instead of "click here"
-
 - Ensure proper heading hierarchy starting with H2
-
 - Provide keyboard navigation considerations
-
 - Use sufficient color contrast in examples and visuals
-
 - Structure content for easy scanning with headers and lists
 
 ## Component selection logic
 
 - Use standard **markdown headings** (H2, H3, H4) for page structure and navigation hierarchy
-
 - Use **markdown lists** for related items and **tables** for structured data comparisons
-
 - Use **Steps** for procedures and sequential instructions (better than ordered lists for workflows)
-
 - Use **Tabs** for platform-specific content or alternative approaches
-
 - Use **CodeGroup** when showing the same concept in multiple programming languages
-
 - Use **Expandables** or **ExpandableGroup** for progressive disclosure and FAQ sections
-
 - Use **Request/Response** specifically for API endpoint documentation in the sidebar
-
 - Use **ParamField** for API parameters, **ResponseField** for API responses
-
 - Use **Callouts** to highlight important information without breaking flow
-
 - Use **Card** components inside **Columns** for navigation grids and feature showcases
-
 - Use **Columns** with `<div>` wrappers for side-by-side comparisons or mixed content
-
 - Use **Images** for screenshots, diagrams, and visual aids
-
 - Use **Video** for demonstrations and tutorials, **Iframe** for interactive embeds
-
 - Use **Update** for changelogs, version releases, and product announcements
-
 - Use **Mermaid** diagrams for flowcharts, sequence diagrams, and architecture visualizations
 
 ## documentation.json configuration
@@ -715,17 +584,11 @@ type: "reference" # or "guide", "tutorial", etc.
 The documentation.json file is the central configuration file for your Documentation.AI site. It controls:
 
 - Site name and branding
-
 - Navigation structure (tabs, groups, pages)
-
 - Color scheme (light and dark modes)
-
 - Header and navbar configuration
-
 - SEO settings
-
 - Favicon and logos
-
 - OpenAPI integration for API docs
 
 Example structure:

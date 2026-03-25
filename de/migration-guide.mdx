@@ -1,0 +1,384 @@
+---
+title: Migrationsleitfaden
+description: Nahtlose Migration von anderen Automatisierungsplattformen zu AetherFlow
+---
+## Migrationsueberblick
+
+Wechseln Sie reibungslos von anderen Automatisierungstools zu AetherFlow mit unseren umfassenden Migrationstools und unserem Support.
+
+<Callout kind="info" collapsed="false">
+  Unsere Migrationsspezialisten helfen Ihnen, komplexe Automatisierungssetups mit minimalen Ausfallzeiten umzustellen.
+</Callout>
+
+## Vorab-Migrationsanalyse
+
+Bewerten Sie Ihr aktuelles Automatisierungssetup vor der Migration.
+
+<Steps>
+  <Step title="Workflows inventarisieren" icon="list" title-type="p">
+    Dokumentieren Sie alle vorhandenen Workflows, Trigger und Integrationen.
+  </Step>
+
+  <Step title="Komplexitaet bewerten" icon="bar-chart" title-type="p">
+    Evaluieren Sie Workflow-Komplexitaet, Abhaengigkeiten und benutzerdefinierte Logik.
+  </Step>
+
+  <Step title="Abhaengigkeiten identifizieren" icon="link" title-type="p">
+    Integrationen, Datenquellen und externe Abhaengigkeiten kartieren.
+  </Step>
+
+  <Step title="Zeitplan planen" icon="calendar" title-type="p">
+    Einen realistischen Migrationsplan mit Meilensteinen erstellen.
+  </Step>
+</Steps>
+
+## Unterstuetzte Plattformen
+
+Migrieren Sie von beliebten Automatisierungs- und Integrationsplattformen.
+
+<Columns cols="3">
+  <Card title="Zapier" icon="zap" horizontal="false">
+    Direkter Import von Zaps mit automatischer Workflow-Neuerstellung.
+  </Card>
+
+  <Card title="Microsoft Power Automate" icon="microsoft" horizontal="false">
+    Flows mit unserem Power Automate-Migrationstool konvertieren.
+  </Card>
+
+  <Card title="IFTTT" icon="ifttt" horizontal="false">
+    Applets mit vereinfachter Workflow-Konvertierung migrieren.
+  </Card>
+
+  <Card title="Benutzerdefinierte Plattformen" icon="code" horizontal="false">
+    API-basierte Migration fuer proprietaere Automatisierungssysteme.
+  </Card>
+</Columns>
+
+## Zapier-Migration
+
+Schritt-fuer-Schritt-Anleitung zur Migration von Zapier zu AetherFlow.
+
+<Tabs>
+  <Tab title="Aus Zapier exportieren" icon="download">
+    1. Melden Sie sich bei Ihrem Zapier-Konto an
+
+    2. Gehen Sie zu Einstellungen > Persoenlich > Daten exportieren
+
+    3. Datenexport anfordern (kann 24–48 Stunden dauern)
+
+    4. Die JSON-Exportdatei herunterladen, wenn sie bereit ist
+  </Tab>
+
+  <Tab title="In AetherFlow importieren" icon="upload">
+    1. Ihr AetherFlow-Konto erstellen
+
+    2. Zu Einstellungen > Import/Export navigieren
+
+    3. "Aus Zapier importieren" auswaehlen
+
+    4. Die exportierte JSON-Datei hochladen
+
+    5. Integrationen pruefen und zuordnen
+
+    6. Importierte Workflows testen
+  </Tab>
+
+  <Tab title="Aufgaben nach der Migration" icon="check-circle">
+    - Sicherstellen, dass alle Integrationen verbunden sind
+
+    - Workflows mit Beispieldaten testen
+
+    - Webhook-URLs bei Bedarf aktualisieren
+
+    - Ausfuehrungsprotokolle auf Probleme ueberwachen
+
+    - Prompts fuer AetherFlows KI optimieren
+  </Tab>
+</Tabs>
+
+## Migration von Microsoft Power Automate
+
+Microsoft Flows in AetherFlow-Workflows konvertieren.
+
+<Expandable title="Migrationsprozess" default-open="false">
+  1. **Flows exportieren**: Power Automates Exportfunktion verwenden, um Flow-Definitionen herunterzuladen
+
+  2. **Struktur analysieren**: Flow-Logik, Bedingungen und Aktionen pruefen
+
+  3. **In AetherFlow nachbilden**: Natuerliche Sprache verwenden, um die Flow-Logik zu beschreiben
+
+  4. **Integrationen zuordnen**: Aequivalente AetherFlow-Integrationen verbinden
+
+  5. **Gruendlich testen**: Funktionalitaet mit umfassenden Tests validieren
+</Expandable>
+
+<Expandable title="Haeufige Herausforderungen" default-open="false">
+  - Komplexe bedingte Logik muss moeglicherweise neu formuliert werden
+
+  - Benutzerdefinierte Konnektoren erfordern manuelle Neuerstellung
+
+  - Genehmigungsworkflows muessen fuer AetherFlows Modell neu gestaltet werden
+
+  - Power Automate-spezifische Aktionen haben moeglicherweise keine direkten Entsprechungen
+</Expandable>
+
+## IFTTT-Migration
+
+Einfache Automatisierungs-Applets zu AetherFlow migrieren.
+
+<Callout kind="tip" collapsed="false">
+  IFTTT-Migrationen sind in der Regel unkompliziert aufgrund des einfachen Trigger-Aktion-Modells.
+</Callout>
+
+<Steps>
+  <Step title="Applets pruefen" icon="eye" title-type="p">
+    Ihre aktiven Applets und deren Zweck dokumentieren.
+  </Step>
+
+  <Step title="Logik nachbilden" icon="refresh-cw" title-type="p">
+    Applet-Logik mit natuerlichsprachlichen Prompts beschreiben.
+  </Step>
+
+  <Step title="Dienste verbinden" icon="plug" title-type="p">
+    Aequivalente Integrationen in AetherFlow einrichten.
+  </Step>
+
+  <Step title="Funktionalitaet testen" icon="play" title-type="p">
+    Sicherstellen, dass Workflows wie erwartet funktionieren.
+  </Step>
+</Steps>
+
+## Migration von benutzerdefinierten Plattformen
+
+Von proprietaeren oder benutzerdefinierten Automatisierungssystemen migrieren.
+
+<ExpandableGroup>
+  <Expandable title="API-basierte Migration" default-open="false">
+    AetherFlows APIs verwenden, um Workflows programmgesteuert neu zu erstellen.
+  </Expandable>
+
+  <Expandable title="Datenexport/-import" default-open="false">
+    Workflow-Definitionen exportieren und mit unseren Massenimport-Tools importieren.
+  </Expandable>
+
+  <Expandable title="Hybrider Ansatz" default-open="false">
+    Altes und neues System waehrend des Uebergangs parallel betreiben.
+  </Expandable>
+</ExpandableGroup>
+
+## Integrationszuordnung
+
+Verstehen Sie, wie Ihre aktuellen Integrationen auf AetherFlow uebertragen werden.
+
+| Aktuelle Plattform          | AetherFlow-Entsprechung       | Hinweise                             |
+| --------------------------- | ----------------------------- | ------------------------------------ |
+| Zapier Apps                 | Native Integrationen          | Die meisten Apps werden nativ unterstuetzt |
+| Power Automate Konnektoren  | Nativ + Benutzerdefiniert     | Einige Konnektoren benoetigen eigene Einrichtung |
+| IFTTT-Dienste               | Native Integrationen          | Alle wichtigen Dienste unterstuetzt  |
+| Benutzerdefinierte APIs     | Webhooks/Benutzerdefiniert    | Flexibles Webhook-System verfuegbar  |
+
+## Datenmigration
+
+Verschieben Sie historische Daten und Workflow-Ausfuehrungshistorie.
+
+<Columns cols="2">
+  <Card title="Historische Protokolle" icon="file-text" horizontal="false">
+    Ausfuehrungshistorie fuer Compliance und Pruefung migrieren.
+  </Card>
+
+  <Card title="Konfigurationsdaten" icon="settings" horizontal="false">
+    Workflow-Einstellungen, Zeitplaene und Praeferenzen uebertragen.
+  </Card>
+
+  <Card title="Benutzerberechtigungen" icon="users" horizontal="false">
+    Team-Rollen und Zugriffskontrollen migrieren.
+  </Card>
+
+  <Card title="Benutzerdefinierte Assets" icon="package" horizontal="false">
+    Benutzerdefinierte Skripte, Vorlagen und Branding uebernehmen.
+  </Card>
+</Columns>
+
+## Teststrategie
+
+Sicherstellen, dass migrierte Workflows in der neuen Umgebung korrekt funktionieren.
+
+<Steps>
+  <Step title="Unit-Tests" icon="flask" title-type="p">
+    Einzelne Workflow-Komponenten und Integrationen testen.
+  </Step>
+
+  <Step title="Integrationstests" icon="link" title-type="p">
+    Ende-zu-Ende-Workflow-Funktionalitaet verifizieren.
+  </Step>
+
+  <Step title="Lasttests" icon="activity" title-type="p">
+    Leistung unter erwarteten Lastbedingungen testen.
+  </Step>
+
+  <Step title="Benutzerakzeptanztests" icon="user-check" title-type="p">
+    Sicherstellen, dass Workflows die Geschaeftsanforderungen erfuellen.
+  </Step>
+</Steps>
+
+## Rueckfallplanung
+
+Erstellen Sie Notfallplaene fuer den Fall, dass Migrationsprobleme auftreten.
+
+<Expandable title="Rueckfallstrategie" default-open="false">
+  - **Parallelbetrieb**: Altes System waehrend der Testphase aktiv halten
+
+  - **Schrittweise Umstellung**: Workflows etappenweise statt auf einmal migrieren
+
+  - **Datensicherung**: Sicherungen aller kritischen Daten aufbewahren
+
+  - **Schnelles Zuruecksetzen**: Moeglichkeit, innerhalb von Stunden zurueckzuwechseln, falls noetig
+</Expandable>
+
+## Leistungsoptimierung
+
+Migrierte Workflows fuer AetherFlows Architektur optimieren.
+
+<Tabs>
+  <Tab title="Prompt-Optimierung" icon="edit-3">
+    Natuerlichsprachliche Prompts fuer bessere KI-Interpretation verfeinern.
+  </Tab>
+
+  <Tab title="Integrationseffizienz" icon="zap">
+    Batch-Verarbeitung und Caching-Funktionen von AetherFlow nutzen.
+  </Tab>
+
+  <Tab title="Fehlerbehandlung" icon="alert-triangle">
+    Umfassende Fehlerbehandlung und Wiederholungslogik implementieren.
+  </Tab>
+</Tabs>
+
+## Team-Schulung
+
+Bereiten Sie Ihr Team auf die neue Plattform vor.
+
+<ExpandableGroup>
+  <Expandable title="Schulungsressourcen" default-open="false">
+    - Interaktive Onboarding-Tutorials
+
+    - Video-Walkthroughs zu wichtigen Funktionen
+
+    - Praxisworkshops und Uebungen
+
+    - Dokumentation und Leitfaeden fuer Best Practices
+  </Expandable>
+
+  <Expandable title="Supportoptionen" default-open="false">
+    - Dediziertes Migrations-Supportteam
+
+    - 24/7 technische Hilfe waehrend des Uebergangs
+
+    - Slack-Community fuer gegenseitige Unterstuetzung
+
+    - Sprechstunden mit Produktexperten
+  </Expandable>
+</ExpandableGroup>
+
+## Migrationszeitplan
+
+Typische Migrationsplaene fuer verschiedene Komplexitaetsstufen.
+
+| Komplexitaet  | Dauer       | Teamgroesse  | Wichtige Meilensteine                                         |
+| ------------- | ----------- | ------------ | ------------------------------------------------------------- |
+| **Einfach**   | 1–2 Wochen  | 1–2 Personen | Analyse, Migration, Tests                                     |
+| **Mittel**    | 4–6 Wochen  | 2–5 Personen | Planung, stufenweise Migration, Schulung                      |
+| **Komplex**   | 8–12 Wochen | 5+ Personen  | Vollstaendige Analyse, benutzerdefinierte Entwicklung, umfangreiche Tests |
+
+## Kostenueberlegungen
+
+Verstehen Sie die finanziellen Aspekte der Migration.
+
+<Expandable title="Migrationskosten" default-open="false">
+  - **Analyse**: 2.500 $ (Workflow-Analyse und Planung)
+
+  - **Datenmigration**: 1.000 $–5.000 $ (abhaengig vom Datenvolumen)
+
+  - **Benutzerdefinierte Entwicklung**: 150 $/Stunde (fuer komplexe Integrationen)
+
+  - **Schulung**: 500 $/Person (Praxisworkshops)
+
+  - **Support**: Im Migrationspaket enthalten
+</Expandable>
+
+<Expandable title="ROI-Zeitplan" default-open="false">
+  - **Sofort**: Kosteneinsparungen durch optimierte Workflows
+
+  - **1–3 Monate**: Verbesserte Effizienz und weniger manuelle Arbeit
+
+  - **3–6 Monate**: Vollstaendige Automatisierungsvorteile realisiert
+
+  - **6+ Monate**: Erweiterte Funktionen und Optimierungsgewinne
+</Expandable>
+
+## Erfolgskennzahlen
+
+Messen Sie den Erfolg Ihres Migrationsprojekts.
+
+<Columns cols="4">
+  <Card title="Workflow-Verfuegbarkeit" icon="activity" horizontal="false">
+    Prozentsatz der Zeit, in der Workflows betriebsbereit sind.
+  </Card>
+
+  <Card title="Migrationsgenauigkeit" icon="target" horizontal="false">
+    Wie eng migrierte Workflows der urspruenglichen Funktionalitaet entsprechen.
+  </Card>
+
+  <Card title="Team-Akzeptanz" icon="users" horizontal="false">
+    Prozentsatz des Teams, das die neue Plattform effektiv nutzt.
+  </Card>
+
+  <Card title="Kosteneinsparungen" icon="dollar-sign" horizontal="false">
+    Reduzierung der Betriebskosten nach der Migration.
+  </Card>
+</Columns>
+
+## Support nach der Migration
+
+Laufende Unterstuetzung nach Abschluss der Migration.
+
+<Callout kind="success" collapsed="false">
+  Unser Migrationssupport laeuft 30 Tage nach dem Start weiter, um einen reibungslosen Betrieb sicherzustellen.
+</Callout>
+
+<ExpandableGroup>
+  <Expandable title="Technischer Support" default-open="false">
+    24/7-Zugang zu Migrationsingenieuren fuer technische Probleme.
+  </Expandable>
+
+  <Expandable title="Optimierungsberatung" default-open="false">
+    Regelmaessige Ueberpruefungen zur Workflow-Optimierung und Leistungsverbesserung.
+  </Expandable>
+
+  <Expandable title="Auffrischungsschulungen" default-open="false">
+    Zusaetzliche Schulungssitzungen fuer neue Teammitglieder bei Bedarf.
+  </Expandable>
+</ExpandableGroup>
+
+## Erste Schritte
+
+Starten Sie noch heute Ihre Migration.
+
+<Steps>
+  <Step title="Vertrieb kontaktieren" icon="phone" title-type="p">
+    Nehmen Sie Kontakt auf, um Ihre Migrationsanforderungen zu besprechen und ein individuelles Angebot zu erhalten.
+  </Step>
+
+  <Step title="Analyse planen" icon="calendar" title-type="p">
+    Buchen Sie ein Erstgespraech zur Bewertung Ihres aktuellen Setups.
+  </Step>
+
+  <Step title="Migration planen" icon="map" title-type="p">
+    Arbeiten Sie mit unserem Team zusammen, um einen detaillierten Migrationsfahrplan zu erstellen.
+  </Step>
+
+  <Step title="Migration durchfuehren" icon="play" title-type="p">
+    Starten Sie den Migrationsprozess mit voller Unterstuetzung durch unser Team.
+  </Step>
+</Steps>
+
+Moechten Sie Ihre Automatisierungsinfrastruktur modernisieren? Kontaktieren Sie unsere Migrationsspezialisten, um loszulegen.

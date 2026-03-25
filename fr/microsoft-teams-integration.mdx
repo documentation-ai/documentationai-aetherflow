@@ -1,0 +1,413 @@
+---
+title: Intégration Microsoft Teams
+description: Connectez AetherFlow à Microsoft Teams pour automatiser les notifications, les mises à jour d'équipe et les communications de flux de travail.
+---
+
+## Vue d'ensemble
+
+L'intégration Microsoft Teams connecte les flux de travail AetherFlow à votre environnement Teams, vous permettant d'envoyer des notifications dans les canaux, d'envoyer des messages aux utilisateurs et de suivre l'activité des flux de travail directement là où vos équipes collaborent.
+
+Utilisez cette page pour configurer l'intégration, paramétrer les options et l'appliquer dans vos flux de travail.
+
+<Columns cols={2}>
+
+  <Card title="Fonctionnalités clés" icon="zap">
+
+  - Envoyez des messages dans des canaux ou des discussions de groupe Teams depuis les flux de travail.
+  - Notifiez lors d'événements de flux de travail tels que les exécutions, les approbations ou les erreurs.
+  - Routez les alertes vers différentes équipes en fonction de l'environnement ou de la gravité.
+  - Utilisez les mentions Teams et la mise en forme enrichie dans les types de messages pris en charge.
+  - Gérez les connexions de manière centralisée dans les intégrations AetherFlow.
+
+  </Card>
+
+  <Card title="Cas d'utilisation" icon="folder">
+
+  - Notifier une équipe quand une nouvelle exécution de flux de travail démarre ou se termine.
+  - Alerter en cas de défaillances ou de dépassements de SLA dans un canal de réponse aux incidents.
+  - Envoyer des demandes d'approbation ou des rappels de révision dans des canaux spécifiques.
+  - Publier des synthèses quotidiennes ou hebdomadaires des flux de travail dans un canal de reporting.
+  - Coordonner les transferts entre équipes lors des changements d'état des flux de travail.
+
+  </Card>
+
+</Columns>
+
+<Callout kind="info">
+
+Si vous débutez avec AetherFlow, consultez les pages [Intégrations](/integrations) et [Flux de travail](/workflows) avant d'activer Microsoft Teams.
+
+</Callout>
+
+## Configuration de l'intégration Microsoft Teams
+
+Vous pouvez connecter Microsoft Teams via l'interface AetherFlow ou à l'aide de la CLI. Les deux approches partagent la même connexion sous-jacente et les mêmes permissions.
+
+<Steps>
+
+  <Step title="Préparer votre environnement Teams" icon="settings">
+
+  Avant de vous connecter, vérifiez que :
+
+  - Vous avez accès au tenant Microsoft 365 où Teams est hébergé.
+  - Vous êtes autorisé à consentir aux applications ou à demander l'approbation d'un administrateur.
+  - Vous savez quelles équipes et quels canaux doivent recevoir les messages AetherFlow.
+
+  </Step>
+
+  <Step title="Autoriser AetherFlow avec Microsoft Teams" icon="lock">
+
+  1. Dans AetherFlow, accédez à **Intégrations**.
+  2. Repérez **Microsoft Teams** et sélectionnez **Connecter**.
+  3. Lorsque vous êtes redirigé vers l'écran d'identité Microsoft, connectez-vous avec votre compte professionnel.
+  4. Vérifiez les permissions demandées et sélectionnez **Accepter** ou demandez l'approbation de l'administrateur si nécessaire.
+
+  Cela crée une connexion sécurisée entre AetherFlow et votre tenant Teams.
+
+  </Step>
+
+  <Step title="Sélectionner les équipes et les canaux" icon="folder">
+
+  1. Après l'autorisation, revenez dans AetherFlow.
+  2. Choisissez l'**Équipe** et le **Canal** par défaut qu'AetherFlow utilisera lorsqu'aucun canal n'est spécifié dans un flux de travail.
+  3. Optionnellement, activez la sélection d'équipes et de canaux supplémentaires par flux de travail, si cela est pris en charge par votre forfait.
+  4. Enregistrez vos paramètres par défaut.
+
+  Vous pouvez remplacer ces valeurs par défaut dans chaque configuration de flux de travail.
+
+  </Step>
+
+  <Step title="Connecter via la CLI (optionnel)" icon="terminal">
+
+  Si vous préférez un flux en ligne de commande, vous pouvez connecter Microsoft Teams à l'aide de la CLI AetherFlow.
+
+  ```bash
+  # Authenticate and connect Microsoft Teams to your AetherFlow workspace
+  aetherflow integrations connect teams \
+    --workspace my-workspace-id \
+    --name "primary-teams-connection" \
+    --scope basic-messaging
+  ```
+
+  Selon votre environnement, cette commande peut ouvrir une fenêtre de navigateur pour compléter l'authentification ou fournir une URL que vous pouvez visiter pour autoriser l'accès.
+
+  </Step>
+
+  <Step title="Vérifier et tester" icon="check-circle">
+
+  1. Dans AetherFlow, ouvrez les détails de l'intégration **Microsoft Teams**.
+  2. Utilisez **Envoyer un message de test** (ou une option équivalente) pour publier un message dans le canal configuré.
+  3. Confirmez que le message apparaît dans Teams et est visible par l'audience prévue.
+  4. Si nécessaire, ajustez les permissions Teams ou l'appartenance au canal pour que les utilisateurs concernés puissent voir les messages d'intégration.
+
+  </Step>
+
+</Steps>
+
+## Options de configuration
+
+La configuration Microsoft Teams est divisée en paramètres au niveau du bot et en règles de routage des canaux. Ces paramètres s'appliquent à l'ensemble de votre espace de travail, et les flux de travail y font référence lors de l'envoi de messages.
+
+### Configuration du bot
+
+<Columns cols={2}>
+
+  <Card title="Paramètres de base" icon="settings">
+
+  Utilisez les paramètres de base pour contrôler l'apparence d'AetherFlow dans Microsoft Teams et la manière dont il se connecte à votre espace de travail.
+
+  - **Nom d'affichage** : le nom qui apparaît comme expéditeur dans Teams.
+  - **Équipe et canal par défaut** : utilisés quand les flux de travail ne spécifient pas de cible.
+  - **Portée de la connexion** : les capacités autorisées, comme l'envoi de messages dans les canaux.
+
+  Vous pouvez configurer certaines de ces options à l'aide de JSON ou de variables d'environnement, selon votre déploiement.
+
+  <CodeGroup tabs="JSON,Environment">
+
+  ```json
+  {
+    "integration": "teams",
+    "connectionName": "primary-teams-connection",
+    "defaultTeam": "Operations",
+    "defaultChannel": "Automation Alerts",
+    "mentionOnError": true
+  }
+  ```
+
+  ```bash
+  export AETHERFLOW_TEAMS_CONNECTION_NAME="primary-teams-connection"
+  export AETHERFLOW_TEAMS_DEFAULT_TEAM="Operations"
+  export AETHERFLOW_TEAMS_DEFAULT_CHANNEL="Automation Alerts"
+  export AETHERFLOW_TEAMS_MENTION_ON_ERROR="true"
+  ```
+
+  </CodeGroup>
+
+  </Card>
+
+  <Card title="Paramètres avancés" icon="settings">
+
+  Les options avancées vous permettent d'ajuster le comportement pour les flux de travail à volume élevé ou les exigences de conformité plus strictes.
+
+  - **Modèles de messages** pour les événements de succès, d'avertissement et d'erreur.
+  - **Routage par environnement** (par exemple, envoyer les alertes de staging dans un canal différent).
+  - **Limites de débit et regroupement** pour éviter de surcharger les canaux.
+
+  <Expandable title="Limitation du débit et regroupement" default-open="false">
+
+  Pour les flux de travail à haute fréquence, vous pouvez vouloir :
+
+  - Définir une valeur maximale de messages par minute par canal.
+  - Regrouper des événements similaires en un seul message de synthèse.
+  - Préférer les synthèses pour les événements non critiques et les alertes directes uniquement pour les incidents critiques.
+
+  Ces comportements sont configurés dans AetherFlow, pas dans Microsoft Teams lui-même, et ils s'appliquent à tous les flux de travail utilisant la connexion donnée.
+
+  </Expandable>
+
+  </Card>
+
+</Columns>
+
+### Gestion des canaux
+
+Vous pouvez définir vers quels canaux AetherFlow est autorisé à envoyer des messages et comment les messages sont routés entre les équipes.
+
+| Paramètre              | Description                                                              | Exemple de cas d'utilisation                   |
+|------------------------|--------------------------------------------------------------------------|-------------------------------------------------|
+| Canal par défaut       | Cible de repli quand les flux de travail ne spécifient pas de canal.    | Mises à jour générales d'automatisation         |
+| Canal d'erreurs        | Canal pour les défaillances de flux de travail et les alertes d'incident. | Équipe de réponse aux incidents               |
+| Correspondance d'environnement | Associer les environnements à des canaux spécifiques.          | Alertes staging vs. production                  |
+| Surcharges de canal    | Autoriser la sélection de canal cible par flux de travail.              | Mises à jour spécifiques aux produits ou équipes |
+
+<Callout kind="tip">
+
+Limitez le nombre de canaux de destination. Trop de canaux peut rendre difficile le suivi des mises à jour d'automatisation importantes par les équipes.
+
+</Callout>
+
+## Utilisation de Microsoft Teams dans les flux de travail
+
+Une fois l'intégration connectée, vous pouvez ajouter des actions ou des notifications Teams à n'importe quel flux de travail. Cette section suppose que vous maîtrisez la création et la modification de flux de travail dans AetherFlow. Sinon, consultez [Flux de travail](/workflows).
+
+### Ajouter une étape de notification Teams
+
+Les flux typiques utilisent Microsoft Teams pour :
+
+- Les notifications de démarrage et de fin pour les flux de travail de longue durée.
+- Les alertes d'erreur quand une étape échoue ou qu'un seuil est dépassé.
+- Les approbations ou les demandes de révision quand une décision est requise.
+
+Une configuration simple pourrait ressembler à ceci :
+
+```yaml
+# Example workflow snippet with a Microsoft Teams notification
+steps:
+  - id: notify-complete
+    type: notification.teams
+    connection: primary-teams-connection
+    team: "Operations"
+    channel: "Automation Alerts"
+    template: "workflow-complete"
+    variables:
+      workflow_name: "Data sync"
+      status: "success"
+```
+
+### Utiliser les modèles et les variables
+
+Dans AetherFlow, vous pouvez définir des modèles de messages pour les événements courants et les référencer depuis les étapes :
+
+- Utilisez un `template` nommé pour standardiser la mise en forme.
+- Passez des `variables` que le modèle peut insérer dans le corps du message.
+- Ajoutez optionnellement des propriétés comme `severity` pour ajuster les préfixes ou les indicateurs visuels dans le message.
+
+<Callout kind="info">
+
+Les définitions de modèles sont gérées dans AetherFlow, pas dans Microsoft Teams. Elles contrôlent la structure des messages et les variables requises.
+
+</Callout>
+
+## Intégration des webhooks
+
+En plus de l'intégration directe, vous pouvez optionnellement utiliser des webhooks pour envoyer des événements dans AetherFlow qui déclenchent ensuite des notifications Teams. Cela est utile quand un autre système émet des callbacks HTTP et que vous souhaitez qu'AetherFlow relaie ou enrichisse ces événements avant de les publier dans Teams.
+
+<Steps>
+
+  <Step title="Créer un flux de travail webhook Teams" icon="plus">
+
+  1. Dans AetherFlow, créez un nouveau flux de travail.
+  2. Choisissez un déclencheur **Webhook** et notez l'URL générée.
+  3. Ajoutez une ou plusieurs étapes **Microsoft Teams** qui publient dans vos canaux choisis.
+
+  </Step>
+
+  <Step title="Configurer le point de terminaison webhook" icon="settings">
+
+  L'URL de votre webhook suivra un modèle similaire à :
+
+  ```text
+  https://api.aetherflow.com/webhooks/teams
+  ```
+
+  Ou, pour les points de terminaison spécifiques à l'espace de travail, un formulaire étendu fourni dans votre interface AetherFlow.
+
+  Fournissez cette URL au système externe qui enverra des événements, et configurez-le pour envoyer un payload JSON qu'AetherFlow peut analyser.
+
+  </Step>
+
+  <Step title="Associer les champs du payload aux messages Teams" icon="code">
+
+  Dans l'éditeur de flux de travail, associez les champs du payload entrant aux variables de votre message Teams. Par exemple :
+
+  ```yaml
+  steps:
+    - id: notify-teams
+      type: notification.teams
+      connection: primary-teams-connection
+      team: "Operations"
+      channel: "Automation Alerts"
+      template: "external-event"
+      variables:
+        source: "{{ payload.source }}"
+        event_type: "{{ payload.type }}"
+        details: "{{ payload.details }}"
+  ```
+
+  </Step>
+
+</Steps>
+
+<Callout kind="alert">
+
+Traitez les URL de webhook comme des secrets. Toute personne disposant de l'URL peut envoyer des événements dans votre flux de travail. Renouvelez ou désactivez les webhooks qui pourraient avoir été exposés.
+
+</Callout>
+
+## Surveillance et analyse
+
+La surveillance vous permet de confirmer que les notifications Teams sont envoyées comme prévu et que les canaux ne sont pas surchargés.
+
+<Columns cols={3}>
+
+  <Card title="Statut de livraison" icon="check-circle">
+
+  Suivez si AetherFlow a bien envoyé des messages à Microsoft Teams :
+
+  - Message accepté ou en échec au niveau de la couche d'intégration.
+  - Informations d'erreur de base quand une tentative d'envoi échoue.
+  - Nouvelles tentatives ou comportement de repli configuré dans votre flux de travail.
+
+  Utilisez [Analyse et surveillance](/analytics-monitoring) pour examiner les tendances de livraison.
+
+  </Card>
+
+  <Card title="Volume par canal" icon="bar-chart">
+
+  Analysez le volume par équipe et par canal pour :
+
+  - Détecter les flux de travail bruyants ou les alertes mal routées.
+  - Identifier les canaux avec trop de messages non critiques.
+  - Équilibrer les notifications entre les équipes.
+
+  Ajustez le routage des flux de travail ou les paramètres de regroupement pour maintenir un niveau de bruit gérable.
+
+  </Card>
+
+  <Card title="Contexte des flux de travail" icon="code">
+
+  Combinez les indicateurs Teams avec l'analyse au niveau des flux de travail :
+
+  - Corrèler les notifications en échec avec des exécutions de flux de travail spécifiques.
+  - Filtrer par environnement, gravité ou modèle.
+  - Accéder aux détails des étapes spécifiques qui envoient des messages Teams.
+
+  Cela facilite le débogage de la logique d'automatisation et du comportement des notifications.
+
+  </Card>
+
+</Columns>
+
+## Résolution des problèmes
+
+Si les messages n'apparaissent pas dans Microsoft Teams comme prévu, vérifiez les points suivants.
+
+<ExpandableGroup>
+
+  <Expandable title="Les messages n'arrivent pas dans le canal" default-open="true">
+
+  - Vérifiez que l'intégration **Microsoft Teams** s'affiche comme connectée dans AetherFlow.
+  - Confirmez que l'étape du flux de travail fait référence à la bonne connexion, équipe et canal.
+  - Vérifiez les erreurs dans les journaux d'exécution AetherFlow liées à l'action Teams.
+  - Assurez-vous que le canal cible existe toujours et est accessible à l'intégration.
+
+  Si les journaux indiquent une erreur de permissions, vous devrez peut-être réautoriser l'intégration ou demander des permissions mises à jour à votre administrateur.
+
+  </Expandable>
+
+  <Expandable title="Certains utilisateurs ne peuvent pas voir les messages" default-open="false">
+
+  - Confirmez que les utilisateurs sont membres de l'équipe et du canal cibles.
+  - Vérifiez si le canal est privé et si le compte d'intégration est autorisé à y publier.
+  - Assurez-vous que les messages sont envoyés dans le bon canal et non dans un canal portant un nom similaire.
+
+  Dans de nombreux cas, ajouter les utilisateurs concernés au bon canal ou ajuster la confidentialité du canal résout le problème.
+
+  </Expandable>
+
+  <Expandable title="Trop de notifications ou canaux bruyants" default-open="false">
+
+  - Examinez quels flux de travail envoient des messages Teams et à quelle fréquence.
+  - Utilisez des filtres de gravité ou de statut pour que seuls les événements critiques soient publiés dans les canaux partagés.
+  - Activez le regroupement ou les notifications de synthèse pour les événements à volume élevé.
+  - Routez les messages de priorité inférieure vers un canal séparé pour révision.
+
+  L'ajustement de ces règles dans AetherFlow permet de garder vos canaux Teams ciblés.
+
+  </Expandable>
+
+  <Expandable title="Problèmes d'autorisation d'intégration" default-open="false">
+
+  - Vérifiez si votre administrateur Microsoft 365 a restreint les consentements aux applications.
+  - Si la connexion échoue lors de la configuration, capturez le message d'erreur dans les journaux AetherFlow.
+  - Essayez de vous reconnecter depuis la page **Intégrations** d'AetherFlow pour actualiser les jetons.
+  - Si nécessaire, fournissez à votre administrateur des informations sur l'intégration pour qu'il puisse l'approuver de manière centralisée.
+
+  </Expandable>
+
+</ExpandableGroup>
+
+Pour des modèles de résolution de problèmes supplémentaires applicables à toutes les intégrations, consultez le [Guide de résolution des problèmes](/troubleshooting).
+
+## Considérations de sécurité
+
+L'intégration Microsoft Teams utilise le modèle de sécurité AetherFlow existant et suit les mêmes principes décrits dans [Authentification API et sécurité](/api-authentication) et [Confidentialité des données et conformité](/data-privacy-compliance).
+
+<Callout kind="alert">
+
+Respectez toujours les politiques de gouvernance de votre organisation lorsque vous accordez l'accès aux outils de collaboration. Limitez les permissions d'intégration à ce dont vos flux de travail ont réellement besoin.
+
+</Callout>
+
+Pratiques clés :
+
+- **Moindre privilège** : demandez et approuvez uniquement les permissions Teams minimales requises pour vos flux de travail.
+- **Révision des accès** : examinez périodiquement les équipes et canaux vers lesquels AetherFlow peut publier et supprimez les cibles inutilisées.
+- **Journaux d'audit** : utilisez les capacités d'audit AetherFlow et Microsoft 365 pour suivre la configuration et l'activité des messages, le cas échéant.
+- **Gestion des secrets** : stockez tous les secrets associés (par exemple, les clés de signature de webhook) dans votre système de configuration sécurisé, et non dans le contenu des messages.
+
+## Bonnes pratiques
+
+Utilisez les recommandations suivantes pour maintenir votre intégration Microsoft Teams de manière efficace.
+
+- Utilisez une **connexion principale unique** par environnement (par exemple, staging et production) pour simplifier la gestion.
+- Créez des **modèles standard** pour les types de messages courants tels que le succès, l'avertissement et l'échec.
+- Appliquez une **dénomination cohérente** pour les équipes, les canaux et les connexions afin qu'il soit clair où les messages seront envoyés.
+- Routez les **incidents critiques** vers des canaux ciblés avec des responsables d'astreinte, et envoyez les événements de moindre priorité vers des canaux de synthèse.
+- Examinez régulièrement l'utilisation de l'intégration et ajustez le routage ou le regroupement à mesure que l'adoption augmente.
+
+<Callout kind="success">
+
+Combinez Microsoft Teams avec d'autres capacités AetherFlow telles que la logique conditionnelle et le routage spécifique à l'environnement pour transmettre les bonnes informations à la bonne équipe au bon moment.
+
+</Callout>

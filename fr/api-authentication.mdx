@@ -1,0 +1,146 @@
+---
+title: Authentification et sécurité de l'API
+description: Accédez en toute sécurité aux API AetherFlow avec des jetons JWT, des clés API et les bonnes pratiques
+---
+
+## Méthodes d'authentification
+
+AetherFlow prend en charge plusieurs méthodes d'authentification pour garantir un accès sécurisé à l'API. Choisissez la méthode appropriée en fonction de votre cas d'usage et de vos exigences d'intégration.
+
+<Callout kind="info">
+  Toutes les requêtes API doivent être effectuées via HTTPS. Les requêtes HTTP seront rejetées.
+</Callout>
+
+## Authentification par jeton JWT
+
+Les JWT (JSON Web Tokens) fournissent une authentification sans état pour l'accès programmatique. Générez des jetons depuis les paramètres de votre compte pour des interactions API sécurisées.
+
+<Steps>
+  <Step title="Générer un jeton JWT" icon="key">
+    Accédez à Paramètres > Clés API dans votre tableau de bord. Créez un nouveau jeton avec les portées appropriées.
+  </Step>
+  <Step title="Inclure dans les requêtes" icon="send">
+    Ajoutez l'en-tête Authorization à tous les appels API : `Authorization: Bearer YOUR_JWT_TOKEN`
+  </Step>
+  <Step title="Gestion des jetons" icon="settings">
+    Renouvelez régulièrement les jetons et révoquez immédiatement ceux qui ont été compromis.
+  </Step>
+</Steps>
+
+```javascript
+// Exemple de requête API avec JWT
+const response = await fetch('https://api.aetherflow.com/v2/workflows', {
+  method: 'GET',
+  headers: {
+    'Authorization': `Bearer ${process.env.AETHERFLOW_JWT_TOKEN}`,
+    'Content-Type': 'application/json'
+  }
+});
+```
+
+## Authentification par clé API
+
+Les clés API héritées sont toujours prises en charge pour la rétrocompatibilité. Cependant, nous recommandons de migrer vers les jetons JWT pour une sécurité renforcée.
+
+<Tabs>
+  <Tab title="Créer des clés API" icon="plus">
+    Accédez à votre section de clés API et générez une nouvelle clé avec des permissions spécifiques.
+
+    <CodeGroup tabs="cURL,Python">
+      ```bash
+      curl -X GET "https://api.aetherflow.com/v1/workflows" \
+        -H "X-API-Key: YOUR_API_KEY" \
+        -H "Content-Type: application/json"
+      ```
+      ```python
+      import requests
+
+      headers = {
+          'X-API-Key': 'YOUR_API_KEY',
+          'Content-Type': 'application/json'
+      }
+
+      response = requests.get('https://api.aetherflow.com/v1/workflows', headers=headers)
+      ```
+    </CodeGroup>
+  </Tab>
+
+  <Tab title="Portées des clés" icon="shield">
+    Limitez les permissions des clés API à des opérations spécifiques :
+    - `read:workflows` - Consulter les données des workflows
+    - `write:workflows` - Créer et modifier des workflows
+    - `execute:workflows` - Exécuter des workflows par programme
+  </Tab>
+</Tabs>
+
+## Intégration OAuth 2.0
+
+Pour les applications tierces, implémentez les flux OAuth 2.0 pour accéder aux données utilisateur en toute sécurité.
+
+<Expandable title="Implémentation du flux OAuth">
+  ```javascript
+  // Construction de l'URL d'autorisation
+  const authUrl = `https://api.aetherflow.com/oauth/authorize?` +
+    `client_id=${CLIENT_ID}&` +
+    `redirect_uri=${encodeURIComponent(REDIRECT_URI)}&` +
+    `response_type=code&` +
+    `scope=workflows:read workflows:write`;
+
+  // Échange du code contre un jeton
+  const tokenResponse = await fetch('https://api.aetherflow.com/oauth/token', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    body: `grant_type=authorization_code&code=${authCode}&client_secret=${CLIENT_SECRET}`
+  });
+  ```
+</Expandable>
+
+## Bonnes pratiques de sécurité
+
+Mettez en œuvre ces mesures de sécurité pour protéger vos intégrations AetherFlow.
+
+<Columns cols={2}>
+  <Card title="Rotation des jetons" icon="refresh-cw">
+    Renouvelez les jetons API tous les 90 jours. Utilisez des jetons différents pour chaque environnement.
+  </Card>
+  <Card title="Liste blanche d'IP" icon="lock">
+    Restreignez l'accès à l'API à des adresses IP spécifiques pour les opérations sensibles.
+  </Card>
+  <Card title="Limitation de débit" icon="clock">
+    Surveillez votre utilisation de l'API et implémentez une limitation de débit côté client.
+  </Card>
+  <Card title="Journalisation d'audit" icon="file-text">
+    Activez les journaux d'audit pour suivre l'utilisation de l'API et détecter les anomalies.
+  </Card>
+</Columns>
+
+## Limites de débit
+
+AetherFlow applique des limites de débit pour garantir une utilisation équitable entre tous les clients.
+
+| Plan | Requêtes par minute | Requêtes par heure |
+|------|--------------------|--------------------|
+| Gratuit | 60 | 1 000 |
+| Pro | 300 | 10 000 |
+| Entreprise | 1 000 | 50 000 |
+
+<Callout kind="warning">
+  Le dépassement des limites de débit entraînera des réponses HTTP 429. Implémentez un backoff exponentiel pour les nouvelles tentatives.
+</Callout>
+
+## Chiffrement des données
+
+Toutes les données transmises vers et depuis les API AetherFlow sont chiffrées en transit à l'aide de TLS 1.3. Les données sensibles sont chiffrées au repos avec le chiffrement AES-256.
+
+<ExpandableGroup>
+  <Expandable title="Détails du chiffrement">
+    - Communications API : TLS 1.3 avec confidentialité persistante
+    - Chiffrement de base de données : AES-256-GCM
+    - Stockage de fichiers : Chiffrement côté serveur avec clés gérées par le client (Entreprise)
+  </Expandable>
+  <Expandable title="Standards de conformité">
+    AetherFlow maintient la conformité SOC 2 Type II et RGPD pour la protection des données.
+  </Expandable>
+</ExpandableGroup>
+
+Ce guide de sécurité complet vous permet d'intégrer AetherFlow en toute sécurité dans vos applications.
