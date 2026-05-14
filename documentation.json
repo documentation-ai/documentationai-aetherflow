@@ -214,22 +214,6 @@
                     "icon": "help-circle",
                     "groups": [
                       {
-                        "group": "Getting Help",
-                        "icon": "search",
-                        "pages": [
-                          {
-                            "title": "Help Center",
-                            "path": "help-center",
-                            "icon": "home"
-                          },
-                          {
-                            "title": "Support & Resources",
-                            "path": "support-resources-help",
-                            "icon": "headphones"
-                          }
-                        ]
-                      },
-                      {
                         "group": "Getting Started",
                         "icon": "folder",
                         "pages": [
@@ -307,7 +291,8 @@
                             "title": "Can I build a custom integration if my app is not listed?",
                             "path": "help/can-i-build-a-custom-integration-if-my-app-is-not-listed"
                           }
-                        ]
+                        ],
+                        "path": "help/integrations"
                       },
                       {
                         "group": "Troubleshooting",
@@ -333,17 +318,13 @@
                             "title": "Where can I check for outages or service issues?",
                             "path": "help/where-can-i-check-for-outages-or-service-issues"
                           }
-                        ]
+                        ],
+                        "path": "help/troubleshooting"
                       },
                       {
                         "group": "Pricing and Billing",
                         "icon": "folder",
                         "pages": [
-                          {
-                            "title": "Pricing & Billing",
-                            "path": "help/pricing",
-                            "icon": "dollar-sign"
-                          },
                           {
                             "title": "When does billing start?",
                             "path": "help/when-does-billing-start"
@@ -351,18 +332,18 @@
                           {
                             "title": "Where can I find my invoices and receipts?",
                             "path": "help/where-can-i-find-my-invoices-and-receipts"
+                          },
+                          {
+                            "title": "What are the pricing plans?",
+                            "path": "help/what-are-the-pricing-plans"
                           }
-                        ]
+                        ],
+                        "path": "help/pricing"
                       },
                       {
                         "group": "Enterprise Features",
                         "icon": "folder",
                         "pages": [
-                          {
-                            "title": "Enterprise Features",
-                            "path": "help/enterprise",
-                            "icon": "building"
-                          },
                           {
                             "title": "Does AetherFlow support SSO or SAML?",
                             "path": "help/does-aetherflow-support-sso-or-saml"
@@ -371,9 +352,11 @@
                             "title": "Can we set advanced permissions for different teams?",
                             "path": "help/can-we-set-advanced-permissions-for-different-teams"
                           }
-                        ]
+                        ],
+                        "path": "help/enterprise"
                       }
-                    ]
+                    ],
+                    "path": "help-center"
                   },
                   {
                     "tab": "Changelog",
