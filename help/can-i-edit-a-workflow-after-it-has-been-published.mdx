@@ -1,0 +1,49 @@
+---
+title: Can I edit a workflow after it has been published?
+description: Find out whether published workflows can be changed and what to consider before updating them.
+---
+
+# Can I edit a workflow after it has been published?
+
+Yes. You can usually update triggers, actions, conditions, and mapped fields after a workflow has been published.
+
+Published workflows are editable, but changes can affect how the workflow runs from that point forward. Retest any update before you rely on the revised workflow in production.
+
+## Edit a published workflow
+
+Open the published workflow from your dashboard, make the changes you need, and review each step before saving. Most workflow updates happen in the same builder you used when you first created the workflow.
+
+<Callout kind="info">
+
+Changes to a published workflow can affect active processes, connected users, or downstream outputs. Review the impact before you update anything that is already in use.
+
+</Callout>
+
+## Review and republish your changes
+
+<Steps>
+  <Step title="Review the current workflow">
+    
+    Open the published workflow and check the trigger, actions, conditions, and mapped fields you plan to change.
+    
+  </Step>
+  <Step title="Update the workflow">
+    
+    Edit the relevant steps in the workflow builder. Keep changes focused so it is easier to confirm what changed.
+    
+  </Step>
+  <Step title="Test the updated version">
+    
+    Run the workflow with test data and confirm each updated step behaves as expected. If the output changed, verify that any connected process or user still receives the correct result.
+    
+  </Step>
+  <Step title="Republish the workflow">
+    
+    Save and republish the workflow once testing is complete. After republishing, monitor the next few runs to confirm the update works in live use.
+    
+  </Step>
+</Steps>
+
+## Next steps
+
+If you are making a larger change, duplicate the workflow first or test in a safe environment before updating the live version. If you need help building or reviewing a workflow, check your workflow setup options in the dashboard.

@@ -230,38 +230,146 @@
                         ]
                       },
                       {
-                        "group": "Help Categories",
+                        "group": "Getting Started",
                         "icon": "folder",
                         "pages": [
                           {
-                            "title": "Getting Started",
-                            "path": "getting-started",
-                            "icon": "rocket"
+                            "title": "Where should I start after signing up?",
+                            "path": "help/where-should-i-start-after-signing-up"
                           },
                           {
-                            "title": "Workflows & Automation",
-                            "path": "workflows",
-                            "icon": "git-branch"
+                            "title": "How long does initial setup usually take?",
+                            "path": "help/how-long-does-initial-setup-usually-take"
                           },
                           {
-                            "title": "Integrations & APIs",
-                            "path": "integrations",
-                            "icon": "plug"
+                            "title": "Do I need technical experience to get started?",
+                            "path": "help/do-i-need-technical-experience-to-get-started"
                           },
                           {
-                            "title": "Troubleshooting",
-                            "path": "troubleshooting",
-                            "icon": "alert-circle"
+                            "title": "Can I invite teammates during setup?",
+                            "path": "help/can-i-invite-teammates-during-setup"
                           },
+                          {
+                            "title": "What is a good first workflow to build?",
+                            "path": "help/what-is-a-good-first-workflow-to-build"
+                          }
+                        ],
+                        "path": "help/getting-started"
+                      },
+                      {
+                        "group": "Workflows and Automation",
+                        "icon": "folder",
+                        "pages": [
+                          {
+                            "title": "How do I create a workflow?",
+                            "path": "help/how-do-i-create-a-workflow"
+                          },
+                          {
+                            "title": "What types of triggers can I use?",
+                            "path": "help/what-types-of-triggers-can-i-use"
+                          },
+                          {
+                            "title": "How can I test a workflow safely?",
+                            "path": "help/how-can-i-test-a-workflow-safely"
+                          },
+                          {
+                            "title": "What happens if a workflow step fails?",
+                            "path": "help/what-happens-if-a-workflow-step-fails"
+                          },
+                          {
+                            "title": "Can I edit a workflow after it has been published?",
+                            "path": "help/can-i-edit-a-workflow-after-it-has-been-published"
+                          }
+                        ],
+                        "path": "help/workflows"
+                      },
+                      {
+                        "group": "Integrations and APIs",
+                        "icon": "folder",
+                        "pages": [
+                          {
+                            "title": "How do I connect a third-party tool?",
+                            "path": "help/how-do-i-connect-a-third-party-tool"
+                          },
+                          {
+                            "title": "Where can I find my API key?",
+                            "path": "help/where-can-i-find-my-api-key"
+                          },
+                          {
+                            "title": "What should I do if an integration disconnects?",
+                            "path": "help/what-should-i-do-if-an-integration-disconnects"
+                          },
+                          {
+                            "title": "How often does integration data sync?",
+                            "path": "help/how-often-does-integration-data-sync"
+                          },
+                          {
+                            "title": "Can I build a custom integration if my app is not listed?",
+                            "path": "help/can-i-build-a-custom-integration-if-my-app-is-not-listed"
+                          }
+                        ]
+                      },
+                      {
+                        "group": "Troubleshooting",
+                        "icon": "folder",
+                        "pages": [
+                          {
+                            "title": "What should I do if a page is not loading?",
+                            "path": "help/what-should-i-do-if-a-page-is-not-loading"
+                          },
+                          {
+                            "title": "Why did an action fail unexpectedly?",
+                            "path": "help/why-did-an-action-fail-unexpectedly"
+                          },
+                          {
+                            "title": "Why are updates or workflow runs delayed?",
+                            "path": "help/why-are-updates-or-workflow-runs-delayed"
+                          },
+                          {
+                            "title": "What should I check if I cannot log in or access my workspace?",
+                            "path": "help/what-should-i-check-if-i-cannot-log-in-or-access-my-workspace"
+                          },
+                          {
+                            "title": "Where can I check for outages or service issues?",
+                            "path": "help/where-can-i-check-for-outages-or-service-issues"
+                          }
+                        ]
+                      },
+                      {
+                        "group": "Pricing and Billing",
+                        "icon": "folder",
+                        "pages": [
                           {
                             "title": "Pricing & Billing",
-                            "path": "pricing",
+                            "path": "help/pricing",
                             "icon": "dollar-sign"
                           },
                           {
+                            "title": "When does billing start?",
+                            "path": "help/when-does-billing-start"
+                          },
+                          {
+                            "title": "Where can I find my invoices and receipts?",
+                            "path": "help/where-can-i-find-my-invoices-and-receipts"
+                          }
+                        ]
+                      },
+                      {
+                        "group": "Enterprise Features",
+                        "icon": "folder",
+                        "pages": [
+                          {
                             "title": "Enterprise Features",
-                            "path": "enterprise",
+                            "path": "help/enterprise",
                             "icon": "building"
+                          },
+                          {
+                            "title": "Does AetherFlow support SSO or SAML?",
+                            "path": "help/does-aetherflow-support-sso-or-saml"
+                          },
+                          {
+                            "title": "Can we set advanced permissions for different teams?",
+                            "path": "help/can-we-set-advanced-permissions-for-different-teams"
                           }
                         ]
                       }

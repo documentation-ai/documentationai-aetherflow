@@ -1,0 +1,32 @@
+---
+title: What happens if a workflow step fails?
+description: Understand how workflow failures affect execution and what to check when a step does not complete successfully.
+---
+
+# What happens if a workflow step fails?
+
+A failed workflow step usually stops progress at that point and records an error you can review. What happens next depends on how that workflow is set up and what caused the step to fail.
+
+## What a failed step means
+
+A failed step means the action in that part of the workflow did not complete successfully. The platform logs the error so you can inspect what happened and identify whether the issue came from the step configuration, the data passed into it, or the service the step depends on.
+
+In most cases, the failed step becomes the point where you start troubleshooting. Once you understand the error, you can decide whether to update the step, retry the run, or change the workflow to handle the same issue more gracefully next time.
+
+## What happens to the rest of the workflow
+
+Many workflows stop when a step fails. When that happens, later steps do not run because the workflow could not complete the failed action it depended on.
+
+Some workflows may recover differently if you have added fallback logic or other error-handling paths. In those cases, the workflow may continue in a limited way, but the failed step is still logged so you can review it afterward.
+
+<Callout kind="info">
+
+Retrying a workflow run without checking the error first can repeat the same failure. Review the failed step details, confirm any connected apps or inputs are still valid, and monitor the next run to make sure the issue is resolved.
+
+</Callout>
+
+## What to do next
+
+Start by opening the workflow run history and reviewing the error on the failed step. Check whether the step settings, required inputs, or connected account need to be updated.
+
+If the issue looks temporary, retry the run after you make any needed fixes. If the same type of failure could happen again, add fallback logic so future runs handle it more predictably.

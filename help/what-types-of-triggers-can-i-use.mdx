@@ -1,0 +1,51 @@
+---
+title: What types of triggers can I use?
+description: Understand the kinds of events and conditions that can start a workflow.
+---
+
+# What types of triggers can I use?
+
+Triggers are the starting point for every workflow. They tell AetherFlow when to run your automation, so choosing the right trigger helps your workflow start at the right time and with the right context.
+
+## Common trigger categories
+
+Most workflows start from one of these trigger types:
+
+- **Email triggers** — Start a workflow when a new email arrives, when a message matches certain conditions, or when a specific sender contacts you.
+- **Schedule triggers** — Run a workflow at a set time, on specific days, or at a repeating interval.
+- **App event triggers** — Start a workflow when something changes in a connected app, such as a new form submission, a new CRM record, or an updated task.
+- **Manual triggers** — Run a workflow on demand when you want to test it or handle a one-off task.
+- **Condition-based triggers** — Start a workflow only when defined rules are met, such as a status change, a value threshold, or a matching tag.
+
+## When each trigger type is useful
+
+Use **email triggers** when your workflow needs to respond to incoming messages. For example, you might route support emails, extract details from order confirmations, or notify your team when a message from a key customer arrives.
+
+Use **schedule triggers** when the work needs to happen predictably. They are a good fit for daily reports, weekly follow-ups, monthly exports, or recurring reminders.
+
+Use **app event triggers** when you want your workflow to react in real time to changes in connected tools. This works well for moving leads into your CRM, creating tasks from form submissions, or alerting a team when a record is updated.
+
+Use **manual triggers** when you want full control over when a workflow runs. They are useful while building a new workflow, testing changes, or running an automation only when needed.
+
+Use **condition-based triggers** when timing alone is not enough. They help when a workflow should run only if specific business rules are true, such as when a deal reaches a certain stage or a ticket is marked high priority.
+
+<Callout kind="info">
+
+Available trigger types can vary depending on the apps you have connected and the permissions those apps provide. Some triggers may require additional setup before they appear as options in the workflow builder.
+
+</Callout>
+
+## How to choose the right trigger
+
+Start with the event that naturally signals the beginning of the task you want to automate. If something should happen as soon as new data arrives, an app event or email trigger usually fits best.
+
+If the task needs to happen on a regular cadence, use a schedule trigger instead. If you are still building or validating the workflow, start with a manual trigger so you can test safely before turning on automation.
+
+## What to do next
+
+Now that you know which trigger fits your use case, the next step is to build or test a workflow.
+
+<Columns cols={2}>
+  <Card title="Create your first workflow" href="/help/how-do-i-create-my-first-workflow" icon="play-circle" cta="Read article" />
+  <Card title="Workflows and automation" href="/help/workflows" icon="zap" cta="Browse articles" />
+</Columns>

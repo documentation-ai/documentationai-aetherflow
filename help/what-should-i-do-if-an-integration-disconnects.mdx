@@ -1,0 +1,57 @@
+---
+title: What should I do if an integration disconnects?
+description: Troubleshoot a disconnected integration by checking permissions, reauthenticating the connection, and confirming sync resumes.
+---
+
+# What should I do if an integration disconnects?
+
+Reconnect the account first, then review any workflows that depend on it for failed runs, missing data, or permission errors. After you reconnect, confirm the external service has not changed its authorization settings so the integration can resume normally.
+
+## Why integrations disconnect
+
+Most disconnected integrations trace back to changes in the connected service rather than a problem with your workflow. Expired credentials, revoked permissions, account password resets, and admin policy changes are common causes.
+
+A disconnect can also happen after someone removes the app connection in the external service or changes which user account owns the authorization. Checking the connection status first helps you decide whether you need to reauthenticate or wait and retry.
+
+<Callout kind="info">
+
+Expired credentials, revoked permissions, and admin-controlled access often require a full reauthorization. If your organization manages the connected app centrally, you may need an administrator to restore access before the integration can reconnect.
+
+</Callout>
+
+## Reconnect and verify the integration
+
+<Steps>
+  <Step title="Check the integration status">
+  
+  Open the integration or workflow that stopped running and confirm which connected account is marked as disconnected. If the page shows recent failures, note the error message so you can tell whether the issue is authentication, permissions, or a temporary service problem.
+  
+  </Step>
+  <Step title="Reconnect or reauthorize the account">
+  
+  Use the reconnect option for the affected integration and sign in to the external service again if prompted. Complete the authorization flow with the same account your workflow expects, especially if different team members have access to the service.
+  
+  A successful reconnect usually changes the status back to connected and removes the disconnect warning from the integration settings.
+  
+  </Step>
+  <Step title="Confirm credentials and permissions">
+  
+  Review the external service to make sure the connected app still has the required access. If the service recently changed its security settings, password policy, or approved app list, restore the permissions the integration needs before testing again.
+  
+  If your workspace uses admin approval for app access, ask an administrator to confirm the authorization is still valid.
+  
+  </Step>
+  <Step title="Test the connection again">
+  
+  Run a test action or trigger the workflow again to confirm data can move between systems. Then check for any failed runs, missing sync activity, or tasks that need to be retried now that the connection is active again.
+  
+  Success looks like a connected status, a completed test, or a new workflow run without authentication errors.
+  
+  </Step>
+</Steps>
+
+## When to retry later or contact support
+
+If the external service is having a temporary outage or the reconnect flow fails without a clear permissions error, wait a short time and try again. Temporary authentication or API issues sometimes resolve once the external service recovers.
+
+Contact support if the integration disconnects again immediately after reauthorization, the same workflow keeps failing after a successful reconnect, or you cannot restore the required permissions in the connected service. Include the integration name, the affected workflow, and any error message you see so the issue can be diagnosed faster.

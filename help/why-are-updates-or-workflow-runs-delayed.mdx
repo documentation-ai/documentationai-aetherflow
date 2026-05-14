@@ -1,0 +1,78 @@
+---
+title: Why are updates or workflow runs delayed?
+description: Understand common causes of delayed updates or workflow runs, including queueing, sync intervals, and rate limits.
+---
+
+# Why are updates or workflow runs delayed?
+
+If updates or workflow runs arrive later than expected, the cause is usually queueing, sync timing, or limits from a connected service rather than a failed workflow.
+
+<Callout kind="info">
+
+Short delays can be normal. Many systems process updates in batches or on scheduled sync intervals, so a brief wait does not always mean something is wrong.
+
+</Callout>
+
+## Common reasons for delays
+
+Most delays fall into a few common patterns. Identifying which pattern matches what you are seeing helps you decide whether to wait, investigate, or escalate.
+
+- **Queueing:** Work may be waiting behind other jobs before it starts or finishes processing.
+- **Sync intervals:** Some updates do not appear immediately because they are collected and checked on a schedule.
+- **Rate limits:** A connected service may temporarily slow or block requests when too many actions happen in a short period.
+- **Temporary service issues:** Short-lived platform or provider issues can delay processing even when your setup is correct.
+
+A short delay is usually expected behavior. An unusually long delay, repeated delays across multiple runs, or delays that affect only one connected service usually need a closer look.
+
+## Check run history and recent activity
+
+Run history usually shows whether the workflow is still waiting, processing, or repeatedly delayed around the same point.
+
+<Steps>
+  <Step title="Open the recent run history">
+  
+  Go to the workflow or update history for the item you expected to run. Look for the most recent entries around the time the trigger event happened.
+  
+  If the expected run appears in the list, the workflow likely started and is being delayed rather than missing entirely.
+  
+  </Step>
+  <Step title="Compare the event time with the run time">
+  
+  Check when the source event happened and when the run actually started. A small gap often points to normal queueing or sync timing.
+  
+  If the gap is much longer than usual, note whether the delay happened once or across several recent runs.
+  
+  </Step>
+  <Step title="Review the run status and any messages">
+  
+  Look for statuses that suggest the run is pending, retried, or delayed. Also review any messages that mention waiting on a connected service or temporary throttling.
+  
+  Repeated patterns in recent runs help narrow the issue. For example, multiple delayed runs from the same source often point to sync timing or external limits.
+  
+  </Step>
+  <Step title="Check whether recent changes line up with the delay">
+  
+  Review any recent edits to the workflow, trigger conditions, or connected account. A change made shortly before the delay can help explain why behavior looks different.
+  
+  If nothing changed and the delay affects multiple runs, the issue is more likely related to system load or an external service.
+  
+  </Step>
+</Steps>
+
+## Look for status notices or external limits
+
+If run history shows a delay but not a clear failure, check for broader service conditions next.
+
+Start with recent platform status notices. A posted incident, degraded performance notice, or backlog warning can explain why updates are taking longer than usual across multiple workflows.
+
+Then review the connected service involved in the delayed step. Some apps enforce rate limits or process incoming changes on their own schedule, which can delay downstream runs even when your workflow is configured correctly.
+
+<Callout kind="info">
+
+If the delay affects only one app or integration, external rate limits or sync timing are more likely than a platform-wide issue.
+
+</Callout>
+
+## When to escalate the issue
+
+Escalate the issue if delays are unusually long, happen repeatedly, or continue after status notices are cleared. Include the affected workflow, the approximate time the event occurred, and what you found in recent run history so support can investigate faster.

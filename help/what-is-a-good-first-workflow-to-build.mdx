@@ -1,0 +1,116 @@
+---
+title: What is a good first workflow to build?
+description: Choose a simple, high-value first workflow that helps your team learn the product quickly.
+---
+
+# What is a good first workflow to build?
+
+A good first workflow solves one small, repetitive task that your team already does by hand. Start with something easy to test, easy to explain, and useful enough that you will notice the time it saves right away.
+
+<Callout kind="info">
+
+A strong starter workflow usually has three qualities:
+
+- It happens often, such as every day or every week
+- It follows a clear pattern, with the same trigger and result each time
+- It has low risk, so a mistake is easy to spot and easy to fix
+
+</Callout>
+
+## Choose your first workflow carefully
+
+Your first workflow should help you learn how triggers, actions, and conditions work without forcing you to design a complicated process. If you begin with a simple workflow, you can get a working result quickly and build confidence before adding more logic.
+
+Good examples include sending a notification when a form is submitted, creating a task when a support request arrives, or posting a message when a deal changes stage. Each of these workflows has a clear starting point and a clear outcome.
+
+## How to pick the right first workflow
+
+<Steps>
+  <Step title="Find a repetitive task">
+
+Pick one task your team repeats often enough that automation will matter. Look for work that involves copying information, sending the same update, or moving data from one place to another.
+
+  </Step>
+  <Step title="Limit the workflow to one trigger and one outcome">
+
+Start with a workflow that does one thing well. For example, when a new lead comes in, send a message to the sales channel. Avoid multi-step approval flows or processes that depend on several teams.
+
+  </Step>
+  <Step title="Choose a workflow with low risk">
+
+Avoid workflows that delete records, charge customers, or update critical systems as your first project. A notification, task creation, or internal alert is usually safer and easier to validate.
+
+  </Step>
+  <Step title="Make success easy to verify">
+
+Choose a workflow where the result is visible right away. If the workflow posts a message, creates a record, or sends an internal email, you can confirm quickly that it worked as expected.
+
+  </Step>
+</Steps>
+
+## Build a simple first workflow
+
+Once you have chosen a use case, keep the first version as small as possible. You do not need filters, branching logic, or advanced formatting on day one.
+
+<Steps>
+  <Step title="Set up the trigger">
+
+Connect the event that starts the workflow, such as a new form submission, new support ticket, or updated spreadsheet row.
+
+  </Step>
+  <Step title="Add one action">
+
+Choose a single result, such as sending a team notification or creating a task. This gives you a clear path to test before adding anything else.
+
+  </Step>
+  <Step title="Run a test event">
+
+Trigger the workflow with sample data and confirm the action happens in the right place. You should see the message, task, or record appear immediately after the test runs.
+
+  </Step>
+  <Step title="Turn the workflow on">
+
+Enable the workflow only after the test behaves the way you expect. Once it is live, monitor the first few runs to confirm the data looks correct.
+
+  </Step>
+</Steps>
+
+## Example starter workflow
+
+One beginner-friendly workflow is: **When a new support form is submitted, send a message to your team chat channel**.
+
+This workflow is a good first choice because it is easy to understand and easy to verify. The trigger is a new form submission, and the action is a chat message that your team can see right away.
+
+A simple version of this workflow might include:
+
+- A trigger for a new support request
+- The customer name and issue summary in the message
+- A link back to the original request so someone can follow up
+
+If the workflow runs successfully, your team chat should show a new message each time a test support request is submitted.
+
+## How to tell if your workflow is successful
+
+Your first workflow is successful if it runs reliably and saves time without creating confusion. You do not need a perfect automation on the first attempt. You need one that works consistently and teaches your team how to improve the next one.
+
+Look for these signs:
+
+- The workflow triggers when you expect it to
+- The action completes with the right information
+- Your team understands what the workflow does
+- You no longer need to perform that task manually
+
+<Callout kind="success">
+
+If your workflow handles one real task from start to finish, you have a strong foundation. That first working automation is usually the best signal that you are ready to build more.
+
+</Callout>
+
+## What to do next
+
+After your first workflow is running, improve it one change at a time. Add filters, extra actions, or formatting only after the basic version has proven reliable.
+
+<Columns cols={2}>
+  <Card title="Create your first workflow" href="/help/how-do-i-create-my-first-workflow" icon="play-circle" cta="Read guide" />
+  <Card title="Get more help" href="/help" icon="help-circle" cta="Browse help center" />
+</Columns>

@@ -1,0 +1,42 @@
+---
+title: How often does integration data sync?
+description: Learn how integration sync timing works, what can affect update frequency, and how to verify recent data has arrived.
+---
+
+# How often does integration data sync?
+
+Sync timing depends on the specific app, trigger type, and workflow configuration. Some integration updates appear almost immediately, while others depend on scheduled polling or refresh intervals.
+
+## How sync timing works
+
+AetherFlow does not use one fixed sync schedule for every integration. The timing depends on how the connected app sends or exposes data and how your workflow is set up to receive it.
+
+Some integrations push updates as events happen. Others check for new data on a schedule, which means changes can appear after the next polling or refresh cycle.
+
+<Callout kind="info">
+
+A short delay does not always mean something is wrong. If an integration relies on scheduled checks instead of real-time events, new data may not appear until the next sync window.
+
+</Callout>
+
+## What affects sync timing
+
+Several factors can change how quickly data appears in AetherFlow:
+
+- **Connected app behavior** — Some apps support near real-time updates, while others only provide data through periodic refreshes.
+- **Trigger type** — Event-based triggers usually update faster than polling-based triggers.
+- **Workflow configuration** — A workflow may include timing rules, filters, or dependencies that affect when data moves forward.
+- **Refresh interval** — Scheduled syncs only run when the next interval is reached.
+- **Temporary delays** — Network issues, API rate limits, or service interruptions can slow down updates.
+
+## How to verify recent data
+
+Check the most recent activity in the connected workflow or integration area of your dashboard. Compare the latest record or event time with the change you expected to see.
+
+If the integration uses scheduled polling, wait for the next refresh cycle and check again. If new data has arrived, you should see the latest item, updated timestamp, or a recent workflow execution.
+
+## If updates do not appear
+
+If expected updates still do not show up after a reasonable wait, review the integration settings and workflow trigger first. Confirm that the connection is active and that the source app has actually produced new data.
+
+If everything looks correct and the data still has not synced, reconnect the integration or contact support with the app name, workflow name, and the time the missing update should have appeared.

@@ -1,0 +1,71 @@
+---
+title: What should I check if I cannot log in or access my workspace?
+description: Troubleshoot login and workspace access issues by verifying sign-in method, session status, permissions, and SSO health.
+---
+
+# What should I check if I cannot log in or access my workspace?
+
+Login and workspace access issues usually come from the sign-in method, an expired session, missing workspace access, or an SSO problem.
+
+<Callout kind="info">
+
+Start with the basics:
+
+- Use the same sign-in method you used when the account was created.
+- Sign out and sign back in if your session may have expired.
+- Confirm that your account still has access to the workspace.
+- If your organization uses SSO, check whether your identity provider is working normally.
+
+</Callout>
+
+## Confirm your sign-in method
+
+Use the sign-in method that matches how your account was originally set up. If you normally sign in with email and password, use that method again. If your organization signs in through SSO, start from the SSO flow instead of trying a password reset or a different login option.
+
+A mismatch here can look like a login failure even when your account is active. If you have more than one email address, make sure you are using the one linked to the workspace you need.
+
+## Check sessions and workspace access
+
+Expired sessions can block access even when your credentials are correct. Sign out completely, close any stale login tabs if you have several open, then sign back in and try to open the workspace again.
+
+If you can sign in but still cannot open a specific workspace, check whether your account still belongs to that workspace. Workspace access can change if an administrator removed your membership, changed your role, or moved you to a different organization.
+
+<Callout kind="tip">
+
+If you recently had access and lost it without changing your password or sign-in method, the most likely cause is a session issue or a change to your workspace permissions.
+
+</Callout>
+
+## If your organization uses SSO
+
+Use these checks to confirm whether the issue is coming from your identity provider.
+
+<Steps>
+  <Step title="Try signing in through your normal SSO flow">
+
+    Start from the same SSO entry point you normally use. Avoid switching to a different sign-in method unless your administrator has told you that both methods are supported.
+
+    If the SSO flow does not load, loops repeatedly, or returns you to the login page, the problem may be outside your workspace account.
+
+  </Step>
+  <Step title="Check whether your identity provider is working normally">
+
+    Confirm that you can access other services that use the same identity provider. If other SSO-based tools are also failing, the issue is likely with the identity provider or your organization account rather than the workspace itself.
+
+    If your organization has a status page or internal IT updates, check for a known outage or maintenance window.
+
+  </Step>
+  <Step title="Verify that the correct account is being used">
+
+    Some identity providers keep you signed in to multiple accounts at once. Make sure the SSO flow is using the account that is actually assigned access to the workspace.
+
+    If you recently changed your email address, moved teams, or joined a new organization, ask your administrator to confirm that your current identity is still mapped correctly.
+
+  </Step>
+</Steps>
+
+## Contact your admin or support
+
+If these checks do not resolve the issue, contact your workspace administrator first. They can confirm whether your account still has workspace access and whether your organization is experiencing an SSO problem.
+
+If the issue is not related to workspace membership or your identity provider, contact support and include what happens when you try to sign in, whether the problem affects one workspace or all workspaces, and whether your organization uses SSO.

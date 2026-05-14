@@ -1,0 +1,77 @@
+---
+title: Why did an action fail unexpectedly?
+description: Diagnose unexpected action failures by checking permissions, input data, app changes, and run logs.
+---
+
+# Why did an action fail unexpectedly?
+
+Unexpected action failures usually come from missing permissions, invalid input data, or changes in a connected app.
+
+<Callout kind="info">
+
+Run logs are usually the fastest way to find the root cause because they show which step failed and any error message returned at the time of the run.
+
+</Callout>
+
+## Common causes
+
+Most unexpected failures fall into a small set of categories. Start with these before making broader changes.
+
+### Missing permissions
+
+An action can fail if the connected account no longer has access to the app, resource, or feature it needs to use. This often happens after account changes, revoked access, expired credentials, or updated security settings.
+
+### Invalid input data
+
+An action can also fail when the data sent to it is incomplete, formatted incorrectly, or no longer matches what the connected app expects. A missing field, an empty value, or a changed field type can all cause a run to stop.
+
+### Changes in a connected app
+
+Connected apps can change without warning. If a field, record type, required setting, or account configuration changed recently, the action may now be trying to use something that no longer exists or is no longer valid.
+
+## Review the run logs
+
+Use the run logs to confirm where the failure happened and what caused it.
+
+<Steps>
+  <Step title="Open the failed run">
+
+  Find the run that failed most recently or the run that matches the issue you are investigating. Focus on a real failed run instead of a test setup so you can inspect the actual inputs and error details.
+
+  </Step>
+  <Step title="Identify the step that failed">
+
+  Check which action stopped the run. The failed step usually includes an error message, status detail, or validation note that points to the immediate cause.
+
+  </Step>
+  <Step title="Read the error details carefully">
+
+  Look for references to permissions, missing fields, invalid values, or unavailable resources. Specific wording in the log often tells you whether the issue came from access, data, or a change in the connected app.
+
+  </Step>
+  <Step title="Compare the input with what the action expects">
+
+  Review the data used in the failed step and confirm that all required values were present and formatted correctly. If the action depends on data from an earlier step, check that the earlier step returned the expected result.
+
+  </Step>
+  <Step title="Check for recent account or app changes">
+
+  If the log does not point to a data issue, confirm whether anything changed in the connected app or account. A recent permission update, removed field, or app reauthorization can explain a failure that started suddenly.
+
+  </Step>
+</Steps>
+
+## What to do next
+
+Once you identify the likely cause, take the smallest corrective action first.
+
+- **If permissions are missing**, reconnect the app, restore the required access, or ask an administrator to confirm the connected account still has permission to complete the action.
+- **If input data is invalid**, correct the missing or malformed values and run the action again with updated data.
+- **If the connected app changed**, update the action configuration so it matches the current fields, settings, or objects available in that app.
+- **If the error is unclear**, capture the exact error message from the run logs and use it when contacting support or escalating the issue internally.
+
+<Callout kind="tip">
+
+If the same action fails repeatedly after you correct the most likely cause, test with a fresh run and compare the new log output with the previous failure. A changed error message usually means you resolved one issue and exposed the next one.
+
+</Callout>

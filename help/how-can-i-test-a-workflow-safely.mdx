@@ -1,0 +1,45 @@
+---
+title: How can I test a workflow safely?
+description: Learn safe ways to validate workflow logic before using it in a live process.
+---
+
+# How can I test a workflow safely?
+
+Test your workflow with sample data or non-production conditions before you use it in a live process.
+
+<Callout kind="info">
+
+Safe testing helps you catch incorrect logic, unexpected outputs, and unwanted actions before they affect real customers, records, or notifications.
+
+</Callout>
+
+## Safe testing steps
+
+<Steps>
+  <Step title="Use test data or a non-production setup">
+    Start with sample inputs, draft records, or a staging environment instead of live business data.
+
+    If your workflow sends messages, updates records, or triggers follow-up actions, make sure those actions point to test destinations while you validate the flow.
+  </Step>
+  <Step title="Run the workflow and review the outputs">
+    Use the workflow test option to run the automation with your safe test conditions.
+
+    Check each step's output carefully. Confirm that the workflow uses the right input values, follows the intended path, and produces the result you expect.
+  </Step>
+  <Step title="Confirm the expected behavior">
+    Compare the test result with the outcome you wanted before publishing.
+
+    Pay close attention to conditions, branching logic, delays, notifications, and any step that writes data or sends information outside AetherFlow.
+  </Step>
+  <Step title="Publish only after verification">
+    Move the workflow into live use only after the test run behaves correctly from start to finish.
+
+    If something looks wrong, update the workflow and test again with the same safe conditions until the results are consistent.
+  </Step>
+</Steps>
+
+## Best practices if a test does not look right
+
+If the workflow behaves unexpectedly, review the trigger settings first. A workflow that starts with the wrong event or incomplete input data often produces the wrong result later.
+
+Then check each step one at a time and retest after each change. Small, isolated updates make it easier to find the exact part of the workflow that needs attention.

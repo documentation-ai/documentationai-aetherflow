@@ -1,0 +1,88 @@
+---
+title: Can I build a custom integration if my app is not listed?
+description: Use the API or available integration options to connect unsupported apps when a native integration is not listed.
+---
+
+# Can I build a custom integration if my app is not listed?
+
+Yes. If your app is not listed as a native integration, you can often still connect it by using webhooks, HTTP requests, or a custom API connection. This approach is commonly used for internal systems, niche apps, or tools that do not yet have a built-in connector.
+
+## Understand the difference between native and custom integrations
+
+A native integration is a prebuilt connection that AetherFlow supports directly. It is typically faster to set up because authentication, triggers, and common actions are already defined for you.
+
+A custom connection gives you more flexibility when a native integration is not available. Instead of selecting a built-in app, you connect through the other service's API or webhook support and define the requests, payloads, and authentication details yourself.
+
+## Choose a custom integration path
+
+Use the integration method that matches what the unsupported app provides.
+
+### Webhooks
+
+Webhooks work well when the external app can send real-time event data to AetherFlow or to an endpoint you control. This is often the best option when you need updates as soon as something happens.
+
+- **Real-time triggers** for new or changed records
+- **No polling required** for event-based workflows
+- **Useful for supported webhook-enabled services** even without a native listing
+
+### HTTP requests
+
+HTTP requests work well when the app exposes a REST API. You can send requests to create, update, fetch, or delete data as part of a workflow.
+
+- **Standard API operations** such as `GET`, `POST`, `PUT`, and `DELETE`
+- **Custom headers and authentication** when the external service requires them
+- **Structured data handling** for services that return JSON or XML
+
+### Custom API connections
+
+A custom API connection is useful when you need more control over how requests are made. This path is common for internal tools and specialized systems with their own authentication model or request format.
+
+<Callout kind="info">
+
+Custom integrations usually require access to the external app's API or webhook documentation, valid credentials, and someone on your team who can configure requests and troubleshoot responses. Support can help clarify AetherFlow capabilities, but your team is typically responsible for the unsupported app's API details, authentication setup, and custom logic.
+
+</Callout>
+
+## Get started
+
+<Steps>
+  <Step title="Confirm that the external app supports API requests or webhooks" icon="check-circle">
+
+  Check the app's documentation for a REST API, outgoing webhooks, authentication methods, and any rate limits. If the app does not offer API or webhook access, a custom integration may not be possible.
+
+  A good sign is clear documentation for endpoints, event payloads, or API keys.
+
+  </Step>
+  <Step title="Choose the simplest connection method" icon="arrow-right">
+
+  If the app can send events, start with webhooks for real-time updates. If you need to fetch or send data on demand, use HTTP requests or a custom API connection.
+
+  Start with one workflow and one endpoint before expanding the integration.
+
+  </Step>
+  <Step title="Gather credentials and request details" icon="lock">
+
+  Collect the information you need before building the workflow:
+
+  - API keys, bearer tokens, or other credentials
+  - Base URLs and endpoint paths
+  - Required headers and request body format
+  - Sample responses or webhook payloads
+
+  When these details are complete, you can configure and test the connection with fewer errors.
+
+  </Step>
+  <Step title="Build and test a small workflow" icon="play-circle">
+
+  Set up a single trigger and action first. For example, send one webhook event into your workflow or make one API request to create or retrieve a record.
+
+  You are on the right track when test requests return a successful response or the workflow receives the expected event payload.
+
+  </Step>
+</Steps>
+
+## Know the requirements and next steps
+
+Custom integrations are often the right choice when you need to connect an unsupported tool, but they depend on what the external app exposes. If the app has limited API access, strict rate limits, or no webhook support, the integration may require workarounds or may not be feasible.
+
+If you are evaluating options, start by reviewing the unsupported app's API or webhook documentation and then map that to the workflow you want to build in AetherFlow. If you need a faster setup path, check whether a native integration has been added since your last search.
