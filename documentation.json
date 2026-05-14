@@ -356,7 +356,11 @@
                         "path": "help/enterprise"
                       }
                     ],
-                    "path": "help-center"
+                    "path": "help-center",
+                    "show-sidebar": false,
+                    "show-toc": false,
+                    "show-page-navigation": false,
+                    "ask-feedback": false
                   },
                   {
                     "tab": "Changelog",
