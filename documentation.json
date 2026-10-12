@@ -916,8 +916,8 @@
     ]
   },
   "seo": {
-    "robots:index": false,
-    "robots:follow": false,
+    "robots:index": true,
+    "robots:follow": true,
     "jsonld": {
       "organization": {
         "name": "aetherflow",
